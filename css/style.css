@@ -7,14 +7,20 @@ header{
     z-index: 1000;
     width: 100%;
 }
+ul li{
+    list-style: none;
+}
 .nav-menu{
     padding: 0 24px;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(123, 123, 123, 0.5);;
+    background-color: rgba(255, 255, 255, 0.1);;
     border-bottom: 1px solid rgba(16, 19, 22, .2);
+}
+.nav-menu.open{
+    background-color: #ffffff;
 }
 .nav-menu .nav-menu-logo img{
     width: 120px;
@@ -32,23 +38,79 @@ header{
     align-items: center;
     cursor: pointer;
 }
+
 .icon-bar {
     display: block;
-    width: 24px;
-    height: 2.5px;
-    margin: 2.75px 0;
+    width: 25px;
+    height: 3px;
+    margin: 2px auto;
     background-color: #333;
-  }
-  
-  /* Скрываем текст для скринридеров */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
+    transition: all 0.3s ease-in-out;
+}
+.header-btn.open .icon-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.header-btn.open .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+.header-btn.open .icon-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+.nav-menu .nav-menu-phone .sidebar {
+    position: fixed;
+    top: 70px;
+    left: 100vw;
+    width: 100vw;
+    height: 100%;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    transition: left 0.3s;
+    padding: 32px 0;
+}
+.nav-menu .nav-menu-phone .open{
+    left: 0;
+}
+.sidebar ul li{
+    margin-bottom: 16px;
+}
+.sidebar ul li a{
+    padding: 0 24px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.375;
+    letter-spacing: .2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 24px;
+    height: 3px;
+    background-color: black;
+    position: relative;
 }
 
+.arrow::before,
+.arrow::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    background-color: black;
+    right: -5px;
+}
+
+.arrow::before {
+    transform: rotate(45deg);
+    top: -4px;
+}
+
+.arrow::after {
+    transform: rotate(-45deg);
+    bottom: -4px;
+}
