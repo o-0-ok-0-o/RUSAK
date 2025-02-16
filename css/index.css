@@ -1,0 +1,74 @@
+/*Слайдер*/
+
+/* Контейнер слайдера */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  /* Каждый слайд располагается абсолютно и скрыт по умолчанию */
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;    
+  }
+  .slide.active {
+    opacity: 1;
+  }
+  /* Текстовое содержимое слайда */
+  .slide-content {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 40%;
+  }
+  /* Блок индикаторов*/
+  .indicators {
+    position: absolute;
+    bottom: 42px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    padding: 0 24px;
+  }
+  /* Индикатор – базовая полоса */
+  .indicator {
+    position: relative;
+    width: 48px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+  }
+  /* Активный индикатор: псевдоэлемент заполняется белым с анимацией */
+  .indicator.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #fff;
+    animation: fillIndicator 5s linear forwards;
+  }
+  @keyframes fillIndicator {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+  .gradient-overlay {
+    position: absolute;
+    height: 60vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
