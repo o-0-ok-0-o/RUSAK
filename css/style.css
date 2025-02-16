@@ -10,6 +10,21 @@ header{
 ul li{
     list-style: none;
 }
+a{
+    text-decoration: none;
+    color: #000000;
+}
+body, html{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+.nav-menu .nav-menu-pc{
+    display: none;
+}
 .nav-menu{
     padding: 0 24px;
     height: 70px;
@@ -17,7 +32,7 @@ ul li{
     justify-content: space-between;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);;
-    border-bottom: 1px solid rgba(16, 19, 22, .2);
+    border-bottom: 2px solid rgba(16, 19, 22, .2);
 }
 .nav-menu.open{
     background-color: #ffffff;
@@ -58,7 +73,7 @@ ul li{
 }
 .nav-menu .nav-menu-phone .sidebar {
     position: fixed;
-    top: 70px;
+    top: 72px;
     left: 100vw;
     width: 100vw;
     height: 100%;
@@ -67,7 +82,7 @@ ul li{
     transition: left 0.3s;
     padding: 32px 0;
 }
-.nav-menu .nav-menu-phone .open{
+.nav-menu .nav-menu-phone .sidebar.open{
     left: 0;
 }
 .sidebar ul li{
@@ -75,9 +90,7 @@ ul li{
 }
 .sidebar ul li a{
     padding: 0 24px;
-    color: #333;
-    text-decoration: none;
-    font-weight: 700;
+    font-weight: 300;
     font-size: 19px;
     line-height: 1.375;
     letter-spacing: .2px;
@@ -85,7 +98,7 @@ ul li{
     justify-content: space-between;
     align-items: center;
 }
-.arrow {
+.arrow, .arrow-left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -94,9 +107,10 @@ ul li{
     background-color: black;
     position: relative;
 }
-
 .arrow::before,
-.arrow::after {
+.arrow::after,
+.arrow-left::before,
+.arrow-left::after {
     content: '';
     position: absolute;
     width: 15px;
@@ -104,13 +118,129 @@ ul li{
     background-color: black;
     right: -5px;
 }
-
 .arrow::before {
     transform: rotate(45deg);
     top: -4px;
 }
-
+.arrow-left::before {
+    transform: rotate(-45deg);
+    top: -4.5px;
+    left: -4px;
+}
 .arrow::after {
     transform: rotate(-45deg);
     bottom: -4px;
+}
+.arrow-left::after {
+    transform: rotate(45deg);
+    bottom: -4.5px;
+    left: -4px;
+}
+.models, .shopper, .owner, .rusak{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    background-color: #ffffff;
+    left: 100vw;
+    transition: left 0.5s;
+    overflow-y: auto;
+    touch-action: pan-y;
+}
+.models.open, .shopper.open, .owner.open, .rusak.open{
+    left: 0;
+}
+.close a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 2px solid rgba(16, 19, 22, .2);
+}
+.close a p{
+    margin-left: 30px;
+    font-weight: 300;
+    font-size: 20px;
+}
+.models h2{
+    padding: 24px 0;
+    color: rgba(16, 19, 22, .8);
+}
+.models-item{
+    padding: 24px;
+}
+.cars{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.cars .car{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cars .car img{
+    object-fit: contain;
+    width: 100%;
+}
+.passengers{
+    margin-bottom: 70px;
+}
+.price{
+    color: rgba(16, 19, 22, .8);
+}
+
+@media (min-width: 576px) {
+    .cars{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .nav-menu{
+        padding: 0 48px;
+    }
+    .sidebar ul li a{
+        padding: 0 48px;
+    }
+    .close a{
+        padding: 24px 48px;
+    }
+    .models-item{
+        padding: 24px 48px;
+    }
+}
+@media (min-width: 950px) {
+    .nav-menu .nav-menu-phone{
+        display: none;
+    }
+    .nav-menu .nav-menu-pc{
+        display: block;
+    }
+    .nav-menu-pc ul li{
+        display: inline-block;
+        padding: 4px;
+        margin-left: 4px;
+    }
+    .models-pc, .shopper-pc, .owner-pc, .rusak-pc{
+        display: none;
+        top: 72px;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        z-index: 1000;
+        background-color: #ffffff;
+    }
+    .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open{
+        display: block;
+    }
+}
+@media (min-width: 1250px) {
+    .models-pc, .shopper-pc, .owner-pc, .rusak-pc{
+        height: 460px;
+    }
+    .models-pc-2{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
