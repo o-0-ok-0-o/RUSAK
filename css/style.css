@@ -256,6 +256,10 @@ body, html{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
+    .models-item:hover h2{
+        text-decoration: underline;
+        text-decoration-color: orange;
+    }
     .passengers{
         margin-bottom: 0;
         padding-left: 0px;
