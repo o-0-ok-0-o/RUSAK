@@ -3,7 +3,7 @@
     padding: 0;
 }
 header{
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     width: 100%;
 }
@@ -22,6 +22,10 @@ body, html{
     background-color: #ffffff;
     overflow-y: auto;
 }
+.nav-menu-logo img{
+    height: 40px;
+    width: auto;
+}
 .nav-menu .nav-menu-pc{
     display: none;
 }
@@ -31,15 +35,14 @@ body, html{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1);;
+    background-color: rgba(0, 0, 0, 0.15);;
     border-bottom: 2px solid rgba(16, 19, 22, .2);
+    transition: background-color 1.7s;
 }
 .nav-menu.open{
     background-color: #ffffff;
 }
-.nav-menu .nav-menu-logo img{
-    width: 120px;
-}
+
 .nav-menu .nav-menu-phone{
     display: flex;
     align-items: center;
@@ -136,7 +139,7 @@ body, html{
     bottom: -4.5px;
     left: -4px;
 }
-.models, .shopper, .owner, .rusak{
+.models, .shopper, .owner, .rusak, .config{
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -147,7 +150,7 @@ body, html{
     overflow-y: auto;
     touch-action: pan-y;
 }
-.models.open, .shopper.open, .owner.open, .rusak.open{
+.models.open, .shopper.open, .owner.open, .rusak.open, .config.open{
     left: 0;
 }
 .close a{
@@ -178,7 +181,6 @@ body, html{
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 .cars .car img{
@@ -190,6 +192,9 @@ body, html{
 }
 .price{
     color: rgba(16, 19, 22, .8);
+}
+.cargo-passengers{
+    background-color: rgb(236, 236, 236);
 }
 
 @media (min-width: 576px) {
@@ -208,8 +213,14 @@ body, html{
     .models-item{
         padding: 24px 48px;
     }
+    .rusak-pc{
+        padding: 24px 48px;
+    }
 }
 @media (min-width: 950px) {
+    .nav-menu-pc ul li .open{
+        color: orange;
+    }
     .nav-menu .nav-menu-phone{
         display: none;
     }
@@ -219,28 +230,57 @@ body, html{
     .nav-menu-pc ul li{
         display: inline-block;
         padding: 4px;
-        margin-left: 4px;
+        margin-left: 20px;
+        font-size: 20px;
     }
-    .models-pc, .shopper-pc, .owner-pc, .rusak-pc{
-        display: none;
-        top: 72px;
+    .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
+        top: -100vw;
         left: 0;
         height: 100vh;
         width: 100vw;
         position: absolute;
         z-index: 1000;
         background-color: #ffffff;
+        transition: top .7s;
     }
-    .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open{
-        display: block;
+    .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open, .config-pc.open{
+        top: 72px;
     }
 }
 @media (min-width: 1250px) {
-    .models-pc, .shopper-pc, .owner-pc, .rusak-pc{
-        height: 460px;
+    .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
+        height: auto;
+        min-height: 300px;
     }
     .models-pc-2{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+    }
+    .passengers{
+        margin-bottom: 0;
+        padding-left: 0px;
+    }
+    .cargo-passengers{
+        padding: 24px 0 24px 24px;
+        margin: 0px 24px 0px 0px;
+    }
+    .cargos{
+        padding-right: 0px;
+    }
+    .car{
+        height: 140px;
+        position: relative;
+    }
+    .car img{
+        width: 100%;
+    }
+    .car .price{
+        position: absolute;
+        bottom: 0px;
+    }
+}
+@media (min-width: 1453px) {
+    .car .price{
+        position: static;
     }
 }
