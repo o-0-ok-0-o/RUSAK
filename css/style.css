@@ -218,9 +218,6 @@ body, html{
     }
 }
 @media (min-width: 950px) {
-    .nav-menu-pc ul li .open{
-        color: orange;
-    }
     .nav-menu .nav-menu-phone{
         display: none;
     }
@@ -232,6 +229,17 @@ body, html{
         padding: 4px;
         margin-left: 20px;
         font-size: 20px;
+        text-decoration-line: none;
+        text-decoration-color: orange;
+        transition: text-decoration .7s;
+    }
+    .nav-menu-pc ul li:hover{
+        text-decoration: underline;
+        text-decoration-color: orange;
+    }
+    .nav-menu-pc ul li .open{
+        text-decoration: underline;
+        text-decoration-color: orange;
     }
     .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
         top: -100vw;
@@ -255,10 +263,6 @@ body, html{
     .models-pc-2{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-    }
-    .models-item:hover h2{
-        text-decoration: underline;
-        text-decoration-color: orange;
     }
     .passengers{
         margin-bottom: 0;
