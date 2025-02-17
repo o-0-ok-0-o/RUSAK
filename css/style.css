@@ -22,8 +22,9 @@ body, html{
     background-color: #ffffff;
     overflow-y: auto;
 }
+
 .nav-menu-logo img{
-    height: 40px;
+    height: 30px;
     width: auto;
 }
 .nav-menu .nav-menu-pc{
@@ -227,7 +228,7 @@ body, html{
     .nav-menu-pc ul li{
         display: inline-block;
         padding: 4px;
-        margin-left: 20px;
+        margin-left: 10px;
         font-size: 20px;
         text-decoration-line: none;
         text-decoration-color: orange;
@@ -242,7 +243,7 @@ body, html{
         text-decoration-color: orange;
     }
     .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
-        top: -100vw;
+        top: -200vw;
         left: 0;
         height: 100vh;
         width: 100vw;
@@ -250,12 +251,17 @@ body, html{
         z-index: 1000;
         background-color: #ffffff;
         transition: top .7s;
+        overflow: auto;
     }
     .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open, .config-pc.open{
         top: 72px;
     }
 }
 @media (min-width: 1250px) {
+    .nav-menu-logo img{
+        height: 40px;
+        width: auto;
+    }
     .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
         height: auto;
         min-height: 300px;
