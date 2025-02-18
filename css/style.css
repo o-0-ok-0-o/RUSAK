@@ -35,11 +35,7 @@ body, html{
     border-radius: 9px;
     transition: .3s;
 }
-.nav-menu-logo img:hover{
-    background-color: #ffffff;
-    transform: scale(1.01);
-    box-shadow: 2px 2px 20px rgba(255, 255, 255, .7);
-}
+
 .nav-menu .nav-menu-pc{
     display: none;
 }
@@ -270,6 +266,11 @@ body, html{
     }
 }
 @media (min-width: 950px) {
+    .nav-menu-logo img:hover{
+        background-color: #ffffff;
+        transform: scale(1.01);
+        box-shadow: 2px 2px 20px rgba(255, 255, 255, .7);
+    }
     .nav-menu .nav-menu-phone{
         display: none;
     }
