@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 header{
     position: fixed;
@@ -27,6 +28,7 @@ body, html{
     align-items: center;
 }
 .nav-menu-logo img{
+    box-sizing: content-box;
     padding: 10px 15px;
     height: 30px;
     width: auto;
@@ -89,7 +91,7 @@ body, html{
 }
 .nav-menu .nav-menu-phone .sidebar {
     position: fixed;
-    top: 72px;
+    top: 70px;
     left: 100vw;
     width: 100vw;
     height: 100%;
@@ -209,6 +211,37 @@ body, html{
 .cargo-passengers{
     background-color: rgb(236, 236, 236);
 }
+.icon{
+    display: flex;
+    align-items: center;
+}
+.icon img{
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: content-box;
+}
+.contacts-info{
+    display: grid;
+    gap: 10px;
+}
+.icon a:hover{
+    color: orange;
+}
+.contacts{
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+}
+.maps{
+    padding: 24px;
+    margin-bottom: 55px;
+    display: grid;
+    gap: 10px;
+}
 
 @media (min-width: 576px) {
     .cars{
@@ -229,6 +262,12 @@ body, html{
     .rusak-pc{
         padding: 24px 48px;
     }
+    .maps{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 24px;
+        gap: 10px;
+    }
 }
 @media (min-width: 950px) {
     .nav-menu .nav-menu-phone{
@@ -241,7 +280,7 @@ body, html{
         display: inline-block;
         padding: 4px;
         margin-left: 10px;
-        font-size: 20px;
+        font-size: 18px;
     }
     .nav-menu-pc ul li a{
         display: inline-block;
@@ -283,11 +322,35 @@ body, html{
         overflow: auto;
     }
     .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open, .config-pc.open{
-        top: 72px;
+        top: 70px;
+    }
+    .rusak-pc{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 100vw;
+        max-width: 100vw;
+    }
+    .maps{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 0;
+        padding: 0;
+    }
+    .map{
+        width: 100%;
+    }
+    .contacts{
+        padding: 0;
+        display: block;
     }
 }
 @media (min-width: 1250px) {
+    .nav-menu-pc ul li{
+        font-size: 20px;
+    }
     .nav-menu-logo img{
+        box-sizing: content-box;
         height: 40px;
         width: auto;
     }
