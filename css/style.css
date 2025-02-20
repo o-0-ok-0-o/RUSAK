@@ -11,6 +11,9 @@ header{
 ul li{
     list-style: none;
 }
+main{
+    margin-top: 70px;
+}
 a{
     text-decoration: none;
     color: #000000;
@@ -40,17 +43,14 @@ body, html{
     display: none;
 }
 .nav-menu{
+    width: 100vw;
     position: relative;
     padding: 0 24px;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.15);;
     border-bottom: 2px solid rgba(16, 19, 22, .2);
-    transition: background-color .7s;
-}
-.nav-menu.open{
     background-color: #ffffff;
 }
 
@@ -93,7 +93,7 @@ body, html{
     height: 100%;
     background: #ffffff;
     color: rgb(0, 0, 0);
-    transition: left 0.3s;
+    transition: left 0.5s;
     padding: 32px 0;
 }
 .nav-menu .nav-menu-phone .sidebar.open{
@@ -111,6 +111,28 @@ body, html{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+#rusak{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.375;
+    letter-spacing: .2px;
+    padding: 24px 24px;
+    border-top: 2px solid rgba(16, 19, 22, .2);
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+.btn a{
+    padding: 5px 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.425);
 }
 .arrow, .arrow-left {
     display: flex;
@@ -150,18 +172,21 @@ body, html{
     bottom: -4.5px;
     left: -4px;
 }
-.models, .shopper, .owner, .rusak, .config{
+.models, .rusak, .config{
     position: absolute;
     height: 100vh;
     width: 100vw;
     top:0;
     background-color: #ffffff;
     left: 100vw;
-    transition: left 0.5s;
+    transition: left 0.4s;
     overflow-y: auto;
     touch-action: pan-y;
 }
-.models.open, .shopper.open, .owner.open, .rusak.open, .config.open{
+.models, .config{
+    top: 70px;
+}
+.models.open, .rusak.open, .config.open{
     left: 0;
 }
 .close a{
@@ -221,6 +246,7 @@ body, html{
     box-sizing: content-box;
 }
 .contacts-info{
+    padding: 24px;
     display: grid;
     gap: 10px;
 }
@@ -249,6 +275,9 @@ body, html{
     .sidebar ul li a{
         padding: 0 48px;
     }
+    #rusak{
+        padding: 24px 48px;
+    }
     .close a{
         padding: 24px 48px;
     }
@@ -274,20 +303,23 @@ body, html{
     .nav-menu .nav-menu-phone{
         display: none;
     }
-    .nav-menu .nav-menu-pc{
-        display: block;
+    .nav-menu{
+        justify-content: flex-start;
     }
-    .nav-menu-pc ul li{
+    .nav-menu .nav-menu-pc{
+        display: flex;
+    }
+    .nav-menu-pc .nav-menu-pc-list-1 ul li{
         display: inline-block;
         padding: 4px;
         margin-left: 10px;
         font-size: 18px;
     }
-    .nav-menu-pc ul li a{
+    .nav-menu-pc .nav-menu-pc-list a{
         display: inline-block;
         position: relative;
     }
-    .nav-menu-pc ul li a::after{
+    .nav-menu-pc .nav-menu-pc-list .nav-menu-pc-a::after{
         content: '';
         position: absolute;
         left: 50%;
@@ -298,11 +330,11 @@ body, html{
         transition: width .3s ease-in-out, 
         left .3s ease-in-out;
     }
-    .nav-menu-pc ul li a:hover::after{
+    .nav-menu-pc .nav-menu-pc-list .nav-menu-pc-a:hover::after{
         width: 115%;
         left: -7.5%;
     }
-    .nav-menu-pc ul li a.open::after{
+    .nav-menu-pc .nav-menu-pc-list .nav-menu-pc-a.open::after{
         content: '';
         position: absolute;
         left: -7.5%;
@@ -311,7 +343,33 @@ body, html{
         height: 2px;
         background-color: orange;
     }
-    .models-pc, .shopper-pc, .owner-pc, .rusak-pc, .config-pc{
+    .nav-menu-pc .nav-menu-pc-list{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .nav-menu-pc-list-2{
+        height: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        right: 48px;
+        display: flex;
+        align-items: center;
+
+    }
+    .nav-menu-pc-list-2 ul{
+        margin-left: 14px;
+    }
+    .nav-menu-pc-list-2 ul li{
+        font-size: 14px;
+    }
+    #rusak-pc{
+        margin-right: 10px;
+        font-weight: 500;
+        font-family: 'Roboto', sans-serif;
+    }
+    .models-pc, .rusak-pc, .config-pc{
         top: -500vh;
         left: 0;
         height: 100vh;
@@ -319,10 +377,24 @@ body, html{
         position: absolute;
         z-index: 1000;
         background-color: #ffffff;
-        transition: .7s;
+        transition: top .7s;
         overflow: auto;
     }
-    .models-pc.open, .shopper-pc.open, .owner-pc.open, .rusak-pc.open, .config-pc.open{
+    #price{
+        background-color: green;
+        padding: 2px 9px;
+        border: 1px solid black;
+        margin-bottom: 5px;
+    }
+    #call{
+        background-color: orange;
+        padding: 2px 8px;
+        border: 1px solid black;
+    }
+    .number li a:hover{
+        color: orange;
+    }
+    .models-pc.open, .rusak-pc.open, .config-pc.open{
         top: 70px;
     }
     .rusak-pc{
@@ -348,6 +420,9 @@ body, html{
 @media (min-width: 1250px) {
     .nav-menu-pc ul li{
         font-size: 20px;
+    }
+    .nav-menu-pc-list-2 ul li{
+        font-size: 16px;
     }
     .nav-menu-logo img{
         box-sizing: content-box;
