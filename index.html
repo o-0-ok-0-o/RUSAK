@@ -288,11 +288,33 @@
             </div>
         </div>
     </header>
-    <div class="price-list">
-        <form action="">
-            
+    <!-- Модальное окно для "Получить прайс" -->
+<div id="price-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="price-modal">&times;</span>
+        <h2>Получить прайс</h2>
+        <form>
+            <input type="text" placeholder="ФИО" required>
+            <input type="tel" placeholder="Номер телефона" required>
+            <input type="email" placeholder="Электронная почта" required>
+            <button type="submit">Отправить</button>
         </form>
     </div>
+</div>
+
+<!-- Модальное окно для "Заказать звонок" -->
+<div id="call-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" data-modal="call-modal">&times;</span>
+        <h2>Заказать звонок</h2>
+        <form>
+            <input type="text" placeholder="ФИО" required>
+            <input type="tel" placeholder="Номер телефона" required>
+            <input type="email" placeholder="Электронная почта" required>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
     <main>
         <section class="slider" id="slider">
             <div class="slides-container" id="slider">

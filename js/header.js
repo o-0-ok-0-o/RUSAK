@@ -118,4 +118,32 @@ document.addEventListener('DOMContentLoaded', function() {
             rusakBtnPc.classList.toggle('open');
         }
     });
+
+    const modals = {
+        'price-btn': document.getElementById('price-modal'),
+        'call-btn': document.getElementById('call-modal')
+    };
+
+    document.getElementById('price').addEventListener('click', () => {
+        modals['price-btn'].style.display = 'flex';
+    });
+
+    document.getElementById('call').addEventListener('click', () => {
+        modals['call-btn'].style.display = 'flex';
+    });
+
+    document.querySelectorAll('.close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function () {
+            document.getElementById(this.dataset.modal).style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        Object.values(modals).forEach(modal => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+    
 });
