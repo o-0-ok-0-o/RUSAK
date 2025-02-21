@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const sliderClose = document.getElementById('slider');
     const headerBtn = document.querySelector('.header-btn');
     const sideMenu = document.getElementById('sidebar');
     const modelsBtn = document.getElementById('models');
@@ -22,6 +23,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const configMenuPc = document.querySelector('.config-pc');
     const rusakBtnPc = document.getElementById('rusak-pc');
     const rusakMenuPc = document.querySelector('.rusak-pc');
+
+    function close() {
+        modelsBtnPc.classList.remove('open');
+        modelsMenuPc.classList.remove('open');
+        configMenuPc.classList.remove('open');
+        rusakMenuPc.classList.remove('open');
+        configBtnPc.classList.remove('open');
+        rusakBtnPc.classList.remove('open');
+    }
+
+    sliderClose.addEventListener('click', ()=>{
+        close();
+    });
 
     headerBtn.addEventListener('click', function() {
         this.classList.toggle('open');
@@ -59,48 +73,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     modelsBtnPc.addEventListener('click', function() {
-        modelsMenuPc.classList.toggle('open');
-        modelsBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        configBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
+        if (modelsBtnPc.classList.contains('open')) {
+            close();
+        } else {
+            close();
+            modelsBtnPc.classList.toggle('open');
+            modelsMenuPc.classList.toggle('open');
+        }
     });
     modelsBtnPcMain.addEventListener('click', function() {
-        modelsMenuPc.classList.toggle('open');
-        modelsBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        configBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
+        if (modelsBtnPc.classList.contains('open')) {
+            close();
+        } else {
+            close();
+            modelsBtnPc.classList.toggle('open');
+            modelsMenuPc.classList.toggle('open');
+        }
     });
     configBtnPc.addEventListener('click', function () {
-        configMenuPc.classList.toggle('open');
-        configBtnPc.classList.toggle('open');
-        modelsMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        modelsBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
+        if (configBtnPc.classList.contains('open')) {
+            close();
+        } else {
+            close();
+            configMenuPc.classList.toggle('open');
+            configBtnPc.classList.toggle('open');
+        }
     });
     configBtnPcMain.addEventListener('click', function () {
-        configMenuPc.classList.toggle('open');
-        configBtnPc.classList.toggle('open');
-        modelsMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        modelsBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
+        if (configBtnPc.classList.contains('open')) {
+            close();
+        } else {
+            close();
+            configMenuPc.classList.toggle('open');
+            configBtnPc.classList.toggle('open');
+        }
     });
 
     rusakBtnPc.addEventListener('click', function() {
-        rusakMenuPc.classList.toggle('open');
-        rusakBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        modelsMenuPc.classList.remove('open');
-        configBtnPc.classList.remove('open');
-        modelsBtnPc.classList.remove('open'); 
+        if ( rusakBtnPc.classList.contains('open')) {
+            close();
+        } else {
+            close();
+            rusakMenuPc.classList.toggle('open');
+            rusakBtnPc.classList.toggle('open');
+        }
     });
 });
