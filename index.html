@@ -165,8 +165,8 @@
                     </div>
                     <div class="nav-menu-pc-list-2">
                         <ul>
-                            <li><a href="#" id="price">получить прайс</a></li>
-                            <li><a href="#" id="call">заказать звонок</a></li>
+                            <li><button id="price">получить прайс</button></li>
+                            <li><button id="call">заказать звонок</button></li>
                         </ul>
                         <ul class="number">
                             <li><a href="tel:89307161652">8 (930) 716 16-52</a></li>
@@ -287,35 +287,37 @@
                 </div>
             </div>
         </div>
-    </header>
+        <div class="close-header"></div>
+    
     <!-- Модальное окно для "Получить прайс" -->
-<div id="price-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="price-modal">&times;</span>
-        <h2>Получить прайс</h2>
-        <form>
-            <input type="text" placeholder="ФИО" required>
-            <input type="tel" placeholder="Номер телефона" required>
-            <input type="email" placeholder="Электронная почта" required>
-            <button type="submit">Отправить</button>
-        </form>
+    <div id="price-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-form" data-modal="price-modal">&times;</span>
+            <h2>Получить прайс</h2>
+            <form>
+                <input type="text" placeholder="ФИО" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <input type="email" placeholder="Электронная почта" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
     </div>
-</div>
-
-<!-- Модальное окно для "Заказать звонок" -->
-<div id="call-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" data-modal="call-modal">&times;</span>
-        <h2>Заказать звонок</h2>
-        <form>
-            <input type="text" placeholder="ФИО" required>
-            <input type="tel" placeholder="Номер телефона" required>
-            <input type="email" placeholder="Электронная почта" required>
-            <button type="submit">Отправить</button>
-        </form>
+    </header>
+    <!-- Модальное окно для "Заказать звонок" -->
+    <div id="call-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-form" data-modal="call-modal">&times;</span>
+            <h2>Заказать звонок</h2>
+            <form>
+                <input type="text" placeholder="ФИО" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <input type="email" placeholder="Электронная почта" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
     </div>
-</div>
     <main>
+        
         <section class="slider" id="slider">
             <div class="slides-container" id="slider">
                 <div class="slide" style="background-image: url(img/слайдер/IMG_2184.JPG);"></div>
@@ -335,6 +337,7 @@
         </section>
         <div class="sliders-text">
             <div class="btn-main-phone">
+                <button class="obzor-main-pc">Вездеходы в наличии</button>
                 <button class="models-main-phone">Выбрать вездеход</button>
                 <button class="config-main-phone">Выбрать шины</button>
             </div>

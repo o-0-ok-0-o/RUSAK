@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const sliderClose = document.getElementById('slider');
+    const sliderClose = document.querySelector('.close-header');
+    const header = document.querySelector('.nav-menu');
+
     const headerBtn = document.querySelector('.header-btn');
     const sideMenu = document.getElementById('sidebar');
     const modelsBtn = document.getElementById('models');
@@ -31,6 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
         rusakMenuPc.classList.remove('open');
         configBtnPc.classList.remove('open');
         rusakBtnPc.classList.remove('open');
+        sliderClose.classList.remove('open');
+        header.classList.remove('open');
+    }
+
+    function headerColor(){
+        sliderClose.classList.toggle('open');
+        header.classList.toggle('open');
     }
 
     sliderClose.addEventListener('click', ()=>{
@@ -79,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             close();
             modelsBtnPc.classList.toggle('open');
             modelsMenuPc.classList.toggle('open');
+            headerColor();
         }
     });
     modelsBtnPcMain.addEventListener('click', function() {
@@ -88,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             close();
             modelsBtnPc.classList.toggle('open');
             modelsMenuPc.classList.toggle('open');
+            headerColor();
         }
     });
     configBtnPc.addEventListener('click', function () {
@@ -97,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             close();
             configMenuPc.classList.toggle('open');
             configBtnPc.classList.toggle('open');
+            headerColor();
         }
     });
     configBtnPcMain.addEventListener('click', function () {
@@ -106,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             close();
             configMenuPc.classList.toggle('open');
             configBtnPc.classList.toggle('open');
+            headerColor();
         }
     });
 
@@ -116,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
             close();
             rusakMenuPc.classList.toggle('open');
             rusakBtnPc.classList.toggle('open');
+            headerColor();
         }
     });
 
@@ -132,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modals['call-btn'].style.display = 'flex';
     });
 
-    document.querySelectorAll('.close').forEach(closeBtn => {
+    document.querySelectorAll('.close-form').forEach(closeBtn => {
         closeBtn.addEventListener('click', function () {
             document.getElementById(this.dataset.modal).style.display = 'none';
         });
