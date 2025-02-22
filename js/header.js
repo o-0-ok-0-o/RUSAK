@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     headerBtn.addEventListener('click', function() {
+        if(header.classList.contains('open') && sideMenu.classList.contains('open')){
+            header.classList.remove('open');
+        }
+        else if (!header.classList.contains('open') && !sideMenu.classList.contains('open')) {
+            header.classList.toggle('open');
+        }
         this.classList.toggle('open');
         sideMenu.classList.toggle('open');
         modelsMenu.classList.remove('open');
@@ -59,12 +65,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     modelsBtnMain.addEventListener('click', function() {
         modelsMenu.classList.toggle('open');
+        header.classList.toggle('open');
     });
     configBtn.addEventListener('click', function(){
         configMenu.classList.toggle('open');
     });
     configBtnMain.addEventListener('click', function(){
         configMenu.classList.toggle('open');
+        header.classList.toggle('open');
     });
     rusakBtn.addEventListener('click', function() {
         rusakMenu.classList.toggle('open');
@@ -72,9 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modelsCloseBtn.addEventListener('click', function() {
         modelsMenu.classList.remove('open');
+        if (!sideMenu.classList.contains('open')) {
+            header.classList.toggle('open');
+        }
     });
     configCloseBtn.addEventListener('click', function() {
         configMenu.classList.remove('open');
+        if (!sideMenu.classList.contains('open')) {
+            header.classList.toggle('open');
+        }
     });
     rusakCloseBtn.addEventListener('click', function() {
         rusakMenu.classList.remove('open');
