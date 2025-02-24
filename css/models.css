@@ -1,60 +1,320 @@
-h1{
-    text-transform: uppercase;
-    text-align: center;
-}
-html{
-    overflow-x: hidden;
-}
-header{
-    position: sticky;
-}
-.name{
-    margin: 24px;
-}
-.container{
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 24px 24px 0 24px;
-}
-.image{
+.main-content {
+    margin-top: 70px;
     display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+.vehicle-config {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+.model-title {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+.vehicle-image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #ddd;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
+}
+.vehicle-image-placeholder img{
     width: 100%;
 }
-.image img{
+.right-column {
+    width: 300px;
+}
+
+.specs-sidebar {
+    background-color: #5c4332;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.price-panel {
+    background-color: #ff9248;
+    color: white;
+    padding: 20px;
+}
+
+.config-section {
+    background-color: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.config-section:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.config-title {
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    margin: -15px -15px 15px -15px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.config-title:hover {
+    background-color: #f0f1f2;
+}
+
+.config-title::after {
+    content: '⌄';
+    font-size: 24px;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.config-title.active::after {
+    transform: rotate(180deg);
+}
+
+.config-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.config-content.active {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.engine-options {
+    display: flex;
+    gap: 20px;
+}
+
+.engine-option {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 45%;
+}
+
+.engine-option.selected {
+    border-color: #4CAF50;
+}
+
+.engine-image-placeholder {
     width: 100%;
-    object-fit: contain;
+    height: 150px;
+    background-color: #eee;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.small-info{
-    border-bottom: 2px solid rgba(16, 19, 22, .4);      
+
+.options-category {
+    margin-bottom: 30px;
 }
-.small-info p{
-    margin-bottom: 24px;
+
+.category-title {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 20px 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9ecef;
+    color: #2c3e50;
 }
-.full-info{
-    padding: 24px;
+
+.option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    margin-bottom: 10px;
 }
-@media (min-width: 950px) {
-    .container{
-        grid-template-columns: 1fr 1fr;
-        padding: 24px 48px 0 48px;
+
+.option-item:hover {
+    background-color: #f0f1f2;
+    transform: scale(1.001);
+}
+
+.option-item.selected {
+    background-color: #e8f5e9;
+    border-color: #4CAF50;
+}
+
+.option-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 15px;
+}
+
+.option-label {
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.option-price {
+    font-weight: 600;
+    color: #2c3e50;
+    background-color: #e9ecef;
+    padding: 4px 12px;
+    border-radius: 4px;
+    min-width: 100px;
+    text-align: right;
+    transition: all 0.2s ease;
+}
+
+.option-item.selected .option-price {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sub-options {
+    margin-left: 40px;
+    margin-top: 10px;
+    border-left: 2px solid #e9ecef;
+    padding-left: 15px;
+}
+
+/* Стилизация чекбоксов */
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.custom-checkbox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Стилизация радио кнопок */
+.custom-radio {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.custom-radio input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radiomark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.custom-radio input:checked ~ .radiomark {
+    border-color: #4CAF50;
+}
+
+.radiomark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4CAF50;
+}
+
+.custom-radio input:checked ~ .radiomark:after {
+    display: block;
+}
+
+.spec-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.get-quote-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    .image{
-        display: flex;
-        justify-content: center;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    .image img{
-        width: 100%;
-        object-fit: contain;
-    }
-    .small-info{
-        border-bottom: 2px solid rgba(16, 19, 22, .4);      
-    }
-    .small-info p{
-        margin-bottom: 24px;
-    }
-    .full-info{
-        padding: 48px;
-    }
-    
 }

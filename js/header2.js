@@ -26,12 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
         pcMenus: {
             models: {
                 btn: document.getElementById('models-pc'),
-                btnMain: document.querySelector('.models-main-pc'),
                 menu: document.querySelector('.models-pc')
             },
             config: {
                 btn: document.getElementById('config-pc'),
-                btnMain: document.querySelector('.config-main-pc'),
                 menu: document.querySelector('.config-pc')
             },
             rusak: {

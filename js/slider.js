@@ -122,3 +122,7 @@ function handleGesture(startX, endX) {
         }
     }
 }
+
+document.addEventListener('DOMContentLoaded', () =>{
+
+});
