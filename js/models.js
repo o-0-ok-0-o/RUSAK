@@ -9,22 +9,25 @@ document.querySelectorAll('.config-title').forEach(title => {
 
 // Обработка выбора опций
 document.querySelectorAll('.option-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        if (!e.target.closest('.sub-options')) {
-            const checkbox = item.querySelector('input[type="checkbox"]');
-            if (checkbox) {
-                checkbox.checked = !checkbox.checked;
-                item.classList.toggle('selected', checkbox.checked);
+    const radio = item.querySelector('input[type="radio"]');
+    if (radio) {
+        item.addEventListener('click', (e) => {
+            if (!e.target.closest('.custom-radio')) {
+                radio.checked = true;
+                radio.dispatchEvent(new Event('change'));
             }
-        }
-    });
-});
-
-// Предотвращаем двойное срабатывание при клике на чекбокс
-document.querySelectorAll('.custom-checkbox, .custom-radio').forEach(control => {
-    control.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
+        });
+    } else {
+        item.addEventListener('click', (e) => {
+            if (!e.target.closest('.custom-checkbox')) {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change'));
+                }
+            }
+        });
+    }
 });
 
 // Обработка радио кнопок
@@ -40,6 +43,16 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
     });
 });
 
+// Обработка чекбоксов
+document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        const item = checkbox.closest('.option-item');
+        if (item) {
+            item.classList.toggle('selected', checkbox.checked);
+        }
+    });
+});
+
 // Engine selection
 document.querySelectorAll('.engine-option').forEach(option => {
     option.addEventListener('click', () => {
@@ -47,28 +60,6 @@ document.querySelectorAll('.engine-option').forEach(option => {
             opt.classList.remove('selected'));
         option.classList.add('selected');
     });
-});
-
-// Связывание чекбоксов подкачки колес
-const suspensionMain = document.getElementById('suspension');
-const suspensionSub1 = document.getElementById('suspension_1');
-const suspensionSub2 = document.getElementById('suspension_2');
-
-[suspensionSub1, suspensionSub2].forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-        suspensionMain.checked = suspensionSub1.checked || suspensionSub2.checked;
-        const item = suspensionMain.closest('.option-item');
-        if (item) {
-            item.classList.toggle('selected', suspensionMain.checked);
-        }
-    });
-});
-
-suspensionMain.addEventListener('change', () => {
-    if (!suspensionMain.checked) {
-        suspensionSub1.checked = false;
-        suspensionSub2.checked = false;
-    }
 });
 
 // При загрузке страницы открываем первую секцию

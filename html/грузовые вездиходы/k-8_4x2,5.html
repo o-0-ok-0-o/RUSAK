@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/models.css">
 </head>
@@ -318,22 +319,30 @@
     </header>
     <div class="main-content">
         <div class="vehicle-config">
-            <h2 class="model-title">К-8 Грузовой 4х2,5</h2>
+            <div class="top-row">
+                <h2 class="model-title"><i class="fas fa-car"></i> К-8 Грузовой 4х2,5</h2>
+            </div>
             
             <div class="vehicle-image-placeholder">
-                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.png" alt="">
+                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.png" alt="" style="width: 100%;">
             </div>
 
             <div class="config-section">
-                <div class="config-title">Двигатель</div>
+                <div class="config-title">
+                    <span><i class="fas fa-engine"></i> Двигатель</span>
+                </div>
                 <div class="config-content">
                     <div class="engine-options">
                         <div class="engine-option selected">
-                            <div class="engine-image-placeholder">Место для фото двигателя</div>
+                            <div class="engine-image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
                             <p>Дизельный Cummins 2,8 л; 110 кВт</p>
                         </div>
                         <div class="engine-option">
-                            <div class="engine-image-placeholder">Место для фото двигателя</div>
+                            <div class="engine-image-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
                             <p>Дизельный двигатель WP3NQ160A0</p>
                         </div>
                     </div>
@@ -341,7 +350,9 @@
             </div>
 
             <div class="config-section">
-                <div class="config-title">Салон</div>
+                <div class="config-title">
+                    <span><i class="fas fa-couch"></i> Салон</span>
+                </div>
                 <div class="config-content">
                     <div class="option-item">
                         <div class="option-content">
@@ -434,202 +445,99 @@
             </div>
 
             <div class="config-section">
-                <div class="config-title">Опции</div>
+                <div class="config-title">
+                    <span><i class="fas fa-cogs"></i> Опции</span>
+                </div>
                 <div class="config-content">
-                    <div class="options-category">
-                        <div class="category-title">ШАССИ</div>
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="suspension">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">
-                                    Централизованная система подкачки колес
-                                    <div class="sub-options">
-                                        <div class="option-item">
-                                            <div class="option-content">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox" id="suspension_1">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <div class="option-label">Возможность подкачки на ходу (управление ручным краном)</div>
-                                            </div>
-                                        </div>
-                                        <div class="option-item">
-                                            <div class="option-content">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox" id="suspension_2">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <div class="option-label">Управление с места водителя (ручным краном)</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="category-title">
+                        <i class="fas fa-truck"></i> ШАССИ
+                    </div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="suspension">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">
+                                Централизованная система подкачки колес
+                                <div class="option-description">
+                                    Возможность подкачки на ходу (управление ручным краном). Управление с места водителя (ручным краном)
                                 </div>
                             </div>
-                            <div class="option-price">xxx 000</div>
                         </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="preheater">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Предпусковой подогреватель двигателя Бинар, 5кВт</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="winch">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Лебедка передняя Runva 20000 (усилие 9,6 т) с кронштейном</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="bumper">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Кенгурин передний</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="rack">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Экспедиционный багажник на крыше с поручнями 2.0×1.7 м</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="lights1">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Фара светодиодная РИФ 20" 120 W LED, крепление в бампере, 2 шт.</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="lights2">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Фара светодиодная РИФ D116 мм 18W с кнопкой включения на панели, 3 шт</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="wheelcaps">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Колпаки на колеса</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
+                        <div class="option-price">xxx 000</div>
                     </div>
 
-                    <div class="options-category">
-                        <div class="category-title">СЕРВИС</div>
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="jack">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Домкрат Hi-Lift 605 X-Treme (или аналогичный)</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="preheater">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Предпусковой подогреватель двигателя Бинар, 5кВт</div>
                         </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="tools">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Набор инструментов 150 предметов 1/2" и 3/8" 06-07-21 (крепление в салоне)</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="converter">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Преобразователь напряжения 12-220 В, 4000 W</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
-
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="hose">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Шланг для подкачки колес</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
-                        </div>
+                        <div class="option-price">xxx 000</div>
                     </div>
 
-                    <div class="options-category">
-                        <div class="category-title">ЗИП</div>
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="zip_extended">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Комплект ЗИП (дополненный) для обслуживания машины на 10 000 км.</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Лебедка передняя Runva 20000 (усилие 9,6 т) с кронштейном</div>
                         </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
 
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="spare_wheel">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Полноразмерное запасное колесо 1650x650-25", 4НС</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
+                    <div class="category-title">
+                        <i class="fas fa-tools"></i> СЕРВИС
+                    </div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="jack">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Домкрат Hi-Lift 605 X-Treme (или аналогичный)</div>
                         </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
 
-                        <div class="option-item">
-                            <div class="option-content">
-                                <label class="custom-checkbox">
-                                    <input type="checkbox" id="zip_standard">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <div class="option-label">Комплект ЗИП стандартный (24 поз, состав указан ниже)</div>
-                            </div>
-                            <div class="option-price">xxx 000</div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="tools">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Набор инструментов 150 предметов 1/2" и 3/8" 06-07-21 (крепление в салоне)</div>
                         </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="category-title">
+                        <i class="fas fa-box"></i> ЗИП
+                    </div>
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="zip_extended">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Комплект ЗИП (дополненный) для обслуживания машины на 10 000 км.</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="spare_wheel">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Полноразмерное запасное колесо 1650x650-25", 4НС</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
                     </div>
                 </div>
             </div>
@@ -637,6 +545,7 @@
 
         <div class="right-column">
             <div class="specs-sidebar">
+                <h3 class="specs-header"><i class="fas fa-clipboard-list"></i> Характеристики</h3>
                 <div class="spec-item">
                     <span>Мотор</span>
                     <span>-</span>
@@ -676,9 +585,11 @@
             </div>
 
             <div class="price-panel">
-                <h3>Цена от:</h3>
+                <h3><i class="fas fa-tag"></i> Цена от:</h3>
                 <p>(Суммируется из выбранных опций)</p>
-                <button class="get-quote-btn">Получить КП</button>
+                <button class="get-quote-btn">
+                    <i class="fas fa-file-invoice"></i> Получить КП
+                </button>
             </div>
         </div>
     </div>
