@@ -1,32 +1,33 @@
-from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
-from starlette.staticfiles import StaticFiles
-
-from src.api.routers.user_router import router as user_router
-from src.api.routers.tag_router import router as tag_router
-from src.api.routers.category_router import router as category_router
-from src.api.routers.article_router import router as article_router
-from src.demo_auth.demo_jwt_auth import router as auth_jwt_router
-
+import os
+from fastapi import FastAPI
+import uvicorn
+from db.models import router
+from db.database import sqlite_file_name, engine
+from sqlmodel import SQLModel
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
-app.include_router(user_router)
-app.include_router(tag_router)
-app.include_router(category_router)
-app.include_router(article_router)
-app.include_router(auth_jwt_router)
+app.include_router(router)
 
 
 @app.get("/")
-async def root(request: Request):
-    return templates.TemplateResponse(
-        "index.html", {"request": request, "journalblog": "website"}
-    )
+async def root():
+    return {
+        "site": "Rusak",
+    }
 
 
-# if __name__ == "__main__":
-#     uvicorn.run(app)
+if __name__ == "__main__":
+    if not os.path.exists(sqlite_file_name):
+        print("Database file not found. Creating an empty database file...")
+        with open(sqlite_file_name, "w") as f:
+            pass
+
+        print("Database file created. Now creating tables...")
+        SQLModel.metadata.create_all(engine)
+        print("Database tables created.")
+    else:
+        print("Database file found. Skipping database and table creation.")
+        SQLModel.metadata.create_all(engine)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
