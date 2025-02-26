@@ -4,11 +4,15 @@
 # from sqlalchemy import select
 # from src.db.database import get_async_session
 # from sqlalchemy.ext.asyncio import AsyncSession
+from typing import Annotated
 
-#
-# router = APIRouter(prefix="/article", tags=["Посты"])
-#
-#
+from fastapi import HTTPException, Query, APIRouter, Depends
+from sqlmodel import select, Session
+
+from db.database import SessionDep, get_session
+from db.models import Order
+from utils.datetime import get_current_moscow_time
+
 # @router.post("", summary="Создание поста")
 # async def create_article(
 #     article: Annotated[ArticleCreateSchema, Depends()],
@@ -75,3 +79,51 @@
 #     await session.delete(article)
 #     await session.commit()
 #     return {"succes_delete": True}
+
+
+router = APIRouter(
+    prefix="/orders",
+    tags=["Заказы"],
+)
+
+
+@router.post("/")
+def create_order(
+    order: Annotated[Order, Depends()],
+    session: Session = Depends(get_session),
+) -> Order:
+    order_dict = order.model_dump()
+    order_dict["order_date"] = str(get_current_moscow_time())
+    order_model = Order(**order_dict)
+    session.add(order_model)
+    session.commit()
+    session.refresh(order)
+    return order
+
+
+@router.get("/", response_model=list[Order])
+def read_order(
+    session: SessionDep,
+    offset: int = 0,
+    limit: Annotated[int, Query(le=100)] = 100,
+) -> list[Order]:
+    orders = session.exec(select(Order).offset(offset).limit(limit)).all()
+    return orders
+
+
+@router.get("/{order_id}", response_model=Order)
+def read_order(order_id: int, session: SessionDep) -> Order:
+    order = session.get(Order, order_id)
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    return order
+
+
+@router.delete("/{order_id}")
+def delete_order(order_id: int, session: SessionDep):
+    order = session.get(Order, order_id)
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found")
+    session.delete(order)
+    session.commit()
+    return {"ok": True}

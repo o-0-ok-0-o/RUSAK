@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from db.models import router
+from api.routers.orders import router
 from db.database import sqlite_file_name, engine
 from sqlmodel import SQLModel
 
@@ -36,4 +36,4 @@ if __name__ == "__main__":
     else:
         print("Database file found. Skipping database and table creation.")
         SQLModel.metadata.create_all(engine)
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="localhost", port=8000, reload=True)
