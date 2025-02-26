@@ -7,6 +7,11 @@ from sqlmodel import SQLModel
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+)
+
 
 app.include_router(router)
 
