@@ -103,7 +103,7 @@ def create_order(
 
 @router.get("/", response_model=list[Order])
 def read_order(
-    session: SessionDep,
+    session: Session = Depends(get_session),
     offset: int = 0,
     limit: Annotated[int, Query(le=100)] = 100,
 ) -> list[Order]:
