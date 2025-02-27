@@ -110,16 +110,24 @@
     font-size: 18px;
     height: 40px;
     margin-bottom: 10px;
-    background: #D9D9D92a; 
+    background: rgb(217, 119, 6); 
     backdrop-filter: blur(5px); 
     -webkit-backdrop-filter: blur(5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    border: none;
     color: white;
     transition: 0.3s;
   }
+  .btn-main-pc .obzor-main-pc{
+    border: 4px solid green;
+    background-color: #fff;
+    color: green;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px white;
+    transform: rotate(-15deg);
+    margin-bottom: 40px;
+  }
   .btn-main-pc button:hover{
-    background: rgb(217, 119, 6, .7); 
     transform: scale(1.05);
   }
   .btn-main-phone{
