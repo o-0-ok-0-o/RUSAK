@@ -9,8 +9,9 @@ from typing import Annotated
 from fastapi import HTTPException, Query, APIRouter, Depends
 from sqlmodel import select, Session
 
+from api.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
 from db.database import SessionDep, get_session
-from db.models import Order
+from db.models import Order, OrderStatus
 from utils.datetime import get_current_moscow_time
 
 # @router.post("", summary="Создание поста")
@@ -89,30 +90,28 @@ router = APIRouter(
 
 @router.post("/")
 def create_order(
-    order: Annotated[Order, Depends()],
+    order: Annotated[OrderCreateSchema, Depends()],
     session: Session = Depends(get_session),
-) -> Order:
+):
     order_dict = order.model_dump()
-    order_dict["order_date"] = str(get_current_moscow_time())
     order_model = Order(**order_dict)
     session.add(order_model)
     session.commit()
-    session.refresh(order)
     return order
 
 
-@router.get("/", response_model=list[Order])
+@router.get("/", response_model=list[OrderBaseSchema])
 def read_order(
     session: Session = Depends(get_session),
     offset: int = 0,
     limit: Annotated[int, Query(le=100)] = 100,
-) -> list[Order]:
+):
     orders = session.exec(select(Order).offset(offset).limit(limit)).all()
     return orders
 
 
-@router.get("/{order_id}", response_model=Order)
-def read_order(order_id: int, session: SessionDep) -> Order:
+@router.get("/{order_id}", response_model=OrderBaseSchema)
+def read_order(order_id: int, session: SessionDep):
     order = session.get(Order, order_id)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")

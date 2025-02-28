@@ -1,9 +1,11 @@
 import os
+
+import sqlalchemy
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from api.routers.orders import router
-from db.database import sqlite_file_name, engine
+from db.database import sqlite_file_name, engine, Base
 from sqlmodel import SQLModel
 
 app = FastAPI()
@@ -25,15 +27,6 @@ async def root():
 
 
 if __name__ == "__main__":
-    if not os.path.exists(sqlite_file_name):
-        print("Database file not found. Creating an empty database file...")
-        with open(sqlite_file_name, "w") as f:
-            pass
-
-        print("Database file created. Now creating tables...")
-        SQLModel.metadata.create_all(engine)
-        print("Database tables created.")
-    else:
-        print("Database file found. Skipping database and table creation.")
-        SQLModel.metadata.create_all(engine)
+    Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)

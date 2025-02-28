@@ -1,7 +1,9 @@
 from enum import Enum
-from typing import  Optional
-from sqlmodel import Field, SQLModel
 from utils.datetime import get_current_moscow_time
+from datetime import datetime
+from sqlalchemy import DateTime
+from sqlalchemy.orm import Mapped, mapped_column
+from .database import Base
 
 
 class OrderStatus(str, Enum):
@@ -11,19 +13,12 @@ class OrderStatus(str, Enum):
     cancelled = "cancelled"
 
 
-class Order(SQLModel, table=True):
-    """
-    id: Уникальный идентификатор заказа
-    order_date: Дата оформления заказа
-    customer: Фио, сделавшего заказ
-    total_amount: Общая сумма заказа
-    status: Статус заказа
-    shipping_address: Адрес
-    """
+class Order(Base):
+    __tablename__ = "order"
 
-    id: Optional[int] = Field(default=None, primary_key=True)
-    order_date: str = Field(index=True)  # YYYY-MM-DD
-    customer: str
-    total_amount: int
-    status: OrderStatus = Field(default=OrderStatus.pending)
-    shipping_address: str
+    id: Mapped[int] = mapped_column(primary_key=True)
+    order_date: Mapped[str] = mapped_column(default=get_current_moscow_time())
+    customer: Mapped[str]
+    total_amount: Mapped[int]
+    status: Mapped[OrderStatus] = mapped_column(default=OrderStatus.pending)
+    shipping_address: Mapped[str]
