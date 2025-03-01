@@ -22,3 +22,45 @@ class Order(Base):
     total_amount: Mapped[int]
     status: Mapped[OrderStatus] = mapped_column(default=OrderStatus.pending)
     shipping_address: Mapped[str]
+
+class Car(Base):
+    __tablename__ = "cars"
+    id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class Engine(Base):
+    __tablename__ = "engine"
+    id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class SaloneMembers(Base):
+    __tablename__ = "SaloneMembers"
+    id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class SaloneOption(Base):
+    __tablename__ = "SaloneOption"
+	id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class OptionShassi(Base):
+    __tablename__ = "OptionShassi"
+	id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class OptionServis(Base):
+    __tablename__ = "OptionServis"
+	id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
+
+class OptionZip(Base):
+    __tablename__ = "OptionZip"
+	id = primary_key=True, index=True
+    name = unique=True, index=True
+    base_price = int
