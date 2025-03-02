@@ -23,44 +23,58 @@ class Order(Base):
     status: Mapped[OrderStatus] = mapped_column(default=OrderStatus.pending)
     shipping_address: Mapped[str]
 
+
 class Car(Base):
     __tablename__ = "cars"
-    id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    car_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
 
 class Engine(Base):
     __tablename__ = "engine"
-    id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    engine_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
 
 class SaloneMembers(Base):
-    __tablename__ = "SaloneMembers"
-    id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+    __tablename__ = "salone_members"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    salone_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
 
 class SaloneOption(Base):
-    __tablename__ = "SaloneOption"
-	id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+    __tablename__ = "salone_option"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    salone_option_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
 
 class OptionShassi(Base):
-    __tablename__ = "OptionShassi"
-	id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+    __tablename__ = "option_shassi"
 
-class OptionServis(Base):
-    __tablename__ = "OptionServis"
-	id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+    id: Mapped[int] = mapped_column(primary_key=True)
+    shassi_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
+
+class OptionService(Base):
+    __tablename__ = "option_service"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    service_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
 
 class OptionZip(Base):
-    __tablename__ = "OptionZip"
-	id = primary_key=True, index=True
-    name = unique=True, index=True
-    base_price = int
+    __tablename__ = "option_zip"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    zip_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]

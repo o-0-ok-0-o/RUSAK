@@ -25,40 +25,42 @@ class OrderSchema(OrderBaseSchema):
 
 # Новые схемы надо поправить
 class CarSchema(BaseModel):
-    model: str
+    id: int
+    car_name: str
     base_price: float
 
 
 class EngineSchema(BaseModel):
-    color_name: str
+    id: int
+    engine_name: str
     base_price: float
 
 
 class SaloneMembersSchema(BaseModel):
-    trim_name: str
+    id: int
+    salone_name: str
     base_price: float
 
 
 class SaloneOptionSchema(BaseModel):
-    option_name: str
+    id: int
+    salone_option_name: str
     base_price: float
 
 
 class OptionShassiSchema(BaseModel):
-    option_name: str
-    base_price: float
-
-    class ColorBase(BaseModel):
-        color_name: str
-
+    id: int
+    shassi_name: str
     base_price: float
 
 
-class OptionServisSchema(BaseModel):
-    trim_name: str
+class OptionServiceSchema(BaseModel):
+    id: int
+    service_name: str
     base_price: float
 
 
 class OptionZipSchema(BaseModel):
-    option_name: str
+    id: int
+    zip_name: str
     base_price: float
