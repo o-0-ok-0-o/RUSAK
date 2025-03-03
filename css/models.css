@@ -1,0 +1,399 @@
+header{
+    position: absolute;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.contact-info {
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+    padding: 30px 48px;
+    margin: 0 auto;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.model-title {
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: 600;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.specs-header {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.vehicle-config {
+    flex: 1;
+    margin-top: 45px;
+    border-radius: 12px;
+}
+
+.vehicle-image-placeholder {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    color: #6c757d;
+    font-size: 18px;
+}
+
+.right-column {
+    max-width: 400px;
+    margin-top: 65px;
+}
+
+.specs-sidebar {
+    background: linear-gradient(135deg, #ff9248 0%, #ff7b1c 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.price-panel {
+    background: linear-gradient(135deg, #ff9248 0%, #ff7b1c 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.config-section {
+    background-color: white;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.config-section:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.config-title {
+    background: linear-gradient(to right, #f8f9fa, #fff);
+    padding: 15px 20px;
+    margin: -20px -20px 15px -20px;
+    border-radius: 12px 12px 0 0;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.config-title i {
+    margin-right: 10px;
+    color: #ff9248;
+}
+
+.config-title:hover {
+    background: linear-gradient(to right, #f0f1f2, #f8f9fa);
+}
+
+.config-title::after {
+    content: '\f107';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    transition: transform 0.3s ease;
+}
+
+.config-title.active::after {
+    transform: rotate(180deg);
+}
+
+.config-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.config-content.active {
+    max-height: 2000px;
+    transition: max-height 0.5s ease-in;
+}
+
+.engine-options {
+    display: flex;
+    gap: 20px;
+}
+
+.engine-option {
+    border: 2px solid #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 45%;
+    transition: all 0.3s ease;
+    background: linear-gradient(to bottom, #fff, #f8f9fa);
+}
+
+.engine-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.engine-option.selected {
+    border-color: #4CAF50;
+    background: linear-gradient(to bottom, #e8f5e9, #fff);
+}
+
+.engine-image-placeholder {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: linear-gradient(to right, #fff, #f8f9fa);
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.option-item:hover {
+    background: linear-gradient(to right, #f8f9fa, #f0f1f2);
+    border-color: #ddd;
+}
+
+.option-item.selected {
+    background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+    border-color: #4CAF50;
+}
+
+.option-content {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 1;
+    gap: 15px;
+}
+
+.option-label {
+    flex-grow: 1;
+    margin-right: 15px;
+    color: #374151;
+}
+
+.option-description {
+    font-size: 0.9em;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.option-price {
+    font-weight: 600;
+    color: #2c3e50;
+    background-color: #f3f4f6;
+    padding: 4px 12px;
+    border-radius: 4px;
+    min-width: 100px;
+    text-align: right;
+}
+
+.option-item.selected .option-price {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.category-title {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 25px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+}
+
+.category-title i {
+    margin-right: 10px;
+    color: #ff9248;
+}
+
+/* Стили для радио и чекбоксов */
+.custom-radio, .custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.custom-radio input, .custom-checkbox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radiomark, .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.radiomark {
+    border-radius: 50%;
+}
+
+.checkmark {
+    border-radius: 4px;
+}
+
+.custom-radio input:checked ~ .radiomark {
+    border-color: #4CAF50;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.radiomark:after, .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radiomark:after {
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4CAF50;
+}
+
+.checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-radio input:checked ~ .radiomark:after,
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.spec-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.2s ease;
+}
+
+.spec-item:hover {
+    background: rgba(255,255,255,0.05);
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 -10px;
+    border-radius: 4px;
+}
+
+.get-quote-btn {
+    background: linear-gradient(135deg, #4CAF50 0%, #43A047 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.get-quote-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nested-specs {
+    grid-column: 1 / -1;
+    margin-top: 5px;
+}
+
+.nested-spec-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 4px 0;
+    color: rgba(255,255,255,0.9);
+    margin-left: 15px;
+}
+
+.spec-item > span:first-child,
+.nested-spec-item > span:first-child {
+    color: rgba(255,255,255,0.9);
+}
+
+.spec-item > span:last-child,
+.nested-spec-item > span:last-child {
+    text-align: right;
+    color: white;
+}

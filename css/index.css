@@ -1,0 +1,139 @@
+/* Контейнер слайдера */
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+/* Контейнер для всех слайдов */
+.slides-container {
+  display: flex;
+  width: 500%; /* Учитываем 5 слайдов (3 оригинальных + 2 копии) */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+/* Каждый слайд */
+.slide {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+/* Индикаторы */
+.indicators {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 0 24px;
+}
+.indicator {
+  width: 48px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.indicator.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  animation: fillIndicator 5s linear forwards;
+}
+@keyframes fillIndicator {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.sliders-text{
+  position: absolute;
+  z-index: 100;
+  top: 55%;
+  left: 24px;
+  right: 24px;
+}
+
+.text-slider p{
+  font-size: 14px;
+  color: #fff;
+  padding: 10px 24px;
+  background: rgb(0, 0, 0, .2); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);;
+}
+.btn-main-pc{
+  display: none;
+}
+.btn-main-phone{
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.btn-main-phone button{
+  width: 200px;
+  font-size: 16px;
+  height: 40px;
+  margin-bottom: 10px;
+  background: #D9D9D92a; 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  transition: 0.3s;
+}
+@media (min-width: 576px) {
+  .sliders-text{
+    width: 500px;
+    left: 48px;
+  }
+  .text-slider p{
+    font-size: 16px;
+  }
+}
+@media (min-width: 950px) {
+  .text-slider p{
+    font-size: 18px;
+  }
+  .sliders-text .btn-main-pc{
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-main-pc button{
+    width: 200px;
+    font-size: 18px;
+    height: 40px;
+    margin-bottom: 10px;
+    background: rgb(217, 119, 6); 
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 40px;
+    border: none;
+    color: white;
+    transition: 0.3s;
+  }
+  .btn-main-pc .obzor-main-pc{
+    border: 4px solid green;
+    background-color: #fff;
+    color: green;
+    border-radius: 10px;
+    box-shadow: 3px 3px 20px white;
+  }
+  .btn-main-pc button:hover{
+    transform: scale(1.05);
+  }
+  .btn-main-phone{
+    display: none;
+  }
+  .header-main{
+    margin-top: 20%;
+  }
+}
+
+
