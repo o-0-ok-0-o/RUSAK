@@ -248,10 +248,10 @@ def print_cars(cars: list[Car]):
 
 
 async def demo_m2m(session: AsyncSession):
-    await main_relations(session)
+    # await main_relations(session)
     cars = await get_car(session)
     formatted_cars = [format_car(car) for car in cars]
-    return JSONResponse(content=formatted_cars)
+    print(formatted_cars)
 
 
 async def main():
