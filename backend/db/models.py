@@ -2,10 +2,10 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .association_table import (
+    ZipCarAssociation,
+    ServiceCarAssociation,
+    ShassiCarAssociation,
     SaloneoptionCarAssociation,
-    OptionzipCarAssociation,
-    OptionserviceCarAssociation,
-    OptionshassiCarAssociation,
 )
 from .database import Base
 
@@ -27,25 +27,25 @@ class Car(Base):
     engine_id: Mapped[int] = mapped_column(
         ForeignKey("engine.id"),
     )
-    salone_members: Mapped[int] = mapped_column(
-        ForeignKey("salone_members.id"),
+    salone_member: Mapped[int] = mapped_column(
+        ForeignKey("salone_member.id"),
     )
 
-    salone_options: Mapped[list["SaloneOption"]] = relationship(
+    salone_option: Mapped[list["SaloneOption"]] = relationship(
         secondary="saloneoption_car_association",
-        back_populates="cars",
+        back_populates="car",
     )
-    option_zip: Mapped[list["OptionZip"]] = relationship(
-        secondary="optionzip_car_association",
-        back_populates="cars",
+    zip: Mapped[list["Zip"]] = relationship(
+        secondary="zip_car_association",
+        back_populates="car",
     )
-    option_shassi: Mapped[list["OptionShassi"]] = relationship(
-        secondary="optionshassi_car_association",
-        back_populates="cars",
+    shassi: Mapped[list["Shassi"]] = relationship(
+        secondary="shassi_car_association",
+        back_populates="car",
     )
-    options_service: Mapped[list["OptionService"]] = relationship(
-        secondary="optionservice_car_association",
-        back_populates="cars",
+    service: Mapped[list["Service"]] = relationship(
+        secondary="service_car_association",
+        back_populates="car",
     )
 
 
@@ -56,8 +56,8 @@ class Engine(Base):
     base_price: Mapped[int]
 
 
-class SaloneMembers(Base):
-    __tablename__ = "salone_members"
+class SaloneMember(Base):
+    __tablename__ = "salone_member"
 
     salone_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
@@ -69,43 +69,43 @@ class SaloneOption(Base):
     salone_option_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
-    cars: Mapped[list["Car"]] = relationship(
+    car: Mapped[list["Car"]] = relationship(
         secondary="saloneoption_car_association",
-        back_populates="salone_options",
+        back_populates="salone_option",
     )
 
 
-class OptionShassi(Base):
-    __tablename__ = "option_shassi"
+class Shassi(Base):
+    __tablename__ = "shassi"
 
     shassi_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
-    cars: Mapped[list["Car"]] = relationship(
-        secondary="optionshassi_car_association",
-        back_populates="option_shassi",
+    car: Mapped[list["Car"]] = relationship(
+        secondary="shassi_car_association",
+        back_populates="shassi",
     )
 
 
-class OptionService(Base):
-    __tablename__ = "option_service"
+class Service(Base):
+    __tablename__ = "service"
 
     service_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
-    cars: Mapped[list["Car"]] = relationship(
-        secondary="optionservice_car_association",
-        back_populates="option_service",
+    car: Mapped[list["Car"]] = relationship(
+        secondary="service_car_association",
+        back_populates="service",
     )
 
 
-class OptionZip(Base):
-    __tablename__ = "option_zip"
+class Zip(Base):
+    __tablename__ = "zip"
 
     zip_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
     cars: Mapped[list["Car"]] = relationship(
-        secondary="optionzip_car_association",
-        back_populates="option_zip",
+        secondary="zip_car_association",
+        back_populates="zip",
     )

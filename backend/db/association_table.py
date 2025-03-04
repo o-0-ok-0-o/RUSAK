@@ -19,46 +19,46 @@ class SaloneoptionCarAssociation(Base):  # SaloneOption - Car
     car_id: Mapped[int] = mapped_column(ForeignKey("car.id"))
 
 
-class OptionzipCarAssociation(Base):  # Zip - Car
-    __tablename__ = "optionzip_car_association"
+class ZipCarAssociation(Base):  # Zip - Car
+    __tablename__ = "zip_car_association"
     table_name = (
         UniqueConstraint(
-            "optionzip_id",
+            "zip_id",
             "car_id",
-            name="idx_unique_optionzip_car",
+            name="idx_unique_zip_car",
         ),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    optionzip_id: Mapped[int] = mapped_column(ForeignKey("option_zip.id"))
+    zip_id: Mapped[int] = mapped_column(ForeignKey("zip.id"))
     car_id: Mapped[int] = mapped_column(ForeignKey("car.id"))
 
 
-class OptionserviceCarAssociation(Base):  # Service - Car
-    __tablename__ = "optionservice_car_association"
+class ServiceCarAssociation(Base):  # Service - Car
+    __tablename__ = "service_car_association"
     table_name = (
         UniqueConstraint(
-            "optionservice_id",
+            "service_id",
             "car_id",
-            name="idx_unique_optionservice_car",
+            name="idx_unique_service_car",
         ),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    optionservice_id: Mapped[int] = mapped_column(ForeignKey("option_service.id"))
+    service_id: Mapped[int] = mapped_column(ForeignKey("service.id"))
     car_id: Mapped[int] = mapped_column(ForeignKey("car.id"))
 
 
-class OptionshassiCarAssociation(Base):  # Shassi - Car
-    __tablename__ = "option_shassi_car_association"
+class ShassiCarAssociation(Base):  # Shassi - Car
+    __tablename__ = "shassi_car_association"
     table_name = (
         UniqueConstraint(
-            "option_shassi_id",
+            "shassi_id",
             "car_id",
-            name="idx_unique_option_shassi_car",
+            name="idx_unique_shassi_car",
         ),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    option_shassi_id: Mapped[int] = mapped_column(ForeignKey("option_shassi.id"))
+    shassi_id: Mapped[int] = mapped_column(ForeignKey("shassi.id"))
     car_id: Mapped[int] = mapped_column(ForeignKey("car.id"))

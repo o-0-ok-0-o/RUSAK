@@ -2,85 +2,186 @@ import asyncio
 from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload
+from sqlalchemy.orm import selectinload, Session
 
 from db.database import get_session, SessionDep
-from db.models import Engine, SaloneMembers
+from db.models import Engine, SaloneMember, Car, Service, SaloneOption, Shassi, Zip
 
 
-async def create_engine(
+def create_car(
+    car_name: str,
+    base_price: int,
+    engine: Engine,
+    salone_member: SaloneMember,
+    session: Session,
+) -> Car:
+    car = Car(
+        car_name=car_name,
+        base_price=base_price,
+        engine_id=engine.id,
+        salone_member=salone_member.id,
+    )
+    session.add(car)
+    session.commit()
+    return car
+
+
+def create_engine(
     engine_name: str,
     base_price: int,
-    session: AsyncSession,
+    session: Session,
 ) -> Engine:
-    engine = Engine()
+    engine = Engine(
+        engine_name=engine_name,
+        base_price=base_price,
+    )
     session.add(engine)
-    await session.commit()
+    session.commit()
     return engine
 
 
-async def create_salonemembers(
+def create_salonemember(
     salone_name: str,
     base_price: int,
-    session: AsyncSession,
-) -> SaloneMembers:
-    salone_members = SaloneMembers(
-        title=title,
-        content=content,
+    session: Session,
+) -> SaloneMember:
+    salone_member = SaloneMember(
+        salone_name=salone_name,
+        base_price=base_price,
     )
 
-    session.add(article)
-    await session.commit()
-    return article
+    session.add(salone_member)
+    session.commit()
+    return salone_member
 
 
+def create_saloneoption(
+    salone_option_name: str,
+    base_price: int,
+    session: Session,
+) -> SaloneOption:
+    salone_option = SaloneOption(
+        salone_option_name=salone_option_name,
+        base_price=base_price,
+    )
+
+    session.add(salone_option)
+    session.commit()
+    return salone_option
+
+
+def create_service(
+    service_name: str,
+    base_price: int,
+    session: Session,
+) -> Service:
+    service = Service(
+        service_name=service_name,
+        base_price=base_price,
+    )
+
+    session.add(service)
+    session.commit()
+    return service
+
+
+def create_shassi(
+    shassi_name: str,
+    base_price: int,
+    session: Session,
+) -> Shassi:
+    shassi = Shassi(
+        shassi_name=shassi_name,
+        base_price=base_price,
+    )
+    session.add(shassi)
+    session.commit()
+    return shassi
+
+
+#
+def create_zip(
+    zip_name: str,
+    base_price: int,
+    session: Session,
+) -> Zip:
+    zip1 = Zip(
+        zip_name=zip_name,
+        base_price=base_price,
+    )
+    session.add(zip1)
+    session.commit()
+    return zip1
+
+
+################################
 async def main_relations(
-    session: AsyncSession,
+    session: Session,
 ):
-    user_1 = await create_user("john", "qwerty", session)
-    user_2 = await create_user("sam", "secret", session)
-    article_1 = await create_article("Автодороги", "road road road road", session)
-    article_2 = await create_article("Мосты", "Мосты Мосты Мосты Мосты", session)
+    engine_1 = create_engine("двигатель 1", 1500, session)
+    engine_2 = create_engine("двигатель 2", 2500, session)
 
-    user_1 = await session.scalar(
-        select(User)
-        .where(User.id == user_1.id)
-        .options(
-            selectinload(User.articles),
-        ),
+    salone_member1 = create_salonemember("16 мест", 1500, session)
+    salone_member2 = create_salonemember("20 мест", 2200, session)
+
+    salone_option1 = create_saloneoption("обогрев", 1500, session)
+    salone_option2 = create_saloneoption("задняя камера", 2200, session)
+
+    service1 = create_service("домкрат", 1500, session)
+    service2 = create_service("инструменты", 3300, session)
+
+    shassi1 = create_shassi("подкачка колес", 1500, session)
+    shassi2 = create_shassi("колпаки на колеса", 3300, session)
+
+    zip1 = create_zip("зип стандарт", 1500, session)
+    zip2 = create_zip("зип дополнительный", 3300, session)
+
+    car1 = create_car(
+        car_name="К-8 Грузовой 4х2,5",
+        base_price=1_500_000,
+        engine=engine_1,
+        salone_member=salone_member1,
+        session=session,
     )
-    user_2 = await session.scalar(
-        select(User)
-        .where(User.id == user_2.id)
-        .options(
-            selectinload(User.articles),
-        ),
+    car2 = create_car(
+        car_name="К-2 Легковой 5х2,5",
+        base_price=2_999_000,
+        engine=engine_2,
+        salone_member=salone_member2,
+        session=session,
     )
-    user_1.articles.append(article_1)
-    user_2.articles.append(article_1)
-    user_2.articles.append(article_2)
 
-    await session.commit()
+    car1.salone_option.append(salone_option1)
+    car1.service.append(service1)
+    car1.shassi.append(shassi1)
+    car1.zip.append(zip1)
+
+    car2.salone_option.append(salone_option2)
+    car2.service.append(service2)
+    car2.shassi.append(shassi2)
+    car2.zip.append(zip2)
 
 
-async def get_users_with_articles(session: AsyncSession) -> list[User]:
+    session.commit()
+
+
+def get_car(session: Session) -> list[Car]:
     stmt = (
-        select(User)
+        select(Car)
         .options(
-            selectinload(User.articles),
+            selectinload(Car.),
         )
-        .order_by(User.id)
+        .order_by(Car.id)
     )
-    orders = await session.scalars(stmt)
-    return list(orders)
+    cars = session.scalars(stmt)
+    return list(cars)
 
 
-async def demo_m2m(
-    session: AsyncSession,
+def demo_m2m(
+    session: Session,
 ):
-    # await main_relations(session)
-    users = await get_users_with_articles(session)
-    for user in users:
-        print(user.login, user.hashed_password, "articles:")
-        for article in user.articles:
-            print("-", article.title, article.content, article.created_at)
+    main_relations(session)
+    cars = get_car(session)
+    for car in cars:
+        print(car.login, car.hashed_password, "articles:")
+
