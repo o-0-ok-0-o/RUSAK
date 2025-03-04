@@ -1,18 +1,15 @@
-import os
-
-import sqlalchemy
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from api.routers.orders import router
-from db.database import sqlite_file_name, engine, Base
-from sqlmodel import SQLModel
+from db.database import engine, Base
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_methods=["*"],
 )
 
 

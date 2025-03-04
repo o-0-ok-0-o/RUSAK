@@ -1,23 +1,47 @@
-from datetime import datetime
+import re
 
-from pydantic import BaseModel
-from db.models import OrderStatus, Order
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 # Заказы
 class OrderBaseSchema(BaseModel):
     customer: str
-    shipping_address: str
+    phone: str = Field(
+        default=...,
+        description="Номер телефона в международном формате, начинающийся с '+'",
+    )
+    email: EmailStr = Field(default=..., description="Электронная почта студента")
 
-    class Config:
-        from_attributes = True
+    @field_validator("phone", check_fields=False)
+    @classmethod
+    def validate_phone_number(cls, phone_number: str) -> str:
+        if not re.match(r"^\+7\d{10}$", phone_number):
+            raise ValueError(
+                'Номер телефона должен начинаться с "+7" и содержать 11 цифр'
+            )
+        return phone_number
 
 
 class OrderCreateSchema(OrderBaseSchema):
-    total_amount: int
+    pass
 
 
 class OrderSchema(OrderBaseSchema):
     id: int
-    order_status: OrderStatus
-    order_date: datetime
+
+
+# def test_valid_order(data: dict) -> None:
+#     try:
+#         student = OrderBaseSchema(**data)
+#         print(student)
+#     except ValidationError as e:
+#         print(f"Ошибка валидации: {e}")
+#
+#
+# order_data = {
+#     "customer": "Pavlov",
+#     "phone": "+79999999999",
+#     "email": "ivan.ivanov@example.com",
+# }
+#
+# test_valid_order(order_data)
