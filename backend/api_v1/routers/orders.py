@@ -1,18 +1,10 @@
-# from fastapi import APIRouter, Depends, HTTPException
-# from typing import Annotated
-#
-# from sqlalchemy import select
-# from src.db.database import get_async_session
-# from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Annotated
 from fastapi import HTTPException, Query, APIRouter, Depends
-
 from sqlmodel import select, Session
-from api.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
+from api_v1.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
 
 from db.database import SessionDep, get_session
 from db.models import Order
-from utils.datetime import get_current_moscow_time
 
 
 router = APIRouter(
@@ -21,7 +13,7 @@ router = APIRouter(
 )
 
 
-@router.post("/")
+@router.post("")
 def create_order(
     order: Annotated[OrderCreateSchema, Depends()],
     session: Session = Depends(get_session),
@@ -33,7 +25,7 @@ def create_order(
     return order
 
 
-@router.get("/", response_model=list[OrderBaseSchema])
+@router.get("", response_model=list[OrderBaseSchema])
 def read_orders(
     session: Session = Depends(get_session),
     offset: int = 0,
