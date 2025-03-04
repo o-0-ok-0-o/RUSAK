@@ -1,11 +1,19 @@
+# from fastapi import APIRouter, Depends, HTTPException
+# from typing import Annotated
+#
+# from sqlalchemy import select
+# from src.db.database import get_async_session
+# from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Annotated
-
 from fastapi import HTTPException, Query, APIRouter, Depends
-from sqlmodel import select, Session
 
-from api_v1.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
+from sqlmodel import select, Session
+from api.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
+
 from db.database import SessionDep, get_session
 from db.models import Order
+from utils.datetime import get_current_moscow_time
+
 
 router = APIRouter(
     prefix="/orders",
@@ -26,7 +34,7 @@ def create_order(
 
 
 @router.get("/", response_model=list[OrderBaseSchema])
-def read_order(
+def read_orders(
     session: Session = Depends(get_session),
     offset: int = 0,
     limit: Annotated[int, Query(le=100)] = 100,
@@ -36,7 +44,10 @@ def read_order(
 
 
 @router.get("/{order_id}", response_model=OrderBaseSchema)
-def read_order(order_id: int, session: SessionDep):
+def read_order(
+    order_id: int,
+    session: SessionDep,
+):
     order = session.get(Order, order_id)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
@@ -44,10 +55,13 @@ def read_order(order_id: int, session: SessionDep):
 
 
 @router.delete("/{order_id}")
-def delete_order(order_id: int, session: SessionDep):
+def delete_order(
+    order_id: int,
+    session: SessionDep,
+):
     order = session.get(Order, order_id)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     session.delete(order)
     session.commit()
-    return {"ok": True}
+    return {"deleted": "success"}
