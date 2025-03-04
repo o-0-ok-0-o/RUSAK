@@ -6,4 +6,4 @@ router = APIRouter(
     prefix="/api_v1/v1",
 )
 
-router.include_router(router)
+router.include_router(order_router)

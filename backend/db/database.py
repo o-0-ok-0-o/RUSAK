@@ -24,7 +24,8 @@ SessionDep = Annotated[Session, Depends(get_session)]
 # from typing import Annotated
 # from fastapi import Depends
 # from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
+
 
 # from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -37,4 +38,6 @@ from sqlalchemy.orm import DeclarativeBase
 #     async with async_session_factory() as session:
 #         yield session
 class Base(DeclarativeBase):
-    pass
+    __abstract__ = True
+
+    id: Mapped[int] = mapped_column(primary_key=True)
