@@ -9,7 +9,16 @@ header{
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    position: relative;
+    z-index: -2;
+}
+
+.fon{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    filter: blur(5px);
 }
 
 .contact-info {
@@ -52,15 +61,15 @@ body {
 }
 
 .vehicle-config {
-    flex: 1;
+    flex: 2;
     margin-top: 45px;
     border-radius: 12px;
+    max-width: 1500px;
 }
 
 .vehicle-image-placeholder {
     position: relative;
     width: 100%;
-    height: 400px;
     background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
     margin: 20px 0;
     display: flex;
@@ -73,7 +82,7 @@ body {
 }
 
 .right-column {
-    max-width: 400px;
+    flex: 1;
     margin-top: 65px;
 }
 
@@ -152,12 +161,12 @@ body {
     transition: max-height 0.5s ease-in;
 }
 
-.engine-options {
+.engine-options, .tires-options {
     display: flex;
     gap: 20px;
 }
 
-.engine-option {
+.engine-option, .tires-option {
     border: 2px solid #e9ecef;
     padding: 15px;
     border-radius: 8px;
@@ -165,27 +174,30 @@ body {
     width: 45%;
     transition: all 0.3s ease;
     background: linear-gradient(to bottom, #fff, #f8f9fa);
+    margin: 5px;
 }
 
-.engine-option:hover {
-    transform: translateY(-2px);
+.engine-option:hover, .tires-option:hover {
+    transform: scale(1.01);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.engine-option.selected {
+.engine-option.selected, .tires-option.selected {
     border-color: #4CAF50;
-    background: linear-gradient(to bottom, #e8f5e9, #fff);
 }
 
-.engine-image-placeholder {
+.engine-image-placeholder, .tires-image-placeholder {
     width: 100%;
     height: 150px;
-    background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 6px;
+}
+
+.engine-image-placeholder img, .tires-image-placeholder img{
+    height: 100%;
 }
 
 .option-item {
@@ -245,22 +257,6 @@ body {
     color: white;
 }
 
-.category-title {
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 25px 0 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #e9ecef;
-    color: #2c3e50;
-    display: flex;
-    align-items: center;
-}
-
-.category-title i {
-    margin-right: 10px;
-    color: #ff9248;
-}
 
 /* Стили для радио и чекбоксов */
 .custom-radio, .custom-checkbox {
@@ -371,6 +367,7 @@ body {
 .get-quote-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #4CAF50 0%, #4fb554 100%);
 }
 
 .nested-specs {
@@ -396,4 +393,108 @@ body {
 .nested-spec-item > span:last-child {
     text-align: right;
     color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Kit item styles */
+.kit-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.kit-item.selected {
+    border-color: #4CAF50;
+    background-color: #e8f5e9;
+}
+
+.kit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background: linear-gradient(to right, #fff, #f8f9fa);
+}
+
+.kit-item.selected .kit-header {
+    background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+}
+
+.kit-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.kit-item.selected .option-price {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.kit-components {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f9f9f9;
+}
+
+.kit-item.selected .kit-components {
+    background-color: #f1f8e9;
+}
+
+.kit-components.active {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+.kit-components ul {
+    list-style: none;
+    padding: 15px;
+}
+
+.kit-components li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+.kit-components li:last-child {
+    border-bottom: none;
+}
+
+.expand-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.expand-button.active {
+    transform: rotate(180deg);
+}
+
+.chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.expand-button.active .chevron-down {
+    transform: rotate(180deg);
 }

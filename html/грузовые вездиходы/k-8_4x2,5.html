@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/models.css">
 </head>
 <body>
+    <img src="../../img/Фон для страницы модели.jpg" alt="" class="fon">
     <header>
         <div class="nav-menu">
             <a href="../../index.html">
@@ -257,7 +258,7 @@
                                 </div>
                                 <div class="passenger-model car">
                                     <a href="#">
-                                        <img src="../../img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png 03-no-bg-preview" alt="cargo">
+                                        <img src="../../img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png" alt="cargo">
                                         <p>K-8 Автобус 20.2</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
@@ -280,7 +281,22 @@
 
                 </div>
                 <div class="news-pc">
+                    <div class="news-pc-1">
+                        <div class="news-pc-img">
+                            <img src="../../img/Картинка для раздела Новости в шапке.png" alt="">
+                        </div>
+                        <div class="news-pc-info">
+                            <p>ООО «ВЕЗДЕХОДЫ ДЛЯ СЕВЕРА» входит в группу компаний КОМ, занимающаяся с 1990 года проектированием и изготовлением узлов трансмиссии для автомобилей и тракторов</p>
 
+                            <p>В отличие от кустарной сборки машин из переделенных серийных узлов, мы предлагаем оптимальную трансмиссию собственного производства, которая обеспечивает &#9733; высокую надежность &#9733; минимальную массу &#9733; широкий функционал &#9733; отличные тягово-скоростные свойства</p>
+                                
+                            <p>Четырехслойные шины собственной разработки (всегда в наличии). Отличаются от аналогов &#9733; повышенным ресурсом &#9733; улучшенной проходимостью &#9733; увеличенной прочностью боковины</p>
+                                
+                            <p>Независимая подвеска всех колес на А-образных рычагах дает безупречную плавность хода и помогает при прохождении косогоров, за счет естественного выравнивания кузова</p>
+                                
+                            <p>С нами работают &#9733; РусГидро &#9733; Московский физико-технический институт &#9733; Правительство ЯНАО &#9733; СтройПроектСервис (Иркутск) &#9733; ТНГ-Групп (Бугульма)</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="video-pc">
 
@@ -339,7 +355,7 @@
         <div class="vehicle-config">
             <div class="vehicle-image-placeholder">
                 <h2 class="model-title"><i class="fas fa-car"></i> К-8 Грузовой 4х2,5</h2>
-                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="" style="height: 100%;">
+                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="" style="width: 100%;">
             </div>
 
             <div class="config-section">
@@ -350,13 +366,13 @@
                     <div class="engine-options">
                         <div class="engine-option selected">
                             <div class="engine-image-placeholder">
-                                <i class="fas fa-image"></i>
+                                
                             </div>
                             <p>Дизельный Cummins 2,8 л; 110 кВт</p>
                         </div>
                         <div class="engine-option">
                             <div class="engine-image-placeholder">
-                                <i class="fas fa-image"></i>
+                                
                             </div>
                             <p>Дизельный двигатель WP3NQ160A0</p>
                         </div>
@@ -366,7 +382,29 @@
 
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-couch"></i> Салон</span>
+                    <span><i class="fas fa-engine"></i> Шины</span>
+                </div>
+                <div class="config-content">
+                    <div class="tires-options">
+                        <div class="tires-option selected">
+                            <div class="tires-image-placeholder">
+                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="">
+                            </div>
+                            <p>1650x650 R25 RUSAK</p>
+                        </div>
+                        <div class="tires-option">
+                            <div class="tires-image-placeholder">
+                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="">
+                            </div>
+                            <p>1780x710 R32 MAMONT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <div class="config-title">
+                    <span> Салон</span>
                 </div>
                 <div class="config-content">
                     <div class="option-item">
@@ -461,12 +499,9 @@
 
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-cogs"></i> Опции</span>
+                    <span> Шасси</span>
                 </div>
                 <div class="config-content">
-                    <div class="category-title">
-                        <i class="fas fa-truck"></i> ШАССИ
-                    </div>
                     <div class="option-item">
                         <div class="option-content">
                             <label class="custom-checkbox">
@@ -505,9 +540,68 @@
                         <div class="option-price">xxx 000</div>
                     </div>
 
-                    <div class="category-title">
-                        <i class="fas fa-tools"></i> СЕРВИС
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Кенгурин передний</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
                     </div>
+                    
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Экспедиционный багажник на крыше с поручнями 2,0×1,7 м</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Фара светодиодная РИФ 20'' 120 W LED, крепление в бампере, 2 шт.</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Фара светодиодная РИФ D116 мм 18W c кнопкой включения на панели, 3 шт</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Колпаки на колеса</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <div class="config-title">
+                    <span> Сервис</span>
+                </div>
+                <div class="config-content">
                     <div class="option-item">
                         <div class="option-content">
                             <label class="custom-checkbox">
@@ -530,16 +624,13 @@
                         <div class="option-price">xxx 000</div>
                     </div>
 
-                    <div class="category-title">
-                        <i class="fas fa-box"></i> ЗИП
-                    </div>
                     <div class="option-item">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="zip_extended">
+                                <input type="checkbox" id="tools">
                                 <span class="checkmark"></span>
                             </label>
-                            <div class="option-label">Комплект ЗИП (дополненный) для обслуживания машины на 10 000 км.</div>
+                            <div class="option-label">Преобразователь напряжения 12-220 В, 4000 W</div>
                         </div>
                         <div class="option-price">xxx 000</div>
                     </div>
@@ -547,12 +638,133 @@
                     <div class="option-item">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="spare_wheel">
+                                <input type="checkbox" id="tools">
                                 <span class="checkmark"></span>
                             </label>
-                            <div class="option-label">Полноразмерное запасное колесо 1650x650-25", 4НС</div>
+                            <div class="option-label">Шланг для подкачки колес</div>
                         </div>
                         <div class="option-price">xxx 000</div>
+                    </div>
+
+                    <div class="option-item">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="tools">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Полноразмерное запасное колесо 1650х650-25", 4НС</div>
+                        </div>
+                        <div class="option-price">xxx 000</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <div class="config-title">
+                    <span>Зип</span>
+                </div>
+                <div class="config-content">
+                    <div class="kit-item" data-kit-id="standard">
+                        <div class="kit-header">
+                            <div class="option-content">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="zip_standard">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="option-label">Комплект ЗИП стандартный</div>
+                            </div>
+                            <div class="kit-controls">
+                                <div class="option-price">xxx 000</div>
+                                <button class="expand-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
+                                        <path d="m6 9 6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="kit-components">
+                            <ul>
+                                <li>Автомобильная аптечка первой помощи</li>
+                                <li>Жилет спасательный до 100 кг</li>
+                                <li>Автомобильная лопата</li>
+                                <li>Строительный лом</li>
+                                <li>Кувалда 3000</li>
+                                <li>Паяльная лампа</li>
+                                <li>Порошковый огнетушитель с манометром ОП-4</li>
+                                <li>Ключ баллонный 30х32 мм</li>
+                                <li>Топор</li>
+                                <li>Домкрат 12 т</li>
+                                <li>Знак аварийной остановки</li>
+                                <li>Насос для откачки масла</li>
+                                <li>Маяк проблесковый</li>
+                                <li>Трос для ограничения хода подвески</li>
+                                <li>Палец рулевой тяги (Ø29)</li>
+                                <li>Спец. ключ шарнира 64 мм</li>
+                                <li>Спецключи рожковые на 36 и 38 мм</li>
+                                <li>Ремень буксировочный 5 м</li>
+                                <li>Динамический строп (рывковый) 40 т, 10 м</li>
+                                <li>Манометр BERKUT TG-71</li>
+                                <li>Аптечка для бескамерных шин</li>
+                                <li>Светоотражающие жилеты</li>
+                                <li>Вентилятор охлаждения радиатора ДВС</li>
+                                <li>Рычаг поворотного кулака комплект правый-левый</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="kit-item" data-kit-id="additional">
+                        <div class="kit-header">
+                            <div class="option-content">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="zip_additional">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="option-label">Комплект ЗИП дополнительный</div>
+                            </div>
+                            <div class="kit-controls">
+                                <div class="option-price">xxx 000</div>
+                                <button class="expand-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
+                                        <path d="m6 9 6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="kit-components">
+                            <ul>
+                                <li>Фильтр воздушный GB9434</li>
+                                <li>Фильтр масляный LF17356</li>
+                                <li>Фильтр топливный тонкой очистки FS19925</li>
+                                <li>Ремкомплект манжет на колесный редуктор (комплект)</li>
+                                <li>Втулка рулевой тяги (аркаим)</li>
+                                <li>ШРУС внутренний М30121004 (трипод) + смазка</li>
+                                <li>Амортизатор 3994-2915006-90</li>
+                                <li>Шланг подкачки колеса Русак 3994-3124186</li>
+                                <li>Рулевой наконечник левый R350-3414060-30</li>
+                                <li>Рулевой наконечник правый R350-3414060-20</li>
+                                <li>Пыльник рулевой</li>
+                                <li>Пыльник шруса внутренний кт. (+хомуты)</li>
+                                <li>Пыльник шруса наружный кт. (+хомуты)</li>
+                                <li>Электрика (реле, предохранители) (комплект)</li>
+                                <li>Шаровая опора верхняя</li>
+                                <li>Подшипник рулевой опоры 753009 NK GH20270</li>
+                                <li>Щетки стеклоочистителей</li>
+                                <li>Блок синхронизации стеклоочистителей</li>
+                                <li>Пробка редуктора 1/8", 00000-0870884-009</li>
+                                <li>Пробка редуктора 1/4", 296562-П8</li>
+                                <li>Ремень генератора, 8PK2440</li>
+                                <li>Масло моторное (л.), ZIC X7000 5W30, 4 л.</li>
+                                <li>Масло трансмиссионное, ZIC G-5 80W90 GL5, 4 л.</li>
+                                <li>Масло трансмиссионное, ZIC G-EP 80W90 GL4, 4л.</li>
+                                <li>Антифриз красный G12, 10 л.</li>
+                                <li>Тормозная жидкость, ROSDOT4, 1л.</li>
+                                <li>Ручка двери внутренняя правая / левая, A21R23.6105082 /83.</li>
+                                <li>Ручка двери наружная правая / левая, А21R23.6105150/51</li>
+                                <li>Фиксатор замка двери правый /левый («шоколадка»), 2108-6105014/15</li>
+                                <li>Колодки стояночного тормоза, GDB1596</li>
+                                <li>Поворотный кулак, 3994-2305062</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

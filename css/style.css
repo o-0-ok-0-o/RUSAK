@@ -616,6 +616,23 @@ body, html{
     .number li a:hover{
         color: orange;
     }
+
+
+
+    .news-pc-1{
+        display: grid;
+        grid-template-columns: 200px auto;
+        padding: 24px 48px;
+        gap: 24px;
+    }
+    .news-pc-img img{
+        width: 100%;
+    }
+    .news-pc-info p{
+        margin-bottom: 15px;
+        color: #000000;
+        font-weight: 500;
+    }
 }
 @media (min-width: 1250px) {
     .nav-menu-pc ul li{
