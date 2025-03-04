@@ -1,10 +1,7 @@
 import asyncio
-from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload, Session
-from starlette.responses import JSONResponse
-
+from sqlalchemy.orm import selectinload
 from db.database import async_session_factory, drop_tables, create_tables
 from db.models import Engine, SaloneMember, Car, Service, SaloneOption, Shassi, Zip
 
@@ -115,7 +112,7 @@ async def create_zip(
 
 
 ################################
-async def main_relations(
+async def create_cars_and_relations(
     session: AsyncSession,
 ):
     # engine_1 = create_engine("двигатель 1", 1500, session)
@@ -151,6 +148,27 @@ async def main_relations(
         session=session,
     )
 
+    car1 = await session.scalar(
+        select(Car)
+        .where(Car.id == car1.id)
+        .options(
+            selectinload(Car.salone_option),
+            selectinload(Car.service),
+            selectinload(Car.shassi),
+            selectinload(Car.zip),
+        ),
+    )
+    car2 = await session.scalar(
+        select(Car)
+        .where(Car.id == car2.id)
+        .options(
+            selectinload(Car.salone_option),
+            selectinload(Car.service),
+            selectinload(Car.shassi),
+            selectinload(Car.zip),
+        ),
+    )
+
     car1.salone_option.append(salone_option1)
     car1.service.append(service1)
     car1.shassi.append(shassi1)
@@ -164,49 +182,7 @@ async def main_relations(
     await session.commit()
 
 
-def format_car(car: Car) -> dict:
-    return {
-        "id": car.id,
-        "name": car.car_name,
-        "base_price": car.base_price,
-        # "engine": {
-        #     "id": car.engine_id.id,
-        #     "name": car.engine_id.engine_name,
-        #     "power": car.engine_id.base_price,
-        # },
-        # "salone_member": {
-        #     "id": car.salone_member.id,
-        #     "name": car.salone_member.name,
-        #     "price": car.salone_member.base_price,
-        # },
-        "salone_option": [
-            {
-                "id": option.id,
-                "name": option.salone_option_name,
-                "price": option.base_price,
-            }
-            for option in car.salone_option
-        ],
-        "service": [
-            {
-                "id": service.id,
-                "name": service.service_name,
-                "price": service.base_price,
-            }
-            for service in car.service
-        ],
-        "shassi": [
-            {"id": shassi.id, "name": shassi.shassi_name, "price": shassi.base_price}
-            for shassi in car.shassi
-        ],
-        "zip": [
-            {"id": zip1.id, "name": zip1.zip_name, "price": zip1.base_price}
-            for zip1 in car.zip
-        ],
-    }
-
-
-async def get_car(session: AsyncSession) -> list[Car]:
+async def get_cars_with_all(session: AsyncSession) -> list[Car]:
     stmt = (
         select(Car)
         .options(
@@ -217,47 +193,34 @@ async def get_car(session: AsyncSession) -> list[Car]:
         )
         .order_by(Car.id)
     )
-    cars = await session.scalars(stmt)
+    cars = await session.scalars(statement=stmt)
+
     return list(cars)
 
 
-def print_cars(cars: list[Car]):
-    for car in cars:
-        car_data = format_car(car)
-        print(f"Машина: {car_data['name']}")
-        print(f"Базовая цена: {car_data['base_price']}")
-        print(
-            f"Двигатель: {car_data['engine']['name']} (мощность: {car_data['engine']['power']})"
-        )
-        print(
-            f"Салон: {car_data['salone_member']['name']} (цена: {car_data['salone_member']['price']})"
-        )
-        print("Опции салона:")
-        for option in car_data["salone_options"]:
-            print(f"  - {option['name']} (цена: {option['price']})")
-        print("Услуги:")
-        for service in car_data["services"]:
-            print(f"  - {service['name']} (цена: {service['price']})")
-        print("Шасси:")
-        for shassi in car_data["shassis"]:
-            print(f"  - {shassi['name']} (цена: {shassi['price']})")
-        print("ZIP-комплекты:")
-        for zip1 in car_data["zips"]:
-            print(f"  - {zip1['name']} (цена: {zip1['price']})")
-        print("-" * 40)
-
-
 async def demo_m2m(session: AsyncSession):
-    # await main_relations(session)
-    cars = await get_car(session)
-    formatted_cars = [format_car(car) for car in cars]
-    print(formatted_cars)
+    cars = await get_cars_with_all(session)
+    for car in cars:
+        print(car.id, car.car_name, car.base_price)
+        print("Опции салона:")
+        for salone_option in car.salone_option:  # type: SaloneOption
+            print(salone_option.salone_option_name, salone_option.base_price)
+        print("Сервис:")
+        for service in car.service:  # type: Service
+            print(service.service_name, service.base_price)
+        print("Шасси:")
+        for shassi in car.shassi:  # type: Shassi
+            print(shassi.shassi_name, shassi.base_price)
+        print("Зип:")
+        for zip1 in car.zip:  # type: Zip
+            print(zip1.zip_name, zip1.base_price)
 
 
 async def main():
     # await drop_tables()
     # await create_tables()
     async with async_session_factory() as session:
+        #     await create_cars_and_relations(session)
         await demo_m2m(session)
 
 
