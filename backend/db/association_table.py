@@ -8,9 +8,9 @@ class SaloneoptionCarAssociation(Base):  # SaloneOption - Car
     __tablename__ = "saloneoption_car_association"
     table_name = (
         UniqueConstraint(
-            "saloneoption_id",
+            "salone_option_id",
             "car_id",
-            name="idx_unique_saloneoption_car",
+            name="idx_unique_salone_option_car",
         ),
     )
 

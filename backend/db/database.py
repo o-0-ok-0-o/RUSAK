@@ -1,43 +1,28 @@
-from typing import Annotated
-from fastapi import Depends
-from sqlalchemy import create_engine
-from sqlmodel import Session
-
-
-sqlite_file_name = "rusak.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
-connect_args = {"check_same_thread": False}
-engine = create_engine(
-    sqlite_url,
-    connect_args=connect_args,
-    echo=True,
-)
-
-
-def get_session():
-    with Session(engine) as session:
-        yield session
-
-
-SessionDep = Annotated[Session, Depends(get_session)]
-# Для асинхрона
-# from typing import Annotated
-# from fastapi import Depends
-# from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
 
 
-# from sqlalchemy.ext.asyncio import AsyncSession
-
-
-# async_engine = create_async_engine(sqlite_file_name)
-# async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)
-#
-#
-# async def get_async_session():
-#     async with async_session_factory() as session:
-#         yield session
 class Base(DeclarativeBase):
     __abstract__ = True
 
     id: Mapped[int] = mapped_column(primary_key=True)
+
+
+DATABASE_URL = "sqlite+aiosqlite:///./test.db"  # ДЛЯ SQLITE ТЕСТОВ позже поменять
+async_engine = create_async_engine(url=DATABASE_URL, echo=True)
+async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)
+
+
+async def create_tables():
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+
+async def drop_tables():
+    async with async_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+
+
+async def get_async_session():
+    async with async_session_factory() as session:
+        yield session
