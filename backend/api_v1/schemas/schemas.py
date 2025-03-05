@@ -42,7 +42,10 @@ class EngineBase(BaseModel):
 
 class EngineRead(EngineBase):
     id: int
-    cars: list["CarBase"] = []
+    cars: list["CarBase"] = (
+        []
+    )  # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
+    # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
         from_attributes = True
@@ -56,7 +59,10 @@ class SaloneMemberBase(BaseModel):
 
 class SaloneMemberRead(SaloneMemberBase):
     id: int
-    cars: list["CarBase"] = []
+    cars: list["CarBase"] = (
+        []
+    )  # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
+    # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
         from_attributes = True
