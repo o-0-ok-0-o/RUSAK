@@ -1,10 +1,16 @@
 from pathlib import Path
 
+from pydantic_settings import BaseSettings
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+BASE_DIR = Path(__file__).parent
 
 
-# class Settings(BaseSettings):
+class Settings(BaseSettings):
+
+    db_url: str = f"sqlite+aiosqlite:///{BASE_DIR}/save_bd_backup1.db"  # test.db
+
+    # class Settings(BaseSettings):
     # DB_HOST: str
     # DB_PORT: int
     # DB_USER: str
@@ -19,4 +25,4 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
     # model_config = SettingsConfigDict(env_file=".env")
 
 
-# settings = Settings()
+settings = Settings()

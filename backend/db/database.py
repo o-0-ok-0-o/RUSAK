@@ -1,6 +1,8 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, mapped_column, Mapped
 
+from config import settings
+
 
 class Base(DeclarativeBase):
     __abstract__ = True
@@ -8,8 +10,7 @@ class Base(DeclarativeBase):
     id: Mapped[int] = mapped_column(primary_key=True)
 
 
-DATABASE_URL = "sqlite+aiosqlite:///./test.db"  # ДЛЯ SQLITE ТЕСТОВ позже поменять
-async_engine = create_async_engine(url=DATABASE_URL, echo=True)
+async_engine = create_async_engine(url=settings.db_url, echo=True)
 async_session_factory = async_sessionmaker(async_engine, expire_on_commit=False)
 
 
