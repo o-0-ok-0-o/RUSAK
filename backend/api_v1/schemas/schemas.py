@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
@@ -29,45 +30,108 @@ class OrderCreateSchema(OrderBaseSchema):
 class OrderSchema(OrderBaseSchema):
     id: int
 
+    class Config:
+        from_attributes = True
 
-# Новые схемы надо поправить
-# class CarSchema(BaseModel):
-#     id: int
-#     car_name: str
-#     base_price: float
-#
-#
-# class EngineSchema(BaseModel):
-#     id: int
-#     engine_name: str
-#     base_price: float
-#
-#
-# class SaloneMembersSchema(BaseModel):
-#     id: int
-#     salone_name: str
-#     base_price: float
-#
-#
-# class SaloneOptionSchema(BaseModel):
-#     id: int
-#     salone_option_name: str
-#     base_price: float
-#
-#
-# class OptionShassiSchema(BaseModel):
-#     id: int
-#     shassi_name: str
-#     base_price: float
-#
-#
-# class OptionServiceSchema(BaseModel):
-#     id: int
-#     service_name: str
-#     base_price: float
-#
-#
-# class OptionZipSchema(BaseModel):
-#     id: int
-#     zip_name: str
-#     base_price: float
+
+# Двигатель
+class EngineBase(BaseModel):
+    engine_name: str
+    base_price: int
+
+
+class EngineRead(EngineBase):
+    id: int
+    cars: list["CarRead"] = []
+
+    class Config:
+        from_attributes = True
+
+
+# Салон кол-во
+class SaloneMemberBase(BaseModel):
+    salone_name: str
+    base_price: int
+
+
+class SaloneMemberRead(SaloneMemberBase):
+    id: int
+    cars: list["CarRead"] = []
+
+    class Config:
+        from_attributes = True
+
+
+class SaloneOptionBase(BaseModel):
+    salone_option_name: str
+    base_price: int
+
+
+# Салон опции
+class SaloneOptionRead(SaloneOptionBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+
+class ShassiBase(BaseModel):
+    shassi_name: str
+    base_price: int
+
+
+# Шасси
+class ShassiRead(ShassiBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+
+class ServiceBase(BaseModel):
+    service_name: str
+    base_price: int
+
+
+# Сервис
+class ServiceRead(ServiceBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+
+class ZipBase(BaseModel):
+    zip_name: str
+    base_price: int
+
+
+# Зип
+class ZipRead(ZipBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+
+# Машина
+class CarBase(BaseModel):
+    car_name: str
+    base_price: int
+    engine_id: int
+    salone_member_id: int
+
+
+class CarRead(CarBase):
+    id: int
+
+    engine: Optional[EngineRead] = None
+    salone_member: Optional[SaloneMemberRead] = None
+
+    salone_option: list[SaloneOptionRead] = []
+    shassi: list[ShassiRead] = []
+    service: list[ServiceRead] = []
+    zip: list[ZipRead] = []
+
+    class Config:
+        from_attributes = True
