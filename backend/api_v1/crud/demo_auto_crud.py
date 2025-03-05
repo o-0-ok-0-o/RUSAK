@@ -166,6 +166,8 @@ async def create_cars_and_relations(
             selectinload(Car.service),
             selectinload(Car.shassi),
             selectinload(Car.zip),
+            joinedload(Car.salone_member),  # и без него работает
+            joinedload(Car.engine),  # и без него работает
         ),
     )
 
