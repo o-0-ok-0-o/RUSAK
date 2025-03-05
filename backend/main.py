@@ -24,6 +24,4 @@ async def root():
 
 
 if __name__ == "__main__":
-    # Base.metadata.drop_all(engine)
-    # Base.metadata.create_all(engine)
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)

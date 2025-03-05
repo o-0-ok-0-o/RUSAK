@@ -1,7 +1,7 @@
 import asyncio
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload
+from sqlalchemy.orm import selectinload, joinedload
 from db.database import async_session_factory, drop_tables, create_tables
 from db.models import Engine, SaloneMember, Car, Service, SaloneOption, Shassi, Zip
 
@@ -9,15 +9,15 @@ from db.models import Engine, SaloneMember, Car, Service, SaloneOption, Shassi, 
 async def create_car(
     car_name: str,
     base_price: int,
-    # engine: Engine,
-    # salone_member: SaloneMember,
+    engine_id: int,
+    salone_member_id: int,
     session: AsyncSession,
 ) -> Car:
     car = Car(
         car_name=car_name,
         base_price=base_price,
-        # engine_id=engine.id,
-        # salone_member=salone_member.id,
+        engine_id=engine_id,
+        salone_member_id=salone_member_id,
     )
     session.add(car)
     await session.commit()
@@ -115,11 +115,11 @@ async def create_zip(
 async def create_cars_and_relations(
     session: AsyncSession,
 ):
-    # engine_1 = create_engine("двигатель 1", 1500, session)
-    # engine_2 = create_engine("двигатель 2", 2500, session)
-    #
-    # salone_member1 = create_salonemember("16 мест", 1500, session)
-    # salone_member2 = create_salonemember("20 мест", 2200, session)
+    engine_1 = await create_engine("двигатель 1", 1500, session)
+    engine_2 = await create_engine("двигатель 2", 2500, session)
+
+    salone_member1 = await create_salonemember("16 мест", 1500, session)
+    salone_member2 = await create_salonemember("20 мест", 2200, session)
 
     salone_option1 = await create_saloneoption("обогрев", 1500, session)
     salone_option2 = await create_saloneoption("задняя камера", 2200, session)
@@ -136,15 +136,15 @@ async def create_cars_and_relations(
     car1 = await create_car(
         car_name="К-8 Грузовой 4х2,5",
         base_price=1_500_000,
-        # engine=engine_1,
-        # salone_member=salone_member1,
+        engine_id=engine_1.id,
+        salone_member_id=salone_member1.id,
         session=session,
     )
     car2 = await create_car(
         car_name="К-2 Легковой 5х2,5",
         base_price=2_999_000,
-        # engine=engine_2,
-        # salone_member=salone_member2,
+        engine_id=engine_2.id,
+        salone_member_id=salone_member2.id,
         session=session,
     )
 
@@ -190,6 +190,8 @@ async def get_cars_with_all(session: AsyncSession) -> list[Car]:
             selectinload(Car.service),
             selectinload(Car.shassi),
             selectinload(Car.zip),
+            joinedload(Car.salone_member),
+            joinedload(Car.engine),
         )
         .order_by(Car.id)
     )
@@ -202,6 +204,18 @@ async def demo_m2m(session: AsyncSession):
     cars = await get_cars_with_all(session)
     for car in cars:
         print(car.id, car.car_name, car.base_price)
+        #
+        print(
+            "Двигатель:",
+            car.engine.engine_name,
+            car.engine.base_price,
+        )
+        print(
+            "Вместительность салона:",
+            car.salone_member.salone_name,
+            car.salone_member.base_price,
+        )
+        #
         print("Опции салона:")
         for salone_option in car.salone_option:  # type: SaloneOption
             print(salone_option.salone_option_name, salone_option.base_price)
@@ -220,7 +234,7 @@ async def main():
     # await drop_tables()
     # await create_tables()
     async with async_session_factory() as session:
-        #     await create_cars_and_relations(session)
+        # await create_cars_and_relations(session)
         await demo_m2m(session)
 
 

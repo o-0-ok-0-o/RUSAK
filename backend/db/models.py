@@ -1,3 +1,4 @@
+from typing import TYPE_CHECKING
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -24,12 +25,15 @@ class Car(Base):
     car_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
-    # engine_id: Mapped[int] = mapped_column(
-    #     ForeignKey("engine.id"),
-    # )
-    # salone_member: Mapped[int] = mapped_column(
-    #     ForeignKey("salone_member.id"),
-    # )
+    engine_id: Mapped[int] = mapped_column(
+        ForeignKey("engine.id"),
+    )
+    engine: Mapped["Engine"] = relationship(back_populates="cars")
+
+    salone_member_id: Mapped[int] = mapped_column(
+        ForeignKey("salone_member.id"),
+    )
+    salone_member: Mapped["SaloneMember"] = relationship(back_populates="cars")
 
     salone_option: Mapped[list["SaloneOption"]] = relationship(
         secondary="saloneoption_car_association",
@@ -55,12 +59,16 @@ class Engine(Base):
     engine_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
 
+    cars: Mapped[list["Car"]] = relationship(back_populates="engine")
+
 
 class SaloneMember(Base):
     __tablename__ = "salone_member"
 
     salone_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+
+    cars: Mapped[list["Car"]] = relationship(back_populates="salone_member")
 
 
 class SaloneOption(Base):
