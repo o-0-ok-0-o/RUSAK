@@ -6,21 +6,37 @@ router = APIRouter(
 )
 
 
-@app.get("/models/", response_model=List[Option])
+@app.get("/car", response_model=list[CarSchema])
+def get_extras():
+
+    return available_extras
+
+
+@app.get("/engine", response_model=list[Option])
 def get_models():
     return available_models
 
 
-@app.get("/colors/", response_model=List[Option])
+@app.get("/salone-member", response_model=list[Option])
 def get_colors():
     return available_colors
 
 
-@app.get("/engines/", response_model=List[Option])
+@app.get("/salone-option", response_model=list[Option])
 def get_engines():
     return available_engines
 
 
-@app.get("/extras/", response_model=List[Option])
+@app.get("/service", response_model=list[Option])
+def get_extras():
+    return available_extras
+
+
+@app.get("/shassi", response_model=list[Option])
+def get_extras():
+    return available_extras
+
+
+@app.get("/zip", response_model=list[Option])
 def get_extras():
     return available_extras
