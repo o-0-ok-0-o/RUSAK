@@ -42,7 +42,7 @@ class EngineBase(BaseModel):
 
 class EngineRead(EngineBase):
     id: int
-    cars: list["CarRead"] = []
+    cars: list["CarBase"] = []
 
     class Config:
         from_attributes = True
@@ -56,7 +56,7 @@ class SaloneMemberBase(BaseModel):
 
 class SaloneMemberRead(SaloneMemberBase):
     id: int
-    cars: list["CarRead"] = []
+    cars: list["CarBase"] = []
 
     class Config:
         from_attributes = True
