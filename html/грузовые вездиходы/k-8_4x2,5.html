@@ -355,326 +355,345 @@
         <div class="vehicle-config">
             <div class="vehicle-image-placeholder">
                 <h2 class="model-title"><i class="fas fa-car"></i> К-8 Грузовой 4х2,5</h2>
-                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="" style="width: 100%;">
+                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="К-8 Грузовой 4х2,5" style="width: 100%;">
             </div>
 
+            <!-- Engine Section -->
             <div class="config-section">
-                <div class="config-title">
+                <div class="config-title active">
                     <span><i class="fas fa-engine"></i> Двигатель</span>
                 </div>
-                <div class="config-content">
+                <div class="config-content active">
                     <div class="engine-options">
-                        <div class="engine-option selected">
+                        <div class="engine-option selected" data-id="cummins" data-price="350000">
                             <div class="engine-image-placeholder">
-                                
+                                <img src="placeholder-engine.jpg" alt="Двигатель Cummins">
                             </div>
-                            <p>Дизельный Cummins 2,8 л; 110 кВт</p>
+                            <div class="option-details">
+                                <p>Дизельный Cummins 2,8 л; 110 кВт</p>
+                                <p class="option-price">350 000 ₽</p>
+                            </div>
                         </div>
-                        <div class="engine-option">
+                        <div class="engine-option" data-id="wp3nq160a0" data-price="420000">
                             <div class="engine-image-placeholder">
-                                
+                                <img src="placeholder-engine2.jpg" alt="Двигатель WP3NQ160A0">
                             </div>
-                            <p>Дизельный двигатель WP3NQ160A0</p>
+                            <div class="option-details">
+                                <p>Дизельный двигатель WP3NQ160A0</p>
+                                <p class="option-price">420 000 ₽</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Tires Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-engine"></i> Шины</span>
+                    <span><i class="fas fa-tire"></i> Шины</span>
                 </div>
                 <div class="config-content">
                     <div class="tires-options">
-                        <div class="tires-option selected">
+                        <div class="tires-option selected" data-id="rusak" data-price="180000">
                             <div class="tires-image-placeholder">
-                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="">
+                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="Шина RUSAK">
                             </div>
-                            <p>1650x650 R25 RUSAK</p>
+                            <div class="option-details">
+                                <p>1650x650 R25 RUSAK</p>
+                                <p class="option-price">180 000 ₽</p>
+                            </div>
                         </div>
-                        <div class="tires-option">
+                        <div class="tires-option" data-id="mamont" data-price="240000">
                             <div class="tires-image-placeholder">
-                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="">
+                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="Шина MAMONT">
                             </div>
-                            <p>1780x710 R32 MAMONT</p>
+                            <div class="option-details">
+                                <p>1780x710 R32 MAMONT</p>
+                                <p class="option-price">240 000 ₽</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Cabin Section -->
             <div class="config-section">
                 <div class="config-title">
                     <span> Салон</span>
                 </div>
                 <div class="config-content">
-                    <div class="option-item">
-                        <div class="option-content">
-                            <label class="custom-radio">
-                                <input type="radio" name="passengers" value="18">
-                                <span class="radiomark"></span>
-                            </label>
-                            <div class="option-label">18 пассажирских мест</div>
+                    <!-- Passenger Options - Keep these as they are -->
+                    <div class="passengers-section">
+                        <h4 class="subsection-title">Пассажирские места</h4>
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="18" data-price="120000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">18 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">120 000 ₽</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="20" data-price="150000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">20 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">150 000 ₽</div>
+                        </div>
+
+                        <div class="option-item selected" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="24" data-price="180000" checked>
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">24 пассажирских места</div>
+                            </div>
+                            <div class="option-price">180 000 ₽</div>
+                        </div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="28" data-price="210000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">28 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">210 000 ₽</div>
+                        </div>
                     </div>
 
-                    <div class="option-item">
-                        <div class="option-content">
-                            <label class="custom-radio">
-                                <input type="radio" name="passengers" value="20">
-                                <span class="radiomark"></span>
-                            </label>
-                            <div class="option-label">20 пассажирских мест</div>
-                        </div>
-                        <div class="option-price">xxx 000</div>
-                    </div>
-
-                    <div class="option-item">
-                        <div class="option-content">
-                            <label class="custom-radio">
-                                <input type="radio" name="passengers" value="24" checked>
-                                <span class="radiomark"></span>
-                            </label>
-                            <div class="option-label">24 пассажирских места</div>
-                        </div>
-                        <div class="option-price">xxx 000</div>
-                    </div>
-
-                    <div class="option-item">
-                        <div class="option-content">
-                            <label class="custom-radio">
-                                <input type="radio" name="passengers" value="28">
-                                <span class="radiomark"></span>
-                            </label>
-                            <div class="option-label">28 пассажирских мест</div>
-                        </div>
-                        <div class="option-price">xxx 000</div>
-                    </div>
-
-                    <div class="option-item">
+                    <!-- Additional Cabin Options - Convert to simple checkbox items -->
+                    <h4 class="subsection-title">Дополнительные опции салона</h4>
+                    <div class="option-item" data-group="cabin">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="windshield">
+                                <input type="checkbox" id="windshield" data-price="25000" data-group="cabin">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Обогрев лобового стекла</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">25 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="cabin">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="camera">
+                                <input type="checkbox" id="camera" data-price="35000" data-group="cabin">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Задняя камера с монитором 2DIN</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">35 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="cabin">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="heaters">
+                                <input type="checkbox" id="heaters" data-price="65000" data-group="cabin">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Автономные отопители салона Планар 4кВт 1 шт, Планар 2кВт 1 шт</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">65 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="cabin">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="radio">
+                                <input type="checkbox" id="radio" data-price="45000" data-group="cabin">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Радиостанция Hytera HM785 или аналог</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">45 000 ₽</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Chassis Section -->
             <div class="config-section">
                 <div class="config-title">
                     <span> Шасси</span>
                 </div>
                 <div class="config-content">
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="suspension">
+                                <input type="checkbox" id="suspension" data-price="85000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
-                            <div class="option-label">
-                                Централизованная система подкачки колес
-                                <div class="option-description">
-                                    Возможность подкачки на ходу (управление ручным краном). Управление с места водителя (ручным краном)
-                                </div>
-                            </div>
+                            <div class="option-label">Централизованная система подкачки колес</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">85 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="preheater">
+                                <input type="checkbox" id="preheater" data-price="40000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Предпусковой подогреватель двигателя Бинар, 5кВт</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">40 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="winch" data-price="75000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Лебедка передняя Runva 20000 (усилие 9,6 т) с кронштейном</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">75 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="bullbar" data-price="45000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Кенгурин передний</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">45 000 ₽</div>
                     </div>
                     
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="roofrack" data-price="60000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Экспедиционный багажник на крыше с поручнями 2,0×1,7 м</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">60 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="frontlight" data-price="30000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Фара светодиодная РИФ 20'' 120 W LED, крепление в бампере, 2 шт.</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">30 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="sidelight" data-price="25000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Фара светодиодная РИФ D116 мм 18W c кнопкой включения на панели, 3 шт</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">25 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="chassis">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="winch">
+                                <input type="checkbox" id="wheelcaps" data-price="20000" data-group="chassis">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Колпаки на колеса</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">20 000 ₽</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Service Section -->
             <div class="config-section">
                 <div class="config-title">
                     <span> Сервис</span>
                 </div>
                 <div class="config-content">
-                    <div class="option-item">
+                    <div class="option-item" data-group="service">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="jack">
+                                <input type="checkbox" id="jack" data-price="15000" data-group="service">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Домкрат Hi-Lift 605 X-Treme (или аналогичный)</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">15 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="service">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="tools">
+                                <input type="checkbox" id="tools" data-price="25000" data-group="service">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Набор инструментов 150 предметов 1/2" и 3/8" 06-07-21 (крепление в салоне)</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">25 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="service">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="tools">
+                                <input type="checkbox" id="inverter" data-price="30000" data-group="service">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Преобразователь напряжения 12-220 В, 4000 W</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">30 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="service">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="tools">
+                                <input type="checkbox" id="inflationhose" data-price="5000" data-group="service">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Шланг для подкачки колес</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">5 000 ₽</div>
                     </div>
 
-                    <div class="option-item">
+                    <div class="option-item" data-group="service">
                         <div class="option-content">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="tools">
+                                <input type="checkbox" id="sparetire" data-price="45000" data-group="service">
                                 <span class="checkmark"></span>
                             </label>
                             <div class="option-label">Полноразмерное запасное колесо 1650х650-25", 4НС</div>
                         </div>
-                        <div class="option-price">xxx 000</div>
+                        <div class="option-price">45 000 ₽</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Kits Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span>Зип</span>
+                    <span>ЗИП</span>
                 </div>
                 <div class="config-content">
-                    <div class="kit-item" data-kit-id="standard">
+                    <div class="kit-item" data-kit-id="standard" data-price="120000">
                         <div class="kit-header">
                             <div class="option-content">
                                 <label class="custom-checkbox">
-                                    <input type="checkbox" id="zip_standard">
+                                    <input type="checkbox" id="zip_standard" data-price="120000">
                                     <span class="checkmark"></span>
                                 </label>
                                 <div class="option-label">Комплект ЗИП стандартный</div>
                             </div>
                             <div class="kit-controls">
-                                <div class="option-price">xxx 000</div>
+                                <div class="option-price">120 000 ₽</div>
                                 <button class="expand-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
                                         <path d="m6 9 6 6 6-6"/>
@@ -712,17 +731,17 @@
                         </div>
                     </div>
 
-                    <div class="kit-item" data-kit-id="additional">
+                    <div class="kit-item" data-kit-id="additional" data-price="180000">
                         <div class="kit-header">
                             <div class="option-content">
                                 <label class="custom-checkbox">
-                                    <input type="checkbox" id="zip_additional">
+                                    <input type="checkbox" id="zip_additional" data-price="180000">
                                     <span class="checkmark"></span>
                                 </label>
                                 <div class="option-label">Комплект ЗИП дополнительный</div>
                             </div>
                             <div class="kit-controls">
-                                <div class="option-price">xxx 000</div>
+                                <div class="option-price">180 000 ₽</div>
                                 <button class="expand-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
                                         <path d="m6 9 6 6 6-6"/>
@@ -830,15 +849,16 @@
             </div>
 
             <div class="price-panel">
-                <h3><i class="fas fa-tag"></i> Цена от:</h3>
-                <p>(Суммируется из выбранных опций)</p>
+                <h3><i class="fas fa-tag"></i> Итоговая цена:</h3>
+                <p class="total-price">1 000 000 ₽</p>
+                <p class="price-note">(Включает базовую комплектацию и выбранные опции)</p>
                 <button class="get-quote-btn">
                     <i class="fas fa-file-invoice"></i> Получить КП
                 </button>
             </div>
         </div>
     </div>
-    <script src="../../js/header.js"></script>
-    <script src="../../js/models.js"></script>
+
+    <script src="../../js/test.js"></script>
 </body>
 </html>
