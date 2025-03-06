@@ -42,9 +42,8 @@ class EngineBase(BaseModel):
 
 class EngineRead(EngineBase):
     id: int
-    cars: list["CarBase"] = (
-        []
-    )  # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
+    cars: list["CarBase"] = []
+    # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
     # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
@@ -59,36 +58,42 @@ class SaloneMemberBase(BaseModel):
 
 class SaloneMemberRead(SaloneMemberBase):
     id: int
-    cars: list["CarBase"] = (
-        []
-    )  # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
+
+    cars: list["CarBase"] = []
+    # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
     # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
         from_attributes = True
 
 
+# Салон опции
 class SaloneOptionBase(BaseModel):
     salone_option_name: str
     base_price: int
 
 
-# Салон опции
 class SaloneOptionRead(SaloneOptionBase):
     id: int
+
+    car: list["CarBase"] = []
+    # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
+    # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
         from_attributes = True
 
 
+# Шасси
 class ShassiBase(BaseModel):
     shassi_name: str
     base_price: int
 
 
-# Шасси
 class ShassiRead(ShassiBase):
     id: int
+
+    car: list["CarBase"] = []
 
     class Config:
         from_attributes = True
@@ -103,6 +108,8 @@ class ServiceBase(BaseModel):
 class ServiceRead(ServiceBase):
     id: int
 
+    car: list["CarBase"] = []
+
     class Config:
         from_attributes = True
 
@@ -115,6 +122,8 @@ class ZipBase(BaseModel):
 # Зип
 class ZipRead(ZipBase):
     id: int
+
+    car: list["CarBase"] = []
 
     class Config:
         from_attributes = True

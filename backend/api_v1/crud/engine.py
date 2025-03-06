@@ -5,7 +5,7 @@ from sqlalchemy.orm import selectinload, joinedload
 from typing import Annotated
 from api_v1.schemas.schemas import EngineBase
 from db.database import get_async_session
-from db.models import Engine, Car
+from db.models import Engine
 
 
 async def create_engine(

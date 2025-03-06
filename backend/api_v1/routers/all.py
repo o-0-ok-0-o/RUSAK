@@ -1,9 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from api_v1.crud.salone_member import get_all_salone_members
+from api_v1.crud.engine import get_all_engines
+from api_v1.crud.salone_option import get_all_salone_options
+from api_v1.crud.service import get_all_services
+from api_v1.crud.shassi import get_all_shassis
+from api_v1.crud.zip import get_all_zips
 from db.database import get_async_session
-
-from api_v1.crud.create_engine import get_all_engines
 from api_v1.schemas.schemas import (
     CarRead,
     EngineRead,
@@ -29,30 +33,48 @@ async def get_engines(
 
 
 @router.get("/salone-member", response_model=list[SaloneMemberRead])
-def get_colors():
-    return 1
+async def get_salone_members(
+    session: AsyncSession = Depends(get_async_session),
+):
+    salone_member = await get_all_salone_members(session)
+    return salone_member
 
 
 @router.get("/salone-option", response_model=list[SaloneOptionRead])
-def get_engines():
-    return 1
+async def get_salone_option(
+    session: AsyncSession = Depends(get_async_session),
+):
+    salone_option = await get_all_salone_options(session)
+    return salone_option
 
 
 @router.get("/service", response_model=list[ServiceRead])
-def get_extras():
-    return 1
+async def get_service(
+    session: AsyncSession = Depends(get_async_session),
+):
+    service = await get_all_services(session)
+    return service
 
 
 @router.get("/shassi", response_model=list[ShassiRead])
-def get_extras():
-    return 1
+async def get_shassi(
+    session: AsyncSession = Depends(get_async_session),
+):
+    shassis = await get_all_shassis(session)
+    return shassis
 
 
 @router.get("/zip", response_model=list[ZipRead])
-def get_extras():
-    return 1
+async def get_zip(
+    session: AsyncSession = Depends(get_async_session),
+):
+    zip1 = await get_all_zips(session)
+    return zip1
 
 
 @router.get("/car", response_model=list[CarRead])
-def get_extras():
-    return 1
+async def get_car(
+    session: AsyncSession = Depends(get_async_session),
+):
+    car = await get_all_cars(session)
+    return car
