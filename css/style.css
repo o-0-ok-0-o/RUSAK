@@ -633,6 +633,20 @@ body, html{
         color: #000000;
         font-weight: 500;
     }
+
+    .configs-pc{
+        display: grid;
+        padding: 24px 48px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .configs-pc img{
+        height: 200px;
+    }
+    .configs-pc .item{
+        display: flex;
+        justify-content: center;
+    }
 }
 @media (min-width: 1250px) {
     .nav-menu-pc ul li{
