@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from api_v1.crud.demo_auto_crud import demo_m2m, get_cars_with_all
+from api_v1.crud.demo_auto_crud import get_cars_with_all
 from api_v1.crud.salone_member import get_all_salone_members
 from api_v1.crud.engine import get_all_engines
 from api_v1.crud.salone_option import get_all_salone_options
