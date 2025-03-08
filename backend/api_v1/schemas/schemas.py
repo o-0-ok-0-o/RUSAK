@@ -40,8 +40,11 @@ class EngineBase(BaseModel):
     base_price: int
 
 
-class EngineRead(EngineBase):
+class EngineCar(EngineBase):
     id: int
+
+
+class EngineRead(EngineCar):
     cars: list["CarBase"] = []
     # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
     # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
@@ -56,9 +59,11 @@ class SaloneMemberBase(BaseModel):
     base_price: int
 
 
-class SaloneMemberRead(SaloneMemberBase):
+class SaloneMemberCar(SaloneMemberBase):
     id: int
 
+
+class SaloneMemberRead(SaloneMemberCar):
     cars: list["CarBase"] = []
     # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
     # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
@@ -73,9 +78,11 @@ class SaloneOptionBase(BaseModel):
     base_price: int
 
 
-class SaloneOptionRead(SaloneOptionBase):
+class SaloneOptionCar(SaloneOptionBase):
     id: int
 
+
+class SaloneOptionRead(SaloneOptionCar):
     car: list["CarBase"] = []
     # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
     # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
@@ -90,39 +97,45 @@ class ShassiBase(BaseModel):
     base_price: int
 
 
-class ShassiRead(ShassiBase):
+class ShassiCar(ShassiBase):
     id: int
 
+
+class ShassiRead(ShassiCar):
     car: list["CarBase"] = []
 
     class Config:
         from_attributes = True
 
 
+# Сервис
 class ServiceBase(BaseModel):
     service_name: str
     base_price: int
 
 
-# Сервис
-class ServiceRead(ServiceBase):
+class ServiceCar(ServiceBase):
     id: int
 
+
+class ServiceRead(ServiceCar):
     car: list["CarBase"] = []
 
     class Config:
         from_attributes = True
 
 
+# Зип
 class ZipBase(BaseModel):
     zip_name: str
     base_price: int
 
 
-# Зип
-class ZipRead(ZipBase):
+class ZipCar(ZipBase):
     id: int
 
+
+class ZipRead(ZipCar):
     car: list["CarBase"] = []
 
     class Config:
@@ -140,13 +153,13 @@ class CarBase(BaseModel):
 class CarRead(CarBase):
     id: int
 
-    engine: Optional[EngineRead] = None
-    salone_member: Optional[SaloneMemberRead] = None
+    engine: Optional[EngineCar] = None
+    salone_member: Optional[SaloneMemberCar] = None
 
-    salone_option: list[SaloneOptionRead] = []
-    shassi: list[ShassiRead] = []
-    service: list[ServiceRead] = []
-    zip: list[ZipRead] = []
+    salone_option: list[SaloneOptionCar] = []
+    shassi: list[ShassiCar] = []
+    service: list[ServiceCar] = []
+    zip: list[ZipCar] = []
 
     class Config:
         from_attributes = True

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from api_v1.crud.demo_auto_crud import demo_m2m, get_cars_with_all
 from api_v1.crud.salone_member import get_all_salone_members
 from api_v1.crud.engine import get_all_engines
 from api_v1.crud.salone_option import get_all_salone_options
@@ -16,6 +17,7 @@ from api_v1.schemas.schemas import (
     ServiceRead,
     ShassiRead,
     ZipRead,
+    CarBase,
 )
 
 router = APIRouter(
@@ -76,5 +78,5 @@ async def get_zip(
 async def get_car(
     session: AsyncSession = Depends(get_async_session),
 ):
-    car = await get_all_cars(session)
-    return car
+    cars = await get_cars_with_all(session)
+    return cars
