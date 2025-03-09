@@ -48,11 +48,15 @@ async def get_salone_member_price(
     salone_member_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    salone_member = await session.get(SaloneMember, salone_member_id)
+    result = await session.execute(
+        select(SaloneMember.base_price).where(SaloneMember.id == salone_member_id)
+    )
 
-    if not salone_member:
+    salone_member_price = result.scalar()
+
+    if not salone_member_price:
         raise HTTPException(status_code=404, detail="Кол-во мест не найден")
-    return salone_member.base_price
+    return salone_member_price
 
 
 async def delete_salone_member(

@@ -45,11 +45,15 @@ async def get_shassi_price(
     shassi_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    shassi = await session.get(Shassi, shassi_id)
+    result = await session.execute(
+        select(Shassi.base_price).where(Shassi.id == shassi_id)
+    )
 
-    if not shassi:
+    shassi_price = result.scalar()
+
+    if not shassi_price:
         raise HTTPException(status_code=404, detail="Шасси не найден")
-    return shassi.base_price
+    return shassi_price
 
 
 async def delete_shassi(

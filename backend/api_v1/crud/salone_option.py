@@ -35,7 +35,7 @@ async def get_all_salone_options(
 
 async def get_salone_option(
     salone_option_id: int,
-    session: AsyncSession = Depends(get_async_session),
+    session: AsyncSession,
 ):
     salone_option = await session.get(SaloneOption, salone_option_id)
 
@@ -48,11 +48,15 @@ async def get_salone_option_price(
     salone_option_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    salone_option = await session.get(SaloneOption, salone_option_id)
+    result = await session.execute(
+        select(SaloneOption.base_price).where(SaloneOption.id == salone_option_id)
+    )
 
-    if not salone_option:
+    salone_option_price = result.scalar()
+
+    if not salone_option_price:
         raise HTTPException(status_code=404, detail="Опция салона не найдена")
-    return salone_option.base_price
+    return salone_option_price
 
 
 async def delete_salone_option(
@@ -62,7 +66,7 @@ async def delete_salone_option(
     salone_option = await session.get(SaloneOption, salone_option_id)
 
     if salone_option is None:
-        raise HTTPException(status_code=404, detail="Опция салона не найденоа")
+        raise HTTPException(status_code=404, detail="Опция салона не найдено")
     await session.delete(salone_option)
     await session.commit()
     return {"success_delete": True}

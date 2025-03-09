@@ -45,11 +45,15 @@ async def get_service_price(
     service_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    service = await session.get(Service, service_id)
+    result = await session.execute(
+        select(Service.base_price).where(Service.id == service_id)
+    )
 
-    if not service:
+    service_price = result.scalar()
+
+    if not service_price:
         raise HTTPException(status_code=404, detail="Сервис не найден")
-    return service.base_price
+    return service_price
 
 
 async def delete_service(

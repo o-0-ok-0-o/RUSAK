@@ -45,11 +45,15 @@ async def get_engine_price(
     engine_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    engine = await session.get(Engine, engine_id)
+    result = await session.execute(
+        select(Engine.base_price).where(Engine.id == engine_id)
+    )
 
-    if not engine:
+    engine_price = result.scalar()
+
+    if not engine_price:
         raise HTTPException(status_code=404, detail="Двигатель не найден")
-    return engine.base_price
+    return engine_price
 
 
 async def delete_engine(

@@ -45,11 +45,13 @@ async def get_zip_price(
     zip_id: int,
     session: AsyncSession = Depends(get_async_session),
 ):
-    zip1 = await session.get(Zip, zip_id)
+    result = await session.execute(select(Zip.base_price).where(Zip.id == zip_id))
 
-    if not zip1:
+    zip_price = result.scalar()
+
+    if not zip_price:
         raise HTTPException(status_code=404, detail="Зип не найден")
-    return zip1.base_price
+    return zip_price
 
 
 async def delete_zip(
