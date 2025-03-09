@@ -50,10 +50,10 @@ async def calculate_price(
         return {
             "engine": engine_price,
             "salone_member": salone_member_price,
-            "salone_option's": salone_options_price,
-            "service's": service_price,
-            "shassi's": shassi_price,
-            "zip's": zip_price,
+            "salone_options": salone_options_price,
+            "services": service_price,
+            "shassis": shassi_price,
+            "zips": zip_price,
             "total_price":total_price}
     except HTTPException as e:
         raise e

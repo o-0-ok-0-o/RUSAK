@@ -163,3 +163,13 @@ class CarRead(CarBase):
 
     class Config:
         from_attributes = True
+
+
+class CalculatorBase(BaseModel):
+    engine: int
+    salone_member: int
+    salone_options: list[int]
+    services: list[int]
+    shassis: list[int]
+    zips: list[int]
+    total_price: int
