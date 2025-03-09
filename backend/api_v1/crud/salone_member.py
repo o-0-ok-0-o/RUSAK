@@ -22,7 +22,7 @@ async def create_salone_member(
 async def get_all_salone_members(
     session: AsyncSession,  # = Depends(get_async_session),
     offset: int = 0,
-    limit: Annotated[int, Query(le=100)] = 100,
+    limit: int = 100,
 ):
     salone_member = await session.execute(
         select(SaloneMember)
@@ -42,6 +42,17 @@ async def get_salone_member(
     if not salone_member:
         raise HTTPException(status_code=404, detail="Кол-во мест не найден")
     return salone_member
+
+
+async def get_salone_member_price(
+    salone_member_id: int,
+    session: AsyncSession = Depends(get_async_session),
+):
+    salone_member = await session.get(SaloneMember, salone_member_id)
+
+    if not salone_member:
+        raise HTTPException(status_code=404, detail="Кол-во мест не найден")
+    return salone_member.base_price
 
 
 async def delete_salone_member(

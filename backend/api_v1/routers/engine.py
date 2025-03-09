@@ -11,7 +11,6 @@ from api_v1.crud.engine import (
 from api_v1.schemas.schemas import EngineBase
 from db.database import get_async_session
 
-# from db.database import SessionDep, get_session
 
 router = APIRouter(
     prefix="/engines",

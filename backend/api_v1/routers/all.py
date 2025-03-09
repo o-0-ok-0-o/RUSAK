@@ -26,22 +26,6 @@ router = APIRouter(
 )
 
 
-@router.get("/engine", response_model=list[EngineRead])
-async def get_engines(
-    session: AsyncSession = Depends(get_async_session),
-):
-    engines = await get_all_engines(session)
-    return engines
-
-
-@router.get("/salone-member", response_model=list[SaloneMemberRead])
-async def get_salone_members(
-    session: AsyncSession = Depends(get_async_session),
-):
-    salone_member = await get_all_salone_members(session)
-    return salone_member
-
-
 @router.get("/salone-option", response_model=list[SaloneOptionRead])
 async def get_salone_option(
     session: AsyncSession = Depends(get_async_session),

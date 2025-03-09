@@ -3,13 +3,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
-from api_v1.schemas.schemas import SaloneMemberBase
+from api_v1.schemas.schemas import SaloneOptionBase
 from db.database import get_async_session
-from db.models import SaloneMember, SaloneOption
+from db.models import SaloneOption
 
 
 async def create_salone_option(
-    salone_option: Annotated[SaloneMemberBase, Depends()],
+    salone_option: Annotated[SaloneOptionBase, Depends()],
     session: AsyncSession = Depends(get_async_session),
 ):
     salone_option_dict: dict = salone_option.model_dump()
@@ -44,6 +44,17 @@ async def get_salone_option(
     return salone_option
 
 
+async def get_salone_option_price(
+    salone_option_id: int,
+    session: AsyncSession = Depends(get_async_session),
+):
+    salone_option = await session.get(SaloneOption, salone_option_id)
+
+    if not salone_option:
+        raise HTTPException(status_code=404, detail="Опция салона не найдена")
+    return salone_option.base_price
+
+
 async def delete_salone_option(
     salone_option_id: int,
     session: AsyncSession = Depends(get_async_session),
@@ -54,4 +65,4 @@ async def delete_salone_option(
         raise HTTPException(status_code=404, detail="Опция салона не найденоа")
     await session.delete(salone_option)
     await session.commit()
-    return {"success": True}
+    return {"success_delete": True}

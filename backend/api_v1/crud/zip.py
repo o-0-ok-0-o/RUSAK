@@ -3,13 +3,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
-from api_v1.schemas.schemas import SaloneMemberBase
+from api_v1.schemas.schemas import ZipBase
 from db.database import get_async_session
 from db.models import Zip
 
 
 async def create_zip(
-    zip1: Annotated[SaloneMemberBase, Depends()],
+    zip1: Annotated[ZipBase, Depends()],
     session: AsyncSession = Depends(get_async_session),
 ):
     zip_dict: dict = zip1.model_dump()
@@ -39,6 +39,17 @@ async def get_zip(
     if not zip1:
         raise HTTPException(status_code=404, detail="Зип не найден")
     return zip1
+
+
+async def get_zip_price(
+    zip_id: int,
+    session: AsyncSession = Depends(get_async_session),
+):
+    zip1 = await session.get(Zip, zip_id)
+
+    if not zip1:
+        raise HTTPException(status_code=404, detail="Зип не найден")
+    return zip1.base_price
 
 
 async def delete_zip(
