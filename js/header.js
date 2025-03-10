@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
       pc: {
         models: {
           btn: document.getElementById("models-pc"),
-          btnMain: document.querySelector(".models-main-pc"),
           menu: document.querySelector(".models-pc"),
         },
         config: {
