@@ -16,6 +16,7 @@ router = APIRouter(
 async def calculate_all_price(
     engine_id: int,
     salone_member_id: int,
+    tire_id: int,
     salone_option_ids: list[int] = Query(..., description="Список ID опций салона"),
     service_ids: list[int] = Query(..., description="Список ID опций сервиса"),
     shassi_ids: list[int] = Query(..., description="Список ID опций шасси"),
@@ -26,6 +27,7 @@ async def calculate_all_price(
         session=session,
         engine_id=engine_id,
         salone_member_id=salone_member_id,
+        tire_id=tire_id,
         salone_option_ids=salone_option_ids,
         service_ids=service_ids,
         shassi_ids=shassi_ids,

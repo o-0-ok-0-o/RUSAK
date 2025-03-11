@@ -1,6 +1,17 @@
+from os import times_result
+
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from db.models import Car, Engine, SaloneMember, SaloneOption, Service, Shassi, Zip
+from db.models import (
+    Car,
+    Engine,
+    SaloneMember,
+    SaloneOption,
+    Service,
+    Shassi,
+    Zip,
+    Tire,
+)
 
 
 async def create_car(
@@ -8,6 +19,7 @@ async def create_car(
     base_price: int,
     engine_id: int,
     salone_member_id: int,
+    tire_id,
     session: AsyncSession,
 ) -> Car:
     car = Car(
@@ -15,6 +27,7 @@ async def create_car(
         base_price=base_price,
         engine_id=engine_id,
         salone_member_id=salone_member_id,
+        tire_id=tire_id,
     )
     session.add(car)
     await session.commit()
@@ -33,6 +46,20 @@ async def create_engine(
     session.add(engine)
     await session.commit()
     return engine
+
+
+async def create_tire(
+    tire_name: str,
+    base_price: int,
+    session: AsyncSession,
+) -> Tire:
+    tire = Tire(
+        tire_name=tire_name,
+        base_price=base_price,
+    )
+    session.add(tire)
+    await session.commit()
+    return tire
 
 
 async def create_salonemember(

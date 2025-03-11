@@ -142,12 +142,30 @@ class ZipRead(ZipCar):
         from_attributes = True
 
 
+# Шина
+class TireBase(BaseModel):
+    tire_name: str
+    base_price: int
+
+
+class TireCar(TireBase):
+    id: int
+
+
+class TireRead(TireCar):
+    car: list["CarBase"] = []
+
+    class Config:
+        from_attributes = True
+
+
 # Машина
 class CarBase(BaseModel):
     car_name: str
     base_price: int
     engine_id: int
     salone_member_id: int
+    tire_id: int
 
 
 class CarRead(CarBase):
@@ -155,6 +173,7 @@ class CarRead(CarBase):
 
     engine: Optional[EngineCar] = None
     salone_member: Optional[SaloneMemberCar] = None
+    tire: Optional[TireCar] = None
 
     salone_option: list[SaloneOptionCar] = []
     shassi: list[ShassiCar] = []
@@ -168,6 +187,7 @@ class CarRead(CarBase):
 class CalculatorBase(BaseModel):
     engine: int
     salone_member: int
+    tire: int
     salone_options: list[int]
     services: list[int]
     shassis: list[int]

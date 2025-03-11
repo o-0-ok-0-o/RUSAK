@@ -8,6 +8,7 @@ from api_v1.routers.salone_option import router as salone_option_router
 from api_v1.routers.service import router as service_router
 from api_v1.routers.shassi import router as shassi_router
 from api_v1.routers.zip import router as zip_router
+from api_v1.routers.tire import router as tire_router
 
 router = APIRouter(
     prefix="/api_v1",
@@ -20,3 +21,4 @@ router.include_router(salone_member_router)
 router.include_router(salone_option_router)
 router.include_router(service_router)
 router.include_router(shassi_router)
+router.include_router(tire_router)

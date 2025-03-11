@@ -34,6 +34,8 @@ class Car(Base):
         ForeignKey("salone_member.id"),
     )
     salone_member: Mapped["SaloneMember"] = relationship(back_populates="cars")
+    tire_id: Mapped[int] = mapped_column(ForeignKey("tire.id"))
+    tire: Mapped["Tire"] = relationship(back_populates="cars")
 
     salone_option: Mapped[list["SaloneOption"]] = relationship(
         secondary="saloneoption_car_association",
@@ -117,3 +119,12 @@ class Zip(Base):
         secondary="zip_car_association",
         back_populates="zip",
     )
+
+
+class Tire(Base):
+    __tablename__ = "tire"
+
+    tire_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
+    cars: Mapped[list["Car"]] = relationship(back_populates="tire")
