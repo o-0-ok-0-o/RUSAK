@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Конфигуратор вездехода</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/test.css">
 </head>
 <body>
-    <img src="../../img/Фон для страницы модели.jpg" alt="" class="fon">
+    <img src="../../img/Фон для страницы модели.jpg" alt="" class="fon" style="position: fixed;">
     <header>
         <div class="nav-menu">
             <a href="../../index.html">
@@ -344,7 +343,6 @@
         </div>
         <div class="close-header"></div>
     
-    <!-- Модальное окно для "Получить прайс" -->
     <div id="price-modal" class="modal">
         <div class="modal-content">
             <span class="close-form" data-modal="price-modal">&times;</span>
@@ -357,7 +355,6 @@
             </form>
         </div>
     </div>
-    <!-- Модальное окно для "Заказать звонок" -->
     <div id="call-modal" class="modal">
         <div class="modal-content">
             <span class="close-form" data-modal="call-modal">&times;</span>
@@ -371,40 +368,35 @@
         </div>
     </div>
     </header>
-    <div class="main-content">
-        <div class="vehicle-config">
-            <div class="vehicle-image-placeholder" id="vehicle-image-container">
-                <h2 class="model-title"><i class="fas fa-car"></i> К Грузовой 4х2,5</h2>
-                <div class="image-slider">
-                    <div class="slider-container">
-                        <img src="../../img/грузовые вездеходы/К-8 Грузовой 5х2,5/RusGr1-03.webp" alt="К-8 Грузовой 4х2,5" class="active-image" id="vehicle-8x8">
-                        <img src="../../img/Фото вездехода 6х6.jpg" alt="К-8 Грузовой 4х2,5 6x6" id="vehicle-6x6">
-                    </div>
-                </div>
+    <div class="main-content" id="main-content">
+        <div class="vehicle-config" id="vehicle-config">
+            <div class="vehicle-image-placeholder" id="vehicle-image">
+                <h2 class="model-title"><i class="fas fa-car"></i> К-8 Грузовой 4х2,5</h2>
+                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="К-8 Грузовой 4х2,5" id="vehicle-img" class="vehicle-img">
             </div>
 
             <!-- Wheelbase Section (New) -->
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-truck"></i> Колёсная база</span>
+                    <span> Колёсная база</span>
                 </div>
                 <div class="config-content">
-                    <div class="wheelbase-options">
+                    <div class="passengers-section">
                         <div class="option-item selected" data-type="radio" data-group="wheelbase">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="wheelbase" value="8x8" data-price="0" checked>
+                                    <input type="radio" name="wheelbase" value="8x8" data-price="0" checked class="wheelbase-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">8×8</div>
                             </div>
-                            <div class="option-price">Базовая</div>
+                            <div class="option-price">Базовая комплектация</div>
                         </div>
 
                         <div class="option-item" data-type="radio" data-group="wheelbase">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="wheelbase" value="6x6" data-price="-150000">
+                                    <input type="radio" name="wheelbase" value="6x6" data-price="0" class="wheelbase-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">6×6</div>
@@ -418,13 +410,13 @@
             <!-- Engine Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-engine"></i> Двигатель</span>
+                    <span> Двигатель</span>
                 </div>
                 <div class="config-content">
                     <div class="engine-options">
                         <div class="engine-option selected" data-id="cummins" data-price="350000">
                             <div class="engine-image-placeholder">
-                                <img src="img/engine-cummins.jpg" alt="Двигатель Cummins">
+                                <img src="../../img/двигатели/2,5л.jpg" alt="Двигатель Cummins">
                             </div>
                             <div class="option-details">
                                 <p>Дизельный Cummins 2,8 л; 110 кВт</p>
@@ -433,7 +425,7 @@
                         </div>
                         <div class="engine-option" data-id="wp3nq160a0" data-price="420000">
                             <div class="engine-image-placeholder">
-                                <img src="img/engine-wp3nq160a0.jpg" alt="Двигатель WP3NQ160A0">
+                                <img src="../../img/двигатели/photo_2025-02-21_22-14-43.jpg" alt="Двигатель WP3NQ160A0">
                             </div>
                             <div class="option-details">
                                 <p>Дизельный двигатель WP3NQ160A0</p>
@@ -447,13 +439,13 @@
             <!-- Tires Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-tire"></i> Шины</span>
+                    <span> Шины</span>
                 </div>
                 <div class="config-content">
                     <div class="tires-options">
                         <div class="tires-option selected" data-id="rusak" data-price="180000">
                             <div class="tires-image-placeholder">
-                                <img src="img/tire-rusak.jpg" alt="Шина RUSAK">
+                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="Шина RUSAK">
                             </div>
                             <div class="option-details">
                                 <p>1650x650 R25 RUSAK</p>
@@ -462,7 +454,7 @@
                         </div>
                         <div class="tires-option" data-id="mamont" data-price="240000">
                             <div class="tires-image-placeholder">
-                                <img src="img/tire-mamont.webp" alt="Шина MAMONT">
+                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="Шина MAMONT">
                             </div>
                             <div class="option-details">
                                 <p>1780x710 R32 MAMONT</p>
@@ -476,52 +468,74 @@
             <!-- Cabin Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span><i class="fas fa-couch"></i> Салон</span>
+                    <span> Салон</span>
                 </div>
                 <div class="config-content">
                     <!-- Passenger Options -->
                     <div class="passengers-section">
                         <h4 class="subsection-title">Пассажирские места</h4>
-                        <div class="option-item" data-type="radio" data-group="passengers" data-wheelbase="8x8 6x6">
+                        <div class="option-item" data-type="radio" data-group="passengers">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="passengers" value="8" data-price="120000">
+                                    <input type="radio" name="passengers" value="8" data-price="80000" class="passenger-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">8 пассажирских мест</div>
                             </div>
-                            <div class="option-price">120 000 ₽</div>
+                            <div class="option-price">80 000 ₽</div>
                         </div>
 
-                        <div class="option-item" data-type="radio" data-group="passengers" data-wheelbase="8x8 6x6">
+                        <div class="option-item" data-type="radio" data-group="passengers">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="passengers" value="12" data-price="150000">
+                                    <input type="radio" name="passengers" value="12" data-price="100000" class="passenger-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">12 пассажирских мест</div>
                             </div>
-                            <div class="option-price">150 000 ₽</div>
+                            <div class="option-price">100 000 ₽</div>
                         </div>
 
-                        <div class="option-item selected" data-type="radio" data-group="passengers" data-wheelbase="8x8">
+                        <div class="option-item selected" data-type="radio" data-group="passengers">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="passengers" value="18" data-price="180000" checked>
+                                    <input type="radio" name="passengers" value="18" data-price="120000" checked class="passenger-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">18 пассажирских мест</div>
                             </div>
-                            <div class="option-price">180 000 ₽</div>
+                            <div class="option-price">120 000 ₽</div>
                         </div>
 
-                        <div class="option-item" data-type="radio" data-group="passengers" data-wheelbase="8x8">
+                        <div class="option-item" data-type="radio" data-group="passengers">
                             <div class="option-content">
                                 <label class="custom-radio">
-                                    <input type="radio" name="passengers" value="24" data-price="210000">
+                                    <input type="radio" name="passengers" value="20" data-price="150000" class="passenger-option">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">20 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">150 000 ₽</div>
+                        </div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="24" data-price="180000" class="passenger-option">
                                     <span class="radiomark"></span>
                                 </label>
                                 <div class="option-label">24 пассажирских места</div>
+                            </div>
+                            <div class="option-price">180 000 ₽</div>
+                        </div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="28" data-price="210000" class="passenger-option">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">28 пассажирских мест</div>
                             </div>
                             <div class="option-price">210 000 ₽</div>
                         </div>
@@ -737,7 +751,7 @@
             <!-- Kits Section -->
             <div class="config-section">
                 <div class="config-title">
-                    <span>ЗИП</span>
+                    <span> ЗИП</span>
                 </div>
                 <div class="config-content">
                     <div class="kit-item" data-kit-id="standard" data-price="120000">
@@ -846,80 +860,88 @@
             </div>
         </div>
 
-        <div class="right-column" id="sticky-column">
-            <div class="specs-sidebar" id="specs-panel">
-                <div class="specs-grey">
-                    <h3 class="specs-header"><i class="fas fa-clipboard-list"></i> ХАРАКТЕРИСТИКИ</h3>
-                    <div class="spec-item">
-                        <span>Габариты Д×Ш×В, мм</span>
-                        <span class="spec-value" data-spec="dimensions" data-value-8x8="7850×2750×3150" data-value-6x6="6500×2750×3150">7850×2750×3150</span>
-                    </div>
-                    <div class="spec-item">
-                        <span>Колесная формула</span>
-                        <span class="spec-value" data-spec="wheelbase" data-value-8x8="8×8, постоянный полный привод, две передние оси управляемые" data-value-6x6="6×6, постоянный полный привод, две передние оси управляемые">8×8, постоянный полный привод, две передние оси управляемые</span>
-                    </div>
-                    <div class="spec-item">
-                        <span>Полная масса, кг</span>
-                        <span class="spec-value" data-spec="fullmass" data-value-8x8="9600" data-value-6x6="8200">9600</span>
-                    </div>
-                    <div class="spec-item">
-                        <span>Снаряженная масса, кг</span>
-                        <span class="spec-value" data-spec="emptymass" data-value-8x8="6600" data-value-6x6="5800">6600 (базовая комплектация)</span>
-                    </div>
-                    <div class="spec-item">
-                        <span>Максимальная грузоподъемность, кг</span>
-                        <span class="spec-value" data-spec="capacity" data-value-8x8="3000" data-value-6x6="2400">3000 (базовая комплектация)</span>
-                    </div>
-                    <div class="spec-item">
-                        <span>Максимальная скорость, км/ч</span>
-                        <div class="nested-specs">
-                            <div class="nested-spec-item">
-                                <span>- на твердом грунте</span>
-                                <span>60</span>
+        <div class="right-column" id="right-column">
+            <div class="right-content">
+                <div class="vehicle-image-container" id="vehicle-image-container">
+                    <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="К-8 Грузовой 4х2,5" id="vehicle-img-fixed" class="vehicle-img-fixed">
+                </div>
+                
+                <div class="specs-sidebar" id="specs-sidebar">
+                    <div class="specs-grey">
+                        <h3 class="specs-header"><i class="fas fa-clipboard-list"></i> ХАРАКТЕРИСТИКИ</h3>
+                        <div class="specs-content">
+                            <div class="spec-item">
+                                <span>Габариты Д×Ш×В, мм</span>
+                                <span>7850×2750×3150</span>
                             </div>
-                            <div class="nested-spec-item">
-                                <span>- на плаву без водомета</span>
-                                <span>2</span>
+                            <div class="spec-item">
+                                <span>Колесная формула</span>
+                                <span id="wheelbase-spec">8×8, постоянный полный привод, две передние оси управляемые</span>
                             </div>
-                            <div class="nested-spec-item">
-                                <span>- на плаву с водометом</span>
-                                <span>6</span>
+                            <div class="spec-item">
+                                <span>Полная масса, кг</span>
+                                <span>9600</span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="spec-item">
-                        <span>Расход топлива, л/100 км</span>
-                        <div class="nested-specs">
-                            <div class="nested-spec-item">
-                                <span>- шоссе</span>
-                                <span>25</span>
+                            <div class="spec-item">
+                                <span>Снаряженная масса, кг</span>
+                                <span>6600 (базовая комплектация)</span>
                             </div>
-                            <div class="nested-spec-item">
-                                <span>- грунтовая дорога</span>
-                                <span>35</span>
+                            <div class="spec-item">
+                                <span>Максимальная грузоподъемность, кг</span>
+                                <span>3000 (базовая комплектация)</span>
                             </div>
-                            <div class="nested-spec-item">
-                                <span>- песок</span>
-                                <span>50-70</span>
+                            <div class="spec-item">
+                                <span>Максимальная скорость, км/ч</span>
+                                <div class="nested-specs">
+                                    <div class="nested-spec-item">
+                                        <span>- на твердом грунте</span>
+                                        <span>60</span>
+                                    </div>
+                                    <div class="nested-spec-item">
+                                        <span>- на плаву без водомета</span>
+                                        <span>2</span>
+                                    </div>
+                                    <div class="nested-spec-item">
+                                        <span>- на плаву с водометом</span>
+                                        <span>6</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <span>Расход топлива, л/100 км</span>
+                                <div class="nested-specs">
+                                    <div class="nested-spec-item">
+                                        <span>- шоссе</span>
+                                        <span>25</span>
+                                    </div>
+                                    <div class="nested-spec-item">
+                                        <span>- грунтовая дорога</span>
+                                        <span>35</span>
+                                    </div>
+                                    <div class="nested-spec-item">
+                                        <span>- песок</span>
+                                        <span>50-70</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="price-panel" id="price-panel">
-                <h3><i class="fas fa-tag"></i> Итоговая цена:</h3>
-                <p class="total-price">1 000 000 ₽</p>
-                <p class="price-note">(Включает базовую комплектацию и выбранные опции)</p>
-                <button class="get-quote-btn">
-                    <i class="fas fa-file-invoice"></i> Получить КП
-                </button>
+                <div class="price-panel" id="price-panel">
+                    <h3><i class="fas fa-tag"></i> Итоговая цена:</h3>
+                    <p class="total-price" id="total-price">1 000 000 ₽</p>
+                    <p class="price-note">(Включает базовую комплектацию и выбранные опции)</p>
+                    <button class="get-quote-btn">
+                        <i class="fas fa-file-invoice"></i> Получить КП
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="../../js/test2.js"></script>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../../js/test.js"></script>
     <script src="../../js/header.js"></script>
 </body>
 </html>
+
