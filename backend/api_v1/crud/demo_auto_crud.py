@@ -21,52 +21,65 @@ from db.models import Car, Service, SaloneOption, Shassi, Zip
 async def create_cars_and_relations(
     session: AsyncSession,
 ):
-    engine_1 = await create_engine("двигатель 1", 1500, session)
-    engine_2 = await create_engine("двигатель 2", 2500, session)
+    engine_1 = await create_engine("Дизельный Cummins 2,8 л; 110 кВт", 350000, session)
+    engine_2 = await create_engine("Дизельный двигатель WP3NQ160A0", 420000, session)
 
-    tire_1 = await create_tire("Колесо р18", 1500, session)
-    tire_2 = await create_tire("Колесо р25", 2500, session)
+    tire_1 = await create_tire("1650x650 R25 RUSAK", 180000, session)
+    tire_2 = await create_tire("1780x710 R32 MAMONT", 240000, session)
 
-    wheelbase_1 = await create_wheelbase("8x8", 1500, session)
-    wheelbase_2 = await create_wheelbase("6x6", 2500, session)
+    wheelbase_1 = await create_wheelbase("8x8", 150000, session)
+    wheelbase_2 = await create_wheelbase("6x6", 250000, session)
 
-    salone_member1 = await create_salonemember("16 мест", 1500, session)
-    salone_member2 = await create_salonemember("20 мест", 2200, session)
+    salone_member_1 = await create_salonemember("18 пассажирских мест", 120000, session)
+    salone_member_2 = await create_salonemember("20 пассажирских мест", 150000, session)
+    salone_member_3 = await create_salonemember("24 пассажирских мест", 180000, session)
+    salone_member_4 = await create_salonemember("28 пассажирских мест", 210000, session)
 
-    salone_option1 = await create_saloneoption("обогрев", 1500, session)
-    salone_option2 = await create_saloneoption("задняя камера", 2200, session)
+    salone_option_1 = await create_saloneoption("Обогрев лобового стекла", 25000, session)
+    salone_option_2 = await create_saloneoption("Задняя камера с монитором 2DIN", 35000, session)
+    salone_option_3 = await create_saloneoption("Автономные отопители салона Планар 4кВт 1 шт, Планар 2кВт 1 шт", 65000, session)
+    salone_option_4 = await create_saloneoption("Радиостанция Hytera HM785 или аналог", 45000, session)
 
-    service1 = await create_service("домкрат", 1500, session)
-    service2 = await create_service("инструменты", 3300, session)
+    shassi_1 = await create_shassi("Централизованная система подкачки колес", 85000, session)
+    shassi_2 = await create_shassi("Предпусковой подогреватель двигателя Бинар, 5кВт", 40000, session)
+    shassi_3 = await create_shassi("Лебедка передняя Runva 20000 (усилие 9,6 т) с кронштейном", 75000, session)
+    shassi_4 = await create_shassi("Кенгурин передний", 45000, session)
+    shassi_5 = await create_shassi("Экспедиционный багажник на крыше с поручнями 2,0×1,7 м", 60000, session)
+    shassi_6 = await create_shassi("Фара светодиодная РИФ 20'' 120 W LED, крепление в бампере, 2 шт.", 30000, session)
+    shassi_7 = await create_shassi("Фара светодиодная РИФ D116 мм 18W c кнопкой включения на панели, 3 шт", 25000, session)
+    shassi_8 = await create_shassi("Колпаки на колеса", 20000, session)
 
-    shassi1 = await create_shassi("подкачка колес", 1500, session)
-    shassi2 = await create_shassi("колпаки на колеса", 3300, session)
+    service_1 = await create_service("Домкрат Hi-Lift 605 X-Treme (или аналогичный)", 15000, session)
+    service_2 = await create_service("Набор инструментов 150 предметов 1/2\" и 3/8\" 06-07-21 (крепление в салоне)", 25000, session)
+    service_3 = await create_service("Преобразователь напряжения 12-220 В, 4000 W", 30000, session)
+    service_4 = await create_service("Шланг для подкачки колес", 5000, session)
+    service_5 = await create_service("Полноразмерное запасное колесо 1650х650-25\", 4НС", 45000, session)
 
-    zip1 = await create_zip("зип стандарт", 1500, session)
-    zip2 = await create_zip("зип дополнительный", 3300, session)
+    zip_1 = await create_zip("Комплект ЗИП стандартный", 120000, session)
+    zip_2 = await create_zip("Комплект ЗИП дополнительный", 180000, session)
 
-    car1 = await create_car(
+    car_1 = await create_car(
         car_name="К-8 Грузовой 4х2,5",
         base_price=1_499_000,
         engine_id=engine_1.id,
-        salone_member_id=salone_member1.id,
+        salone_member_id=salone_member_1.id,
         tire_id=tire_1.id,
         wheelbase_id=wheelbase_1.id,
         session=session,
     )
-    car2 = await create_car(
+    car_2 = await create_car(
         car_name="К-2 Легковой 5х2,5",
         base_price=2_999_000,
         engine_id=engine_2.id,
-        salone_member_id=salone_member2.id,
+        salone_member_id=salone_member_2.id,
         tire_id=tire_2.id,
         wheelbase_id=wheelbase_2.id,
         session=session,
     )
 
-    car1 = await session.scalar(
+    car_1 = await session.scalar(
         select(Car)
-        .where(Car.id == car1.id)
+        .where(Car.id == car_1.id)
         .options(
             selectinload(Car.salone_option),
             selectinload(Car.service),
@@ -74,9 +87,9 @@ async def create_cars_and_relations(
             selectinload(Car.zip),
         ),
     )
-    car2 = await session.scalar(
+    car_2 = await session.scalar(
         select(Car)
-        .where(Car.id == car2.id)
+        .where(Car.id == car_2.id)
         .options(
             selectinload(Car.salone_option),
             selectinload(Car.service),
@@ -85,15 +98,15 @@ async def create_cars_and_relations(
         ),
     )
 
-    car1.salone_option.append(salone_option1)
-    car1.service.append(service1)
-    car1.shassi.append(shassi1)
-    car1.zip.append(zip1)
+    car_1.salone_option.append(salone_option_1)
+    car_1.service.append(service_1)
+    car_1.shassi.append(shassi_1)
+    car_1.zip.append(zip_1)
 
-    car2.salone_option.append(salone_option2)
-    car2.service.append(service2)
-    car2.shassi.append(shassi2)
-    car2.zip.append(zip2)
+    car_2.salone_option.append(salone_option_2)
+    car_2.service.append(service_2)
+    car_2.shassi.append(shassi_2)
+    car_2.zip.append(zip_2)
 
     await session.commit()
 
@@ -162,8 +175,8 @@ async def main():
     # await drop_tables()
     # await create_tables()
     # async with async_session_factory() as session:
-    # await create_cars_and_relations(session)
-    # await demo_m2m(session)
+    #     await create_cars_and_relations(session)
+    #     await demo_m2m(session)
     pass
 
 
