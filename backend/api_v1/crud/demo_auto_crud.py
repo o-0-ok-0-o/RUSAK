@@ -12,9 +12,10 @@ from api_v1.crud.create_objects import (
     create_shassi,
     create_zip,
     create_tire,
+    create_wheelbase,
 )
 from db.database import async_session_factory, drop_tables, create_tables
-from db.models import Car, Service, SaloneOption, Shassi, Zip, Tire
+from db.models import Car, Service, SaloneOption, Shassi, Zip
 
 
 async def create_cars_and_relations(
@@ -25,6 +26,9 @@ async def create_cars_and_relations(
 
     tire_1 = await create_tire("Колесо р18", 1500, session)
     tire_2 = await create_tire("Колесо р25", 2500, session)
+
+    wheelbase_1 = await create_wheelbase("8x8", 1500, session)
+    wheelbase_2 = await create_wheelbase("6x6", 2500, session)
 
     salone_member1 = await create_salonemember("16 мест", 1500, session)
     salone_member2 = await create_salonemember("20 мест", 2200, session)
@@ -47,6 +51,7 @@ async def create_cars_and_relations(
         engine_id=engine_1.id,
         salone_member_id=salone_member1.id,
         tire_id=tire_1.id,
+        wheelbase_id=wheelbase_1.id,
         session=session,
     )
     car2 = await create_car(
@@ -55,6 +60,7 @@ async def create_cars_and_relations(
         engine_id=engine_2.id,
         salone_member_id=salone_member2.id,
         tire_id=tire_2.id,
+        wheelbase_id=wheelbase_2.id,
         session=session,
     )
 
@@ -76,8 +82,6 @@ async def create_cars_and_relations(
             selectinload(Car.service),
             selectinload(Car.shassi),
             selectinload(Car.zip),
-            # joinedload(Car.salone_member), # и без него работает
-            # joinedload(Car.engine),  # и без него работает
         ),
     )
 
@@ -105,6 +109,7 @@ async def get_cars_with_all(session: AsyncSession) -> list[Car]:
             joinedload(Car.salone_member),
             joinedload(Car.engine),
             joinedload(Car.tire),
+            joinedload(Car.wheelbase),
         )
         .order_by(Car.id)
     )
@@ -132,6 +137,11 @@ async def demo_m2m(session: AsyncSession):
             "Шины:",
             car.tire.tire_name,
             car.tire.base_price,
+        )
+        print(
+            "Колесная база:",
+            car.wheelbase.wheelbase_name,
+            car.wheelbase.base_price,
         )
         #
         print("Опции салона:")

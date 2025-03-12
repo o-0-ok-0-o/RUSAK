@@ -8,6 +8,7 @@ from api_v1.crud.salone_option import get_salone_option_price
 from api_v1.crud.service import get_service_price
 from api_v1.crud.shassi import get_shassi_price
 from api_v1.crud.tire import get_tire_price
+from api_v1.crud.wheelbase import get_wheelbase_price
 from api_v1.crud.zip import get_zip_price
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,6 +19,7 @@ async def calculate_price(
     engine_id: int,
     salone_member_id: int,
     tire_id:int,
+    wheelbase_id: int,
     salone_option_ids: list[int],
     service_ids: list[int],
     shassi_ids: list[int],
@@ -28,6 +30,7 @@ async def calculate_price(
         engine_price = await get_engine_price(engine_id, session)
         salone_member_price = await get_salone_member_price(salone_member_id, session)
         tire_price = await get_tire_price(tire_id, session)
+        wheelbase_price = await get_wheelbase_price(wheelbase_id, session)
 
         salone_options_price = await asyncio.gather(
             *(get_salone_option_price(option_id, session) for option_id in salone_option_ids)
@@ -46,6 +49,7 @@ async def calculate_price(
             engine_price
             + salone_member_price
             + tire_price
+            + wheelbase_price
             + sum(salone_options_price)
             + sum(service_price)
             + sum(shassi_price)
@@ -55,6 +59,7 @@ async def calculate_price(
             "engine": engine_price,
             "salone_member": salone_member_price,
             "tire": tire_price,
+            "wheelbase": wheelbase_price,
             "salone_options": salone_options_price,
             "services": service_price,
             "shassis": shassi_price,

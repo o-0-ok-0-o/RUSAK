@@ -159,6 +159,23 @@ class TireRead(TireCar):
         from_attributes = True
 
 
+# Колесная база
+class WheelbaseBase(BaseModel):
+    wheelbase_name: str
+    base_price: int
+
+
+class WheelbaseCar(WheelbaseBase):
+    id: int
+
+
+class WheelbaseRead(WheelbaseCar):
+    car: list["CarBase"] = []
+
+    class Config:
+        from_attributes = True
+
+
 # Машина
 class CarBase(BaseModel):
     car_name: str
@@ -188,6 +205,7 @@ class CalculatorBase(BaseModel):
     engine: int
     salone_member: int
     tire: int
+    wheelbase: int
     salone_options: list[int]
     services: list[int]
     shassis: list[int]

@@ -34,8 +34,12 @@ class Car(Base):
         ForeignKey("salone_member.id"),
     )
     salone_member: Mapped["SaloneMember"] = relationship(back_populates="cars")
+
     tire_id: Mapped[int] = mapped_column(ForeignKey("tire.id"))
     tire: Mapped["Tire"] = relationship(back_populates="cars")
+
+    wheelbase_id: Mapped[int] = mapped_column(ForeignKey("wheelbase.id"))
+    wheelbase: Mapped["Wheelbase"] = relationship(back_populates="cars")
 
     salone_option: Mapped[list["SaloneOption"]] = relationship(
         secondary="saloneoption_car_association",
@@ -128,3 +132,12 @@ class Tire(Base):
     base_price: Mapped[int]
 
     cars: Mapped[list["Car"]] = relationship(back_populates="tire")
+
+
+class Wheelbase(Base):
+    __tablename__ = "wheelbase"
+
+    wheelbase_name: Mapped[str] = mapped_column(unique=True, index=True)
+    base_price: Mapped[int]
+
+    cars: Mapped[list["Car"]] = relationship(back_populates="wheelbase")
