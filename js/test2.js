@@ -96,38 +96,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // Wheelbase selection (new feature)
   document.querySelectorAll(".wheelbase-option").forEach((option) => {
     option.addEventListener("change", () => {
-      // Update vehicle image based on wheelbase selection
+      // Обновить изображение вездехода в зависимости от выбранной колесной базы
       const wheelbaseType = option.value
       const vehicleImg = document.getElementById("vehicle-img")
-      const vehicleImgFixed = document.getElementById("vehicle-img-fixed")
 
       if (wheelbaseType === "8x8") {
         vehicleImg.src = "../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp"
-        vehicleImgFixed.src = "../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp"
         document.getElementById("wheelbase-spec").textContent =
           "8×8, постоянный полный привод, две передние оси управляемые"
 
-        // Show all passenger options
+        // Показать все пассажирские места, кроме 8 и 12
         showAllPassengerOptions()
       } else if (wheelbaseType === "6x6") {
         vehicleImg.src = "../../img/Фото вездехода 6х6.jpg"
-        vehicleImgFixed.src = "../../img/Фото вездехода 6х6.jpg"
         document.getElementById("wheelbase-spec").textContent =
           "6×6, постоянный полный привод, две передние оси управляемые"
 
-        // Limit passenger options for 6x6
+        // Ограничить пассажирские места только 8 и 12
         limitPassengerOptions()
       }
 
-      // Add transition animation
+      // Добавить анимацию перехода
       vehicleImg.classList.add("image-transition")
-      vehicleImgFixed.classList.add("image-transition")
       setTimeout(() => {
         vehicleImg.classList.remove("image-transition")
-        vehicleImgFixed.classList.remove("image-transition")
       }, 500)
 
-      // Update price when wheelbase selection changes
+      // Обновить цену при изменении колесной базы
       calculateTotalPrice()
     })
   })
@@ -136,7 +131,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function showAllPassengerOptions() {
     document.querySelectorAll(".passenger-option").forEach((option) => {
       const item = option.closest(".option-item")
-      item.style.display = "flex"
+      const value = Number.parseInt(option.value)
+
+      // Скрыть опции 8 и 12 мест для 8x8
+      if (value === 8 || value === 12) {
+        item.style.display = "none"
+      } else {
+        item.style.display = "flex"
+      }
+
+      // Если скрытая опция была выбрана, выбрать опцию 18 мест
+      if ((value === 8 || value === 12) && option.checked) {
+        const eighteenPassengerOption = document.querySelector('input[name="passengers"][value="18"]')
+        if (eighteenPassengerOption) {
+          eighteenPassengerOption.checked = true
+          eighteenPassengerOption.dispatchEvent(new Event("change"))
+        }
+      }
     })
   }
 
@@ -146,13 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const item = option.closest(".option-item")
       const value = Number.parseInt(option.value)
 
-      // Only show 8 and 12 passenger options for 6x6
+      // Только показать опции 8 и 12 мест для 6x6
       if (value === 8 || value === 12) {
         item.style.display = "flex"
       } else {
         item.style.display = "none"
 
-        // If a hidden option was selected, select the 8-passenger option
+        // Если скрытая опция была выбрана, выбрать опцию 8 мест
         if (option.checked) {
           const eightPassengerOption = document.querySelector('input[name="passengers"][value="8"]')
           if (eightPassengerOption) {
@@ -197,33 +208,39 @@ document.addEventListener("DOMContentLoaded", () => {
   function calculateTotalPrice() {
     let totalPrice = basePrice
 
-    // Add engine price
+    // Добавить цену колесной базы (может быть отрицательной для 6x6)
+    const selectedWheelbase = document.querySelector('input[name="wheelbase"]:checked')
+    if (selectedWheelbase) {
+      totalPrice += Number.parseInt(selectedWheelbase.getAttribute("data-price"))
+    }
+
+    // Добавить цену двигателя
     const selectedEngine = document.querySelector(".engine-option.selected")
     if (selectedEngine) {
       totalPrice += Number.parseInt(selectedEngine.getAttribute("data-price"))
     }
 
-    // Add tires price
+    // Добавить цену шин
     const selectedTires = document.querySelector(".tires-option.selected")
     if (selectedTires) {
       totalPrice += Number.parseInt(selectedTires.getAttribute("data-price"))
     }
 
-    // Add passenger option price
+    // Добавить цену пассажирских мест
     const selectedPassenger = document.querySelector('input[name="passengers"]:checked')
     if (selectedPassenger) {
       totalPrice += Number.parseInt(selectedPassenger.getAttribute("data-price"))
     }
 
-    // Add all checked checkboxes prices
+    // Добавить цены всех отмеченных чекбоксов
     document.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox) => {
       totalPrice += Number.parseInt(checkbox.getAttribute("data-price"))
     })
 
-    // Format the price with spaces as thousand separators
+    // Форматировать цену с пробелами в качестве разделителей тысяч
     const formattedPrice = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 
-    // Update the price display
+    // Обновить отображение цены
     document.getElementById("total-price").textContent = formattedPrice + " ₽"
   }
 
@@ -235,8 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleScroll() {
     const scrollY = window.scrollY
-    const vehicleImageContainer = document.getElementById("vehicle-image-container")
-    const vehicleImgFixed = document.getElementById("vehicle-img-fixed")
+    const vehicleImage = document.getElementById("vehicle-image")
     const specsSidebar = document.getElementById("specs-sidebar")
 
     // Define the scroll threshold where the layout changes
@@ -245,19 +261,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (scrollY > scrollThreshold) {
       // Add scrolled class to body for CSS transitions
       document.body.classList.add("scrolled")
-
-      // Ensure the fixed image has the same source as the main image
-      const mainImg = document.getElementById("vehicle-img")
-      if (mainImg && vehicleImgFixed) {
-        vehicleImgFixed.src = mainImg.src
-      }
     } else {
       // Remove scrolled class when scrolling back up
       document.body.classList.remove("scrolled")
     }
   }
 
-  // Initialize the first section as open
+  // Инициализировать первую секцию как открытую
   const firstSection = document.querySelector(".config-section")
   if (firstSection) {
     const firstTitle = firstSection.querySelector(".config-title")
@@ -267,5 +277,8 @@ document.addEventListener("DOMContentLoaded", () => {
       firstContent.classList.add("active")
     }
   }
+
+  // Скрыть опции 8 и 12 мест при загрузке страницы, так как по умолчанию выбран 8x8
+  showAllPassengerOptions()
 })
 
