@@ -38,6 +38,7 @@ class OrderSchema(OrderBaseSchema):
 class EngineBase(BaseModel):
     engine_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class EngineCar(EngineBase):
@@ -57,6 +58,7 @@ class EngineRead(EngineCar):
 class SaloneMemberBase(BaseModel):
     salone_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class SaloneMemberCar(SaloneMemberBase):
@@ -76,6 +78,7 @@ class SaloneMemberRead(SaloneMemberCar):
 class SaloneOptionBase(BaseModel):
     salone_option_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class SaloneOptionCar(SaloneOptionBase):
@@ -84,8 +87,6 @@ class SaloneOptionCar(SaloneOptionBase):
 
 class SaloneOptionRead(SaloneOptionCar):
     car: list["CarBase"] = []
-    # если указать другую модель car, то будет ошибка, но якобы должны подгружаться помимо машин,
-    # где используется двигатель еще и комплектующие машин, что по идеи тут не нужно
 
     class Config:
         from_attributes = True
@@ -95,6 +96,7 @@ class SaloneOptionRead(SaloneOptionCar):
 class ShassiBase(BaseModel):
     shassi_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class ShassiCar(ShassiBase):
@@ -112,6 +114,7 @@ class ShassiRead(ShassiCar):
 class ServiceBase(BaseModel):
     service_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class ServiceCar(ServiceBase):
@@ -129,6 +132,7 @@ class ServiceRead(ServiceCar):
 class ZipBase(BaseModel):
     zip_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class ZipCar(ZipBase):
@@ -146,6 +150,7 @@ class ZipRead(ZipCar):
 class TireBase(BaseModel):
     tire_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class TireCar(TireBase):
@@ -163,6 +168,7 @@ class TireRead(TireCar):
 class WheelbaseBase(BaseModel):
     wheelbase_name: str
     base_price: int
+    photo_url: str | None = None
 
 
 class WheelbaseCar(WheelbaseBase):
@@ -183,6 +189,7 @@ class CarBase(BaseModel):
     engine_id: int
     salone_member_id: int
     tire_id: int
+    photo_url: str | None = None
 
 
 class CarRead(CarBase):

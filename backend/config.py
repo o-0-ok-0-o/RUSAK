@@ -1,14 +1,16 @@
 from pathlib import Path
-
+import os
 from pydantic_settings import BaseSettings
 
 
 BASE_DIR = Path(__file__).parent
 
+UPLOAD_DIR = "test_photo"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class Settings(BaseSettings):
 
-    db_url: str = f"sqlite+aiosqlite:///{BASE_DIR}/save_bd_backup1.db"  # test.db
+    db_url: str = f"sqlite+aiosqlite:///{BASE_DIR}/save_bd_backup1.db"
 
     # class Settings(BaseSettings):
     # DB_HOST: str
