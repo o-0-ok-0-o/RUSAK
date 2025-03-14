@@ -71,7 +71,7 @@ header {
 .right-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 70px);
 }
 
 .vehicle-image-placeholder {
@@ -131,11 +131,11 @@ header {
 .price-panel {
   background: linear-gradient(135deg, #ff9248 0%, #ff7b1c 100%);
   color: white;
-  padding: 25px;
+  padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
-  margin-top: auto;
+  margin-top: 10px;
 }
 
 .price-panel h3,
