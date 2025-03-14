@@ -24,6 +24,7 @@ class Car(Base):
 
     car_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     engine_id: Mapped[int] = mapped_column(
         ForeignKey("engine.id"),
@@ -64,6 +65,7 @@ class Engine(Base):
 
     engine_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     cars: Mapped[list["Car"]] = relationship(back_populates="engine")
 
@@ -73,6 +75,7 @@ class SaloneMember(Base):
 
     salone_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     cars: Mapped[list["Car"]] = relationship(back_populates="salone_member")
 
@@ -82,6 +85,7 @@ class SaloneOption(Base):
 
     salone_option_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     car: Mapped[list["Car"]] = relationship(
         secondary="saloneoption_car_association",
@@ -94,6 +98,7 @@ class Shassi(Base):
 
     shassi_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     car: Mapped[list["Car"]] = relationship(
         secondary="shassi_car_association",
@@ -106,6 +111,7 @@ class Service(Base):
 
     service_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     car: Mapped[list["Car"]] = relationship(
         secondary="service_car_association",
@@ -118,6 +124,7 @@ class Zip(Base):
 
     zip_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     car: Mapped[list["Car"]] = relationship(
         secondary="zip_car_association",
@@ -130,6 +137,7 @@ class Tire(Base):
 
     tire_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     cars: Mapped[list["Car"]] = relationship(back_populates="tire")
 
@@ -139,5 +147,6 @@ class Wheelbase(Base):
 
     wheelbase_name: Mapped[str] = mapped_column(unique=True, index=True)
     base_price: Mapped[int]
+    photo_url: Mapped[str]
 
     cars: Mapped[list["Car"]] = relationship(back_populates="wheelbase")
