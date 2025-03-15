@@ -1,27 +1,30 @@
 from typing import Annotated
-from fastapi import HTTPException, Query, APIRouter, Depends
-from sqlmodel import select, Session
+from fastapi import HTTPException, Query, APIRouter, Depends, Form
+from sqlmodel import select
+
+from api_v1.crud.order import create_order_crud
 from api_v1.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.database import get_async_session
 from db.models import Order
 
-
 router = APIRouter(
-    prefix="/orders",
+    prefix="/send-order-email",
     tags=["Заказы"],
 )
 
-
-@router.post("")
+@router.post("/submit")
 async def create_order(
     order: Annotated[OrderCreateSchema, Depends()],
     session: AsyncSession = Depends(get_async_session),
+    # customer:str = Form(),
+    # phone: str = Form(),
+    # email: str = Form(),
 ):
-    order_dict = order.model_dump()
-    order_model = Order(**order_dict)
-    session.add(order_model)
-    await session.commit()
+    await create_order_crud(
+        order=order,
+        session=session,
+    )
     return order
 
 
