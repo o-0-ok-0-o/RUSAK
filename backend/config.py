@@ -4,8 +4,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).parent
 
-UPLOAD_DIR = "test_photo"
+UPLOAD_DIR = BASE_DIR / "test_photo"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
+
 
 class Settings(BaseSettings):
     EMAIL_ADDRESS: str
@@ -25,7 +26,7 @@ class Settings(BaseSettings):
     #     # postgresql+asyncpg://postgres:postgres@localhost:5432/sa
     #     return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=f"{BASE_DIR}/.env")
 
 
 settings = Settings()

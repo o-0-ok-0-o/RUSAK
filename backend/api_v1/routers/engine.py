@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import HTTPException, Query, APIRouter, Depends
+from fastapi import HTTPException, Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from api_v1.crud.engine import (
     create_engine,
@@ -21,9 +21,10 @@ router = APIRouter(
 @router.post("", response_model=EngineBase)
 async def create_engine_api(
     engine: Annotated[EngineBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    engine = await create_engine(engine, session)
+    engine = await create_engine(engine, file, session)
     return engine
 
 

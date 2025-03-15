@@ -1,8 +1,10 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
+
+from api_v1.crud.photo import create_photo
 from api_v1.schemas.schemas import EngineBase
 from db.database import get_async_session
 from db.models import Engine
@@ -10,9 +12,11 @@ from db.models import Engine
 
 async def create_engine(
     engine: Annotated[EngineBase, Depends()],
+    photo: File,
     session: AsyncSession = Depends(get_async_session),
 ):
     engine_dict: dict = engine.model_dump()
+    engine_dict["photo_url"] = await create_photo(photo)
     engine_model = Engine(**engine_dict)
     session.add(engine_model)
     await session.commit()

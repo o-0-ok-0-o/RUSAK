@@ -34,11 +34,13 @@ class OrderSchema(OrderBaseSchema):
         from_attributes = True
 
 
+from fastapi import File
+
+
 # Двигатель
 class EngineBase(BaseModel):
     engine_name: str
     base_price: int
-    photo_url: str | None = None
 
 
 class EngineCar(EngineBase):
@@ -58,7 +60,7 @@ class EngineRead(EngineCar):
 class SaloneMemberBase(BaseModel):
     salone_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class SaloneMemberCar(SaloneMemberBase):
@@ -78,7 +80,7 @@ class SaloneMemberRead(SaloneMemberCar):
 class SaloneOptionBase(BaseModel):
     salone_option_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class SaloneOptionCar(SaloneOptionBase):
@@ -96,7 +98,7 @@ class SaloneOptionRead(SaloneOptionCar):
 class ShassiBase(BaseModel):
     shassi_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class ShassiCar(ShassiBase):
@@ -114,7 +116,7 @@ class ShassiRead(ShassiCar):
 class ServiceBase(BaseModel):
     service_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class ServiceCar(ServiceBase):
@@ -132,7 +134,7 @@ class ServiceRead(ServiceCar):
 class ZipBase(BaseModel):
     zip_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class ZipCar(ZipBase):
@@ -150,7 +152,7 @@ class ZipRead(ZipCar):
 class TireBase(BaseModel):
     tire_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class TireCar(TireBase):
@@ -168,7 +170,7 @@ class TireRead(TireCar):
 class WheelbaseBase(BaseModel):
     wheelbase_name: str
     base_price: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class WheelbaseCar(WheelbaseBase):
@@ -189,7 +191,7 @@ class CarBase(BaseModel):
     engine_id: int
     salone_member_id: int
     tire_id: int
-    photo_url: str | None = None
+    photo_url: Optional[str]
 
 
 class CarRead(CarBase):
