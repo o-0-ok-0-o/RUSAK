@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
-from pydantic_settings import BaseSettings
-
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).parent
 
@@ -9,6 +8,8 @@ UPLOAD_DIR = "test_photo"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class Settings(BaseSettings):
+    EMAIL_ADDRESS: str
+    EMAIL_PASSWORD: str
 
     db_url: str = f"sqlite+aiosqlite:///{BASE_DIR}/save_bd_backup1.db"
 
@@ -24,7 +25,7 @@ class Settings(BaseSettings):
     #     # postgresql+asyncpg://postgres:postgres@localhost:5432/sa
     #     return f"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
-    # model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()
