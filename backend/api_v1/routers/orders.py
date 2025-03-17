@@ -3,7 +3,7 @@ from fastapi import HTTPException, Query, APIRouter, Depends, Form
 from sqlmodel import select
 
 from api_v1.crud.order import create_order_crud
-from api_v1.schemas.schemas import OrderBaseSchema, OrderSchema, OrderCreateSchema
+from api_v1.schemas.order import OrderBaseSchema, OrderCreateSchema, OrderSchema
 from sqlalchemy.ext.asyncio import AsyncSession
 from db.database import get_async_session
 from db.models import Order
@@ -12,6 +12,7 @@ router = APIRouter(
     prefix="/send-order-email",
     tags=["Заказы"],
 )
+
 
 @router.post("/submit")
 async def create_order(

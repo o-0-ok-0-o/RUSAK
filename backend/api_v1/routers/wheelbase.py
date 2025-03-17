@@ -8,7 +8,7 @@ from api_v1.crud.wheelbase import (
     delete_wheelbase,
     get_wheelbase_price,
 )
-from api_v1.schemas.schemas import WheelbaseBase
+from api_v1.schemas.wheelbase import WheelbaseBase
 from db.database import get_async_session
 
 

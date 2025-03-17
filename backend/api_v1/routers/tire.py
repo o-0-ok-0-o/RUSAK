@@ -8,7 +8,7 @@ from api_v1.crud.tire import (
     delete_tire,
     get_tire_price,
 )
-from api_v1.schemas.schemas import TireBase
+from api_v1.schemas.tire import TireBase
 from db.database import get_async_session
 
 

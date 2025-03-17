@@ -3,7 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
-from api_v1.schemas.schemas import SaloneMemberBase, ServiceBase
+from api_v1.schemas.service import ServiceBase
+from api_v1.schemas.salone_member import SaloneMemberBase
 from db.database import get_async_session
 from db.models import Service
 

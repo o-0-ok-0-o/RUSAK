@@ -9,7 +9,7 @@ from api_v1.crud.service import (
     delete_service,
     get_service_price,
 )
-from api_v1.schemas.schemas import ServiceBase
+from api_v1.schemas.service import ServiceBase
 from db.database import get_async_session
 
 router = APIRouter(

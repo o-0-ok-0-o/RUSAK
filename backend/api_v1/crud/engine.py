@@ -5,7 +5,7 @@ from sqlalchemy.orm import selectinload
 from typing import Annotated
 
 from utils.photo import create_photo
-from api_v1.schemas.schemas import EngineBase
+from api_v1.schemas.engine import EngineBase
 from db.database import get_async_session
 from db.models import Engine
 

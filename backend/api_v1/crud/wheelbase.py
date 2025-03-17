@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
-from api_v1.schemas.schemas import WheelbaseBase
+from api_v1.schemas.wheelbase import WheelbaseBase
 from db.database import get_async_session
 from db.models import Wheelbase
 

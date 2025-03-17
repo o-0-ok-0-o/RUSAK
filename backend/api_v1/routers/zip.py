@@ -9,7 +9,7 @@ from api_v1.crud.zip import (
     delete_zip,
     get_zip_price,
 )
-from api_v1.schemas.schemas import ZipBase
+from api_v1.schemas.zip import ZipBase
 from db.database import get_async_session
 
 router = APIRouter(

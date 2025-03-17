@@ -8,9 +8,8 @@ from api_v1.crud.engine import (
     delete_engine,
     get_engine_price,
 )
-from api_v1.schemas.schemas import EngineBase, EngineCar
+from api_v1.schemas.engine import EngineBase, EngineCar
 from db.database import get_async_session
-from utils.photo import create_photo
 
 router = APIRouter(
     prefix="/engines",
@@ -32,7 +31,6 @@ async def create_engine_api(
     return engine
 
 
-#
 @router.get("/{engine_id}", response_model=EngineCar)
 async def get_engine_api(
     engine_id: int,

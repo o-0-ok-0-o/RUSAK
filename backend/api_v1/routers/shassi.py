@@ -9,7 +9,7 @@ from api_v1.crud.shassi import (
     delete_shassi,
     get_shassi_price,
 )
-from api_v1.schemas.schemas import ShassiBase
+from api_v1.schemas.shassi import ShassiBase
 from db.database import get_async_session
 
 router = APIRouter(

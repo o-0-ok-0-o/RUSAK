@@ -9,7 +9,7 @@ from api_v1.crud.salone_member import (
     get_salone_member_price,
     delete_salone_member,
 )
-from api_v1.schemas.schemas import SaloneMemberBase
+from api_v1.schemas.salone_member import SaloneMemberBase
 from db.database import get_async_session
 
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from api_v1.schemas.schemas import CalculatorBase
+from api_v1.schemas.car import CalculatorBase
 
 from db.database import get_async_session
 from utils.calculate_price import calculate_price

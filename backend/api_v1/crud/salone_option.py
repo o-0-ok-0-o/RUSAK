@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
-from api_v1.schemas.schemas import SaloneOptionBase
+from api_v1.schemas.salone_option import SaloneOptionBase
 from db.database import get_async_session
 from db.models import SaloneOption
 
