@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).parent
 
-UPLOAD_DIR = BASE_DIR / "test_photo"
+UPLOAD_DIR = "test_photo"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
