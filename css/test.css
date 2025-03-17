@@ -71,14 +71,14 @@ header {
 .right-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 70px);
 }
 
 .vehicle-image-placeholder {
   position: relative;
   width: 100%;
   background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
-  margin: 20px 0;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,33 +88,12 @@ header {
   font-size: 18px;
   transition: all 0.5s ease;
   overflow: hidden;
+  z-index: 10;
 }
 
 .vehicle-img {
   max-width: 100%;
   height: auto;
-  transition: all 0.5s ease;
-}
-
-/* Стили для фиксированного изображения */
-.vehicle-image-container {
-  width: 100%;
-  height: 0;
-  background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.5s ease;
-}
-
-.vehicle-img-fixed {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
   transition: all 0.5s ease;
 }
 
@@ -132,25 +111,27 @@ header {
 }
 
 .specs-grey {
-  background-color: rgb(174, 174, 174);
+  background-color: #ff7b1c;
   padding: 10px;
   border-radius: 24px;
   border: 2px solid black;
   transition: all 0.5s ease;
   height: 100%;
   overflow: hidden;
+  
 }
 
 .specs-content {
   height: calc(100% - 50px);
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 10px;
 }
 
 .price-panel {
   background: linear-gradient(135deg, #ff9248 0%, #ff7b1c 100%);
   color: white;
-  padding: 25px;
+  padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
@@ -164,7 +145,7 @@ header {
 
 .config-section {
   background-color: white;
-  margin: 15px 0 0 0;
+  margin: 15px 0;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -397,7 +378,7 @@ header {
 
 .spec-item {
   padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -602,17 +583,93 @@ header {
   width: 33.33%;
 }
 
-.scrolled .vehicle-image-container {
+.scrolled .vehicle-image-placeholder {
+  position: fixed;
+  top: 20px;
+  right: 48px;
+  width: calc(33.33% - 32px);
   height: 30vh;
-  opacity: 1;
-  transition: all 0.5s ease;
+  margin: 0;
+  z-index: 10;
 }
 
 .scrolled .specs-sidebar {
-  height: 45vh;
+  margin-top: 32vh;
+  height: calc(50vh - 20px);
+  overflow-y: auto;
 }
 
 .scrolled .price-panel {
   margin-top: 10px;
 }
 
+.scrolled .model-title{
+  display: none;
+}
+
+
+
+
+.player-container {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  background-color: black;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+video {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.3s;
+}
+
+.controls:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.controls-left, .controls-right {
+  display: flex;
+  align-items: center;
+}
+
+.controls button, .controls input {
+  background: none;
+  border: none;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px 12px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.progress-bar {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.time {
+  font-size: 14px;
+}
