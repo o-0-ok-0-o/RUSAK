@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -7,17 +7,27 @@ from api_v1.schemas.service import ServiceBase
 from api_v1.schemas.salone_member import SaloneMemberBase
 from db.database import get_async_session
 from db.models import Service
+from utils.photo import create_photo
 
 
 async def create_service(
-    service: Annotated[ServiceBase, Depends()],
+    service: ServiceBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    service_dict: dict = service.model_dump()
-    service_model = Service(**service_dict)
-    session.add(service_model)
-    await session.commit()
-    return service
+    try:
+        file_path = await create_photo(photo)
+        service_dict: dict = service.model_dump()
+        service_dict["photo_url"] = file_path
+        service_model = Service(**service_dict)
+
+        session.add(service_model)
+        await session.commit()
+        await session.refresh(service_model)
+        return service_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
 
 
 async def get_all_services(

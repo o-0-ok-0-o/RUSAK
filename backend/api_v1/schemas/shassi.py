@@ -9,11 +9,11 @@ if TYPE_CHECKING:
 class ShassiBase(BaseModel):
     shassi_name: str
     base_price: int
-    photo_url: Optional[str]
 
 
 class ShassiCar(ShassiBase):
     id: int
+    photo_url: str
 
 
 class ShassiRead(ShassiCar):

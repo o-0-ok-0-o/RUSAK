@@ -9,11 +9,11 @@ if TYPE_CHECKING:
 class TireBase(BaseModel):
     tire_name: str
     base_price: int
-    photo_url: Optional[str]
 
 
 class TireCar(TireBase):
     id: int
+    photo_url: str
 
 
 class TireRead(TireCar):

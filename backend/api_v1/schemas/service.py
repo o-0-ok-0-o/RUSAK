@@ -9,11 +9,11 @@ if TYPE_CHECKING:
 class ServiceBase(BaseModel):
     service_name: str
     base_price: int
-    photo_url: Optional[str]
 
 
 class ServiceCar(ServiceBase):
     id: int
+    photo_url: str
 
 
 class ServiceRead(ServiceCar):

@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import HTTPException, Query, APIRouter, Depends
+from fastapi import HTTPException, Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from api_v1.crud.tire import (
     create_tire,
@@ -8,7 +8,7 @@ from api_v1.crud.tire import (
     delete_tire,
     get_tire_price,
 )
-from api_v1.schemas.tire import TireBase
+from api_v1.schemas.tire import TireBase, TireCar
 from db.database import get_async_session
 
 
@@ -18,12 +18,17 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=TireBase)
+@router.post("", response_model=TireCar)
 async def create_tire_api(
     tire: Annotated[TireBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    tire = await create_tire(tire, session)
+    tire = await create_tire(
+        tire=tire,
+        photo=file,
+        session=session,
+    )
     return tire
 
 

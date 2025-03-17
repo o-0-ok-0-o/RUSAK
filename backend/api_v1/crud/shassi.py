@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,17 +6,27 @@ from typing import Annotated
 from api_v1.schemas.shassi import ShassiBase
 from db.database import get_async_session
 from db.models import Shassi
+from utils.photo import create_photo
 
 
 async def create_shassi(
-    shassi: Annotated[ShassiBase, Depends()],
+    shassi: ShassiBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    shassi_dict: dict = shassi.model_dump()
-    shassi_model = Shassi(**shassi_dict)
-    session.add(shassi_model)
-    await session.commit()
-    return shassi
+    try:
+        file_path = await create_photo(photo)
+        shassi_dict: dict = shassi.model_dump()
+        shassi_dict["photo_url"] = file_path
+        shassi_model = Shassi(**shassi_dict)
+
+        session.add(shassi_model)
+        await session.commit()
+        await session.refresh(shassi_model)
+        return shassi_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
 
 
 async def get_all_shassis(

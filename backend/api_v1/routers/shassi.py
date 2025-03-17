@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import Query, APIRouter, Depends
+from fastapi import Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api_v1.crud.shassi import (
@@ -9,7 +9,7 @@ from api_v1.crud.shassi import (
     delete_shassi,
     get_shassi_price,
 )
-from api_v1.schemas.shassi import ShassiBase
+from api_v1.schemas.shassi import ShassiBase, ShassiCar
 from db.database import get_async_session
 
 router = APIRouter(
@@ -18,12 +18,17 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=ShassiBase)
+@router.post("", response_model=ShassiCar)
 async def create_shassi_api(
     shassi: Annotated[ShassiBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    shassi = await create_shassi(shassi, session)
+    shassi = await create_shassi(
+        shassi=shassi,
+        photo=file,
+        session=session,
+    )
     return shassi
 
 

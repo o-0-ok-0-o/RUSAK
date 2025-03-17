@@ -7,9 +7,9 @@ from utils.send_order_email import submit
 async def create_order_crud(
     order: OrderCreateSchema,
     session: AsyncSession,
-    # customer:str = Form(),
-    # phone: str = Form(),
-    # email: str = Form(),
+    # customer:str,
+    # phone: str,
+    # email: str,
 ):
     order_dict = order.model_dump()
     await submit(

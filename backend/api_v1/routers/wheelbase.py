@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import HTTPException, Query, APIRouter, Depends
+from fastapi import HTTPException, Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from api_v1.crud.wheelbase import (
     create_wheelbase,
@@ -8,22 +8,27 @@ from api_v1.crud.wheelbase import (
     delete_wheelbase,
     get_wheelbase_price,
 )
-from api_v1.schemas.wheelbase import WheelbaseBase
+from api_v1.schemas.wheelbase import WheelbaseBase, WheelbaseCar
 from db.database import get_async_session
 
 
 router = APIRouter(
-    prefix="/wheelbases",
-    tags=["Двигатели"],
+    prefix="/wheelbase",
+    tags=["Колесная база"],
 )
 
 
-@router.post("", response_model=WheelbaseBase)
+@router.post("", response_model=WheelbaseCar)
 async def create_wheelbase_api(
     wheelbase: Annotated[WheelbaseBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    wheelbase = await create_wheelbase(wheelbase, session)
+    wheelbase = await create_wheelbase(
+        wheelbase=wheelbase,
+        photo=file,
+        session=session,
+    )
     return wheelbase
 
 

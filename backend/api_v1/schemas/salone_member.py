@@ -9,11 +9,11 @@ if TYPE_CHECKING:
 class SaloneMemberBase(BaseModel):
     salone_name: str
     base_price: int
-    photo_url: Optional[str]
 
 
 class SaloneMemberCar(SaloneMemberBase):
     id: int
+    photo_url: str
 
 
 class SaloneMemberRead(SaloneMemberCar):

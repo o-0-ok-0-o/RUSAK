@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import HTTPException, Query, APIRouter, Depends
+from fastapi import HTTPException, Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api_v1.crud.salone_member import (
@@ -9,7 +9,7 @@ from api_v1.crud.salone_member import (
     get_salone_member_price,
     delete_salone_member,
 )
-from api_v1.schemas.salone_member import SaloneMemberBase
+from api_v1.schemas.salone_member import SaloneMemberBase, SaloneMemberCar
 from db.database import get_async_session
 
 
@@ -19,12 +19,17 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=SaloneMemberBase)
+@router.post("", response_model=SaloneMemberCar)
 async def create_salone_member_api(
     salone_member: Annotated[SaloneMemberBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    salone_member = await create_salone_member(salone_member, session)
+    salone_member = await create_salone_member(
+        salone_member=salone_member,
+        photo=file,
+        session=session,
+    )
     return salone_member
 
 

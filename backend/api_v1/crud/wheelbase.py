@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,17 +6,28 @@ from typing import Annotated
 from api_v1.schemas.wheelbase import WheelbaseBase
 from db.database import get_async_session
 from db.models import Wheelbase
+from utils.photo import create_photo
 
 
 async def create_wheelbase(
-    wheelbase: Annotated[WheelbaseBase, Depends()],
+    wheelbase: WheelbaseBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    wheelbase_dict: dict = wheelbase.model_dump()
-    wheelbase_model = Wheelbase(**wheelbase_dict)
-    session.add(wheelbase_model)
-    await session.commit()
-    return wheelbase
+    try:
+        file_path = await create_photo(photo)
+        wheelbase_dict: dict = wheelbase.model_dump()
+        wheelbase_dict["photo_url"] = file_path
+        wheelbase_model = Wheelbase(**wheelbase_dict)
+
+        session.add(wheelbase_model)
+        await session.commit()
+        await session.refresh(wheelbase_model)
+        return wheelbase_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
+
 
 
 async def get_all_wheelbases(

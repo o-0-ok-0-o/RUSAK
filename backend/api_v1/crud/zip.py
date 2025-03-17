@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,23 +6,34 @@ from typing import Annotated
 from api_v1.schemas.zip import ZipBase
 from db.database import get_async_session
 from db.models import Zip
+from utils.photo import create_photo
 
 
 async def create_zip(
-    zip1: Annotated[ZipBase, Depends()],
+    zip1: ZipBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    zip_dict: dict = zip1.model_dump()
-    zip_model = Zip(**zip_dict)
-    session.add(zip_model)
-    await session.commit()
-    return zip1
+    try:
+        file_path = await create_photo(photo)
+        zip_dict: dict = zip1.model_dump()
+        zip_dict['photo_url'] = file_path
+        zip_model = Zip(**zip_dict)
+
+        session.add(zip_model)
+        await session.commit()
+        await session.refresh(zip_model)
+        return zip_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
+
 
 
 async def get_all_zips(
     session: AsyncSession,
     offset: int = 0,
-    limit: Annotated[int, Query(le=100)] = 100,
+    limit:int = 100,
 ):
     zip1 = await session.execute(
         select(Zip).options(selectinload(Zip.car)).offset(offset).limit(limit),

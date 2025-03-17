@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import Query, APIRouter, Depends
+from fastapi import Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api_v1.crud.service import (
@@ -9,7 +9,7 @@ from api_v1.crud.service import (
     delete_service,
     get_service_price,
 )
-from api_v1.schemas.service import ServiceBase
+from api_v1.schemas.service import ServiceBase, ServiceCar
 from db.database import get_async_session
 
 router = APIRouter(
@@ -18,12 +18,17 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=ServiceBase)
+@router.post("", response_model=ServiceCar)
 async def create_service_api(
     service: Annotated[ServiceBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    service = await create_service(service, session)
+    service = await create_service(
+        service=service,
+        photo=file,
+        session=session,
+    )
     return service
 
 

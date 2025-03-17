@@ -9,11 +9,11 @@ if TYPE_CHECKING:
 class WheelbaseBase(BaseModel):
     wheelbase_name: str
     base_price: int
-    photo_url: Optional[str]
 
 
 class WheelbaseCar(WheelbaseBase):
     id: int
+    photo_url: str
 
 
 class WheelbaseRead(WheelbaseCar):

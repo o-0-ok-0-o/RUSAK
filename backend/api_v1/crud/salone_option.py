@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,17 +6,27 @@ from typing import Annotated
 from api_v1.schemas.salone_option import SaloneOptionBase
 from db.database import get_async_session
 from db.models import SaloneOption
+from utils.photo import create_photo
 
 
 async def create_salone_option(
-    salone_option: Annotated[SaloneOptionBase, Depends()],
+    salone_option: SaloneOptionBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    salone_option_dict: dict = salone_option.model_dump()
-    salone_option_model = SaloneOption(**salone_option_dict)
-    session.add(salone_option_model)
-    await session.commit()
-    return salone_option
+    try:
+        file_path = await create_photo(photo)
+        salone_option_dict: dict = salone_option.model_dump()
+        salone_option_dict["photo_url"] = file_path
+        salone_option_model = SaloneOption(**salone_option_dict)
+
+        session.add(salone_option_model)
+        await session.commit()
+        await session.refresh(salone_option_model)
+        return salone_option_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
 
 
 async def get_all_salone_options(

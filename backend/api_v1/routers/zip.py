@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import Query, APIRouter, Depends
+from fastapi import Query, APIRouter, Depends, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api_v1.crud.zip import (
@@ -9,7 +9,7 @@ from api_v1.crud.zip import (
     delete_zip,
     get_zip_price,
 )
-from api_v1.schemas.zip import ZipBase
+from api_v1.schemas.zip import ZipBase, ZipCar
 from db.database import get_async_session
 
 router = APIRouter(
@@ -18,12 +18,17 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=ZipBase)
+@router.post("", response_model=ZipCar)
 async def create_zip_api(
     zip1: Annotated[ZipBase, Depends()],
+    file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    zip1 = await create_zip(zip1, session)
+    zip1 = await create_zip(
+        zip1=zip1,
+        photo=file,
+        session=session,
+    )
     return zip1
 
 

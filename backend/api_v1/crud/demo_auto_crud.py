@@ -3,7 +3,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload, joinedload
 
-from api_v1.crud.create_objects import (
+from api_v1.crud.create_objects_demo import (
     create_car,
     create_engine,
     create_salonemember,

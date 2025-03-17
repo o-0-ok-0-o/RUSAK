@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,17 +6,23 @@ from typing import Annotated
 from api_v1.schemas.salone_member import SaloneMemberBase
 from db.database import get_async_session
 from db.models import SaloneMember
+from utils.photo import create_photo
 
 
 async def create_salone_member(
-    salone_member: Annotated[SaloneMemberBase, Depends()],
+    salone_member: SaloneMemberBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
+    file_path = await create_photo(photo)
     salone_member_dict: dict = salone_member.model_dump()
+    salone_member_dict["photo_url"] = file_path
     salone_member_model = SaloneMember(**salone_member_dict)
+
     session.add(salone_member_model)
     await session.commit()
-    return salone_member
+    await session.refresh(salone_member_model)
+    return salone_member_model
 
 
 async def get_all_salone_members(

@@ -1,4 +1,4 @@
-from fastapi import Depends, Query, HTTPException
+from fastapi import Depends, Query, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -6,17 +6,27 @@ from typing import Annotated
 from api_v1.schemas.tire import TireBase
 from db.database import get_async_session
 from db.models import Tire
+from utils.photo import create_photo
 
 
 async def create_tire(
-    tire: Annotated[TireBase, Depends()],
+    tire: TireBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    tire_dict: dict = tire.model_dump()
-    tire_model = Tire(**tire_dict)
-    session.add(tire_model)
-    await session.commit()
-    return tire
+    try:
+        file_path = await create_photo(photo)
+        tire_dict: dict = tire.model_dump()
+        tire_dict["photo_url"] = file_path
+        tire_model = Tire(**tire_dict)
+
+        session.add(tire_model)
+        await session.commit()
+        await session.refresh(tire_model)
+        return tire_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
 
 
 async def get_all_tires(

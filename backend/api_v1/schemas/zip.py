@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 class ZipBase(BaseModel):
     zip_name: str
     base_price: int
-    photo_url: Optional[str]
+    photo_url: str
 
 
 class ZipCar(ZipBase):
