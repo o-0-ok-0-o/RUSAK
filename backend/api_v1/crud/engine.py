@@ -1,26 +1,33 @@
-from fastapi import Depends, Query, HTTPException, UploadFile, File
+from fastapi import Depends, HTTPException, File, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 from typing import Annotated
 
-from api_v1.crud.photo import create_photo
+from utils.photo import create_photo
 from api_v1.schemas.schemas import EngineBase
 from db.database import get_async_session
 from db.models import Engine
 
 
 async def create_engine(
-    engine: Annotated[EngineBase, Depends()],
-    photo: File,
+    engine: EngineBase,
+    photo: UploadFile,
     session: AsyncSession = Depends(get_async_session),
 ):
-    engine_dict: dict = engine.model_dump()
-    engine_dict["photo_url"] = await create_photo(photo)
-    engine_model = Engine(**engine_dict)
-    session.add(engine_model)
-    await session.commit()
-    return engine
+    try:
+        file_path = await create_photo(photo)
+        engine_dict: dict = engine.model_dump()
+        engine_dict["photo_url"] = file_path
+        engine_model = Engine(**engine_dict)
+
+        session.add(engine_model)
+        await session.commit()
+        await session.refresh(engine_model)
+        return engine_model
+    except Exception as e:
+        await session.rollback()  # Откатываем транзакцию в случае ошибки
+        raise e  # Повторно поднимаем исключение для обработки на уровне выше
 
 
 async def get_all_engines(
@@ -67,7 +74,7 @@ async def delete_engine(
     engine = await session.get(Engine, engine_id)
 
     if engine is None:
-        raise HTTPException(status_code=404, detail="Пользователь не найден")
+        raise HTTPException(status_code=404, detail="Двигатель не найден")
     await session.delete(engine)
     await session.commit()
     return {"success_delete": True}

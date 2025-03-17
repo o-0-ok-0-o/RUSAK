@@ -45,6 +45,7 @@ class EngineBase(BaseModel):
 
 class EngineCar(EngineBase):
     id: int
+    photo_url: str
 
 
 class EngineRead(EngineCar):

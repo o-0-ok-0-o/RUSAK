@@ -40,7 +40,7 @@ async def get_wheelbase(
     wheelbase = await session.get(Wheelbase, wheelbase_id)
 
     if not wheelbase:
-        raise HTTPException(status_code=404, detail="Двигатель не найден")
+        raise HTTPException(status_code=404, detail="Колесная база не найден")
     return wheelbase
 
 

@@ -8,9 +8,9 @@ from api_v1.crud.engine import (
     delete_engine,
     get_engine_price,
 )
-from api_v1.schemas.schemas import EngineBase
+from api_v1.schemas.schemas import EngineBase, EngineCar
 from db.database import get_async_session
-
+from utils.photo import create_photo
 
 router = APIRouter(
     prefix="/engines",
@@ -18,18 +18,22 @@ router = APIRouter(
 )
 
 
-@router.post("", response_model=EngineBase)
+@router.post("", response_model=EngineCar)
 async def create_engine_api(
     engine: Annotated[EngineBase, Depends()],
     file: UploadFile = File(),
     session: AsyncSession = Depends(get_async_session),
 ):
-    engine = await create_engine(engine, file, session)
+    engine = await create_engine(
+        engine=engine,
+        photo=file,
+        session=session,
+    )
     return engine
 
 
 #
-@router.get("/{engine_id}", response_model=EngineBase)
+@router.get("/{engine_id}", response_model=EngineCar)
 async def get_engine_api(
     engine_id: int,
     session: AsyncSession = Depends(get_async_session),
@@ -39,7 +43,7 @@ async def get_engine_api(
 
 
 #
-@router.get("", response_model=list[EngineBase])
+@router.get("", response_model=list[EngineCar])
 async def get_all_engine_api(
     offset: int = 0,
     limit: Annotated[int, Query(le=100)] = 100,
