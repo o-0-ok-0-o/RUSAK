@@ -118,7 +118,6 @@ header {
   transition: all 0.5s ease;
   height: 100%;
   overflow: hidden;
-  
 }
 
 .specs-content {
@@ -266,6 +265,36 @@ header {
   border-color: #ddd;
 }
 
+.option-help {
+  margin-left: 10px;
+  padding: 0px 7px;
+  border-radius: 50%;
+  background-color: rgb(210, 210, 210, .7);
+  position: relative;
+  color: #374151;
+}
+
+.option-hint {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 250px;
+  bottom: 30px;
+  left: -110px;
+  padding: 5px;
+  border: 2px solid #374151;
+  border-radius: 10px;
+  color: #374151;
+  box-shadow: 1px 1px 10px #a5a5a5;
+  opacity: 0;
+  z-index: -1;
+  transition: .3s;
+}
+
+.option-help:hover .option-hint{
+  opacity: 1;
+  z-index: 1;
+}
+
 .option-item.selected {
   background: linear-gradient(to right, #e8f5e9, #f1f8e9);
   border-color: #4caf50;
@@ -282,6 +311,7 @@ header {
   flex-grow: 1;
   margin-right: 15px;
   color: #374151;
+  display: flex;
 }
 
 .option-price {
@@ -603,12 +633,9 @@ header {
   margin-top: 10px;
 }
 
-.scrolled .model-title{
+.scrolled .model-title {
   display: none;
 }
-
-
-
 
 .player-container {
   position: relative;
@@ -638,12 +665,14 @@ video {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.controls-left, .controls-right {
+.controls-left,
+.controls-right {
   display: flex;
   align-items: center;
 }
 
-.controls button, .controls input {
+.controls button,
+.controls input {
   background: none;
   border: none;
   color: white;
