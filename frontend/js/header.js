@@ -1,106 +1,233 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const headerBtn = document.querySelector('.header-btn');
-    const sideMenu = document.getElementById('sidebar');
-    const modelsBtn = document.getElementById('models');
-    const modelsBtnMain = document.querySelector('.models-main-phone');
-    const modelsMenu = document.querySelector('.models');
-    const configBtn = document.getElementById('config');
-    const configBtnMain = document.querySelector('.config-main-phone');
-    const configMenu = document.querySelector('.config');
-    const rusakBtn = document.getElementById('rusak');
-    const rusakMenu = document.querySelector('.rusak');
+document.addEventListener("DOMContentLoaded", () => {
+  // Cache DOM elements using a structured object
+  const elements = {
+    // Header elements
+    sliderClose: document.querySelector(".close-header"),
+    header: document.querySelector(".nav-menu"),
+    headerBtn: document.querySelector(".header-btn"),
+    sideMenu: document.getElementById("sidebar"),
 
-    const modelsCloseBtn = document.getElementById('close-model');
-    const configCloseBtn = document.getElementById('close-config')
-    const rusakCloseBtn = document.getElementById('close-rusak');
+    // Mobile menu elements
+    mobile: {
+      models: {
+        btn: document.getElementById("models"),
+        btnMain: document.querySelector(".models-main-phone"),
+        menu: document.querySelector(".models"),
+        closeBtn: document.getElementById("close-model"),
+      },
+      config: {
+        btn: document.getElementById("config"),
+        btnMain: document.querySelector(".config-main-phone"),
+        menu: document.querySelector(".config"),
+        closeBtn: document.getElementById("close-config"),
+      },
+      rusak: {
+        btn: document.getElementById("rusak"),
+        menu: document.querySelector(".rusak"),
+        closeBtn: document.getElementById("close-rusak"),
+      },
+    },
 
-    const modelsBtnPc = document.getElementById('models-pc');
-    const modelsBtnPcMain = document.querySelector('.models-main-pc')
-    const modelsMenuPc = document.querySelector('.models-pc');
-    const configBtnPc = document.getElementById('config-pc');
-    const configBtnPcMain = document.querySelector('.config-main-pc');
-    const configMenuPc = document.querySelector('.config-pc');
-    const rusakBtnPc = document.getElementById('rusak-pc');
-    const rusakMenuPc = document.querySelector('.rusak-pc');
+    // PC menu elements
+    pc: {
+      models: {
+        btn: document.getElementById("models-pc"),
+        menu: document.querySelector(".models-pc"),
+      },
+      config: {
+        btn: document.getElementById("config-pc"),
+        btnMain: document.querySelector(".config-main-pc"),
+        menu: document.querySelector(".config-pc"),
+      },
+      rusak: {
+        btn: document.getElementById("rusak-pc"),
+        menu: document.querySelector(".rusak-pc"),
+      },
+      news: {
+        btn: document.getElementById("news-pc"),
+        menu: document.querySelector(".news-pc"),
+      },
+      video: {
+        btn: document.getElementById("video-pc"),
+        menu: document.querySelector(".video-pc"),
+      },
+      review: {
+        btn: document.getElementById("review-pc"),
+        menu: document.querySelector(".review-pc"),
+      },
+    },
 
-    headerBtn.addEventListener('click', function() {
-        this.classList.toggle('open');
-        sideMenu.classList.toggle('open');
-        modelsMenu.classList.remove('open');
-        rusakMenu.classList.remove('open');
-        configMenu.classList.remove('open');
-    });
+    // Modals
+    modals: {
+      price: document.getElementById("price-modal"),
+      call: document.getElementById("call-modal"),
+    },
+    modalTriggers: {
+      price: document.getElementById("price"),
+      call: document.getElementById("call"),
+    },
+    closeFormBtns: document.querySelectorAll(".close-form"),
+  };
 
-    modelsBtn.addEventListener('click', function() {
-        modelsMenu.classList.toggle('open');
-    });
-    modelsBtnMain.addEventListener('click', function() {
-        modelsMenu.classList.toggle('open');
-    });
-    configBtn.addEventListener('click', function(){
-        configMenu.classList.toggle('open');
-    });
-    configBtnMain.addEventListener('click', function(){
-        configMenu.classList.toggle('open');
-    });
-    rusakBtn.addEventListener('click', function() {
-        rusakMenu.classList.toggle('open');
-    });
+  // Helper functions
+  function toggleClass(element, className) {
+    if (element) element.classList.toggle(className);
+  }
 
-    modelsCloseBtn.addEventListener('click', function() {
-        modelsMenu.classList.remove('open');
-    });
-    configCloseBtn.addEventListener('click', function() {
-        configMenu.classList.remove('open');
-    });
-    rusakCloseBtn.addEventListener('click', function() {
-        rusakMenu.classList.remove('open');
-    });
+  function removeClass(element, className) {
+    if (element) element.classList.remove(className);
+  }
 
+  function closeAllPcMenus() {
+    // Get all PC menu items
+    const pcMenuItems = Object.values(elements.pc);
 
-    modelsBtnPc.addEventListener('click', function() {
-        modelsMenuPc.classList.toggle('open');
-        modelsBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        configBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
-    });
-    modelsBtnPcMain.addEventListener('click', function() {
-        modelsMenuPc.classList.toggle('open');
-        modelsBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        configBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
-    });
-    configBtnPc.addEventListener('click', function () {
-        configMenuPc.classList.toggle('open');
-        configBtnPc.classList.toggle('open');
-        modelsMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        modelsBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
-    });
-    configBtnPcMain.addEventListener('click', function () {
-        configMenuPc.classList.toggle('open');
-        configBtnPc.classList.toggle('open');
-        modelsMenuPc.classList.remove('open');
-        rusakMenuPc.classList.remove('open');
-
-        modelsBtnPc.classList.remove('open');
-        rusakBtnPc.classList.remove('open');
+    // Remove 'open' class from all PC menu buttons and menus
+    pcMenuItems.forEach((item) => {
+      removeClass(item.btn, "open");
+      removeClass(item.menu, "open");
     });
 
-    rusakBtnPc.addEventListener('click', function() {
-        rusakMenuPc.classList.toggle('open');
-        rusakBtnPc.classList.toggle('open');
-        configMenuPc.classList.remove('open');
-        modelsMenuPc.classList.remove('open');
-        configBtnPc.classList.remove('open');
-        modelsBtnPc.classList.remove('open'); 
+    // Reset header state
+    removeClass(elements.sliderClose, "open");
+    removeClass(elements.header, "open");
+  }
+
+  function toggleHeaderColor() {
+    toggleClass(elements.sliderClose, "open");
+    toggleClass(elements.header, "open");
+  }
+
+  function handlePcMenuClick(menuItem) {
+    if (menuItem.btn.classList.contains("open")) {
+      closeAllPcMenus();
+    } else {
+      closeAllPcMenus();
+      toggleClass(menuItem.btn, "open");
+      toggleClass(menuItem.menu, "open");
+      toggleHeaderColor();
+    }
+  }
+
+  function showModal(modal) {
+    if (modal) modal.style.display = "flex";
+  }
+
+  function hideModal(modal) {
+    if (modal) modal.style.display = "none";
+  }
+
+  // Event listeners
+  // Close button
+  elements.sliderClose.addEventListener("click", closeAllPcMenus);
+
+  // Header button
+  elements.headerBtn.addEventListener("click", function () {
+    const { header, sideMenu } = elements;
+    const mobileMenus = Object.values(elements.mobile).map((item) => item.menu);
+
+    if (
+      header.classList.contains("open") &&
+      sideMenu.classList.contains("open")
+    ) {
+      removeClass(header, "open");
+    } else if (
+      !header.classList.contains("open") &&
+      !sideMenu.classList.contains("open")
+    ) {
+      toggleClass(header, "open");
+    }
+
+    toggleClass(this, "open");
+    toggleClass(sideMenu, "open");
+
+    // Close all mobile menus
+    mobileMenus.forEach((menu) => removeClass(menu, "open"));
+  });
+
+  // Mobile menu event listeners
+  // Setup mobile menu interactions
+  Object.entries(elements.mobile).forEach(([key, item]) => {
+    // Main button click
+    if (item.btn) {
+      item.btn.addEventListener("click", () => toggleClass(item.menu, "open"));
+    }
+
+    // Main phone button click
+    if (item.btnMain) {
+      item.btnMain.addEventListener("click", () => {
+        toggleClass(item.menu, "open");
+        toggleClass(elements.header, "open");
+      });
+    }
+
+    // Close button click
+    if (item.closeBtn) {
+      item.closeBtn.addEventListener("click", () => {
+        removeClass(item.menu, "open");
+
+        // Toggle header if sidebar is not open (only for models and config)
+        if (
+          (key === "models" || key === "config") &&
+          !elements.sideMenu.classList.contains("open")
+        ) {
+          toggleClass(elements.header, "open");
+        }
+      });
+    }
+  });
+
+  // PC menu event listeners
+  // Setup PC menu interactions
+  Object.values(elements.pc).forEach((item) => {
+    // Main button click
+    if (item.btn) {
+      item.btn.addEventListener("click", () => handlePcMenuClick(item));
+    }
+
+    // Main PC button click (if exists)
+    if (item.btnMain) {
+      item.btnMain.addEventListener("click", () => handlePcMenuClick(item));
+    }
+  });
+
+  // Modal event listeners
+  // Open modals
+  Object.entries(elements.modalTriggers).forEach(([key, trigger]) => {
+    if (trigger) {
+      trigger.addEventListener("click", () => showModal(elements.modals[key]));
+    }
+  });
+
+  // Close modals with close buttons
+  elements.closeFormBtns.forEach((closeBtn) => {
+    closeBtn.addEventListener("click", function () {
+      const modalId = this.getAttribute("data-modal");
+      hideModal(document.getElementById(modalId));
     });
+  });
+
+  // Close modals on outside click
+  window.addEventListener("click", (event) => {
+    Object.values(elements.modals).forEach((modal) => {
+      if (modal && event.target === modal) {
+        hideModal(modal);
+      }
+    });
+  });
+});
+
+// Получаем все видео элементы на странице
+const videos = document.querySelectorAll('.video-player');
+
+// Добавляем обработчик для каждого видео
+videos.forEach(video => {
+  video.addEventListener('play', () => {
+    // При воспроизведении одного видео ставим все остальные на паузу
+    videos.forEach(otherVideo => {
+      if (otherVideo !== video) {
+        otherVideo.pause();
+      }
+    });
+  });
 });

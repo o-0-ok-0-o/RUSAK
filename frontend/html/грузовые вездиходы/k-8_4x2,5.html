@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rusak</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/models.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/models.css">
 </head>
-
 <body>
+    <img src="../../img/Фон для страницы модели.jpg" alt="" class="fon">
     <header>
         <div class="nav-menu">
-            <div class="nav-menu-logo">
-                <a href="/index.html"><img src="/img/logo.png" alt="logo"></a>
-            </div>
+            <a href="../../index.html">
+                <div class="nav-menu-logo">
+                    <img src="../../img/logo.png" alt="logo">
+                </div>
+            </a>
             <div class="nav-menu-phone">
                 <button type="button" class="header-btn" id="menu-toggle">
                         <span class="icon-bar"></span>
@@ -22,151 +25,181 @@
                 </button>
                 <div class="sidebar" id="sidebar">
                     <ul>
-                        <li><a href="#" id="models">Модели <div class="arrow"></div></a></li>
-                        <li><a href="#" id="config">Конфигуратор <div class="arrow"></div></a></li>
-                        <li><a href="#" id="shopper">Покупателям <div class="arrow"></div></a></li>
-                        <li><a href="#" id="owner">Владельцам <div class="arrow"></div></a></li>
-                        <li><a href="#" id="rusak">Контакты <div class="arrow"></div></a></li>
+                        <li><a href="#" id="models">Вездеходы <div class="arrow"></div></a></li>
+                        <li><a href="#" id="config">Шины <div class="arrow"></div></a></li>
+                        <li><a href="#" >Обзоры</a></li>  
+                        <li><a href="#" >Новости</a></li>
+                        <li><a href="#" >Видео</a></li>                      
                     </ul>
-                    <div class="models">
-                        <div class="close">
-                            <a href="#" id="close-model"><div class="arrow-left"></div><p>Модели</p></a>
-                        </div>
-                        <div class="cargos models-item">
-                            <h2>Грузовые</h2>
-                            <div class="cargo cars">
-                                <div class="cargo-model car">
-                                    <a href="/html/грузовые вездиходы/k-8_4x2,5.html">
-                                        <img src="/img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.png" alt="cargo">
-                                        <p>К-8 Грузовой 4х2,5</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="cargo-model car">
-                                    <a href="/html/грузовые вездиходы/k-8_5x2,5.html">
-                                        <img src="/img/грузовые вездеходы/К-8 Грузовой 5х2,5/RusGr1 03.png" alt="cargo">
-                                        <p>К-8 Грузовой 5х2,5</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cargo-passengers models-item">
-                            <h2>Грузопассажирские</h2>
-                            <div class="cargo-passenger cars">
-                                <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_8.1_2,5x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП 8.1 2,5х2,5/untitled.477.png" alt="cargo">
-                                        <p>К-8 ГП 8.1 2,5х2,5</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_8.2.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП 8.2/Rus gp3-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>К-8 ГП 8.2</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_2.1_4x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП2.1 4х2,5/Rusak grt3-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>К-8 ГП2.1 4х2,5</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_2.2_4x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП2.2 4х2,5/Rus gra3-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>К-8 ГП2.2 4х2,5</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="passengers models-item">
-                            <h2>Пассажирские</h2>
-                            <div class="passenger cars">
-                                <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_20.1.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Travel 20.1/Rus11-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>K-8 Travel 20.1</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_24.2.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Travel 24.2/RusPv4A01-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>K-8 Travel 24.2</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_20.2.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>K-8 Автобус 20.2</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                                <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_24.1.html">
-                                        <img src="/img/пассажирские вездеходы/К-8 Автобус 24.1/untitled_236-no-bg-preview (carve.photos).png" alt="cargo">
-                                        <p>К-8 Автобус 24.1</p>
-                                        <p class="price">от 1 000 000 ₽</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <a href="#" id="rusak">О НАС <div class="arrow"></div></a>
+                    <div class="btn">
+                        <a href="#" style="background-color: green;">получить прайс</a>
+                        <a href="#" style="background-color: orangered;">заказать звонок</a>
                     </div>
-                    <div class="config">
-                        <div class="close">
-                            <a href="#" id="close-config"><div class="arrow-left"></div><p>Конфигуратор</p></a>
-                        </div>
-                    </div>
-                    <div class="shopper">
-                        <div class="close">
-                            <a href="#" id="close-shopper"><div class="arrow-left"></div><p>Покупателям</p></a>
-                        </div>
-                    </div>
-                    <div class="owner">
-                        <div class="close">
-                            <a href="#" id="close-owner"><div class="arrow-left"></div><p>Владельцам</p></a>
-                        </div>
-                    </div>
+                    
+
                     <div class="rusak">
                         <div class="close">
-                            <a href="#" id="close-rusak"><div class="arrow-left"></div><p>Контакты</p></a>
+                            <a href="#" id="close-rusak"><div class="arrow-left"></div><p>О нас</p></a>
                         </div>
-                        <p>Контактные данные:</p>
-                        <p>г. Богородск, Дуденевское шоссе, 11</p>
-                        <p>+7 930 716 1652</p>
-                        <a href="#">sale@atvrusak.ru</a>
+                        <div class="contacts">
+                            <div class="contacts-info">
+                                <p>Контактные данные:</p>
+                                <div class="icon"><img src="/img/ico/house-chimney.png" alt=""><p>г. Богородск, Дуденевское шоссе, 11</p></div>
+                                <div class="icon"><img src="/img/ico/phone-call (1).png" alt=""><a href="tel:88004446052">8 (800) 444-60-52 (звонок бесплатный)</a></div>
+                                <div class="icon"><img src="/img/ico/phone-call (1).png" alt=""><a href="tel:+79307161652">+7 930 716 1652</a></div>
+                                <div class="icon"><img src="/img/ico/envelope.png" alt=""><a href="mailto:sale@atvrusak.ru">sale@atvrusak.ru</a></div>
+                            </div>
+                        </div>
+                        <div class="maps">
+                            <div class="map1 map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d35968.54009882517!2d52.320592!3d55.705785!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415ff58f51cad85d%3A0xf7510d8acd0b1403!2z0YPQuy4g0KHQv9Cw0YDRgtCw0LrQvtCy0YHQutCw0Y8sIDgsINCd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90YssINCg0LXRgdC_LiDQotCw0YLQsNGA0YHRgtCw0L0sINCg0L7RgdGB0LjRjywgNDIzODAx!5e0!3m2!1sru!2sus!4v1739869440625!5m2!1sru!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="map2 map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8895.093614400454!2d43.523742!3d56.126437!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414e3402424e3c09%3A0x5e8702c5c4cff0ca!2z0JTRg9C00LXQvdC10LLRgdC60L7QtSDRiC4sIDExLCDQkdC-0LPQvtGA0L7QtNGB0LosINCd0LjQttC10LPQvtGA0L7QtNGB0LrQsNGPINC-0LHQuy4sIDYwNzYwMA!5e0!3m2!1sru!2sru!4v1739878375781!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="models">
+                <div class="close">
+                    <a href="#" id="close-model"><div class="arrow-left"></div><p>Вездеходы</p></a>
+                </div>
+                <div class="cargos models-item">
+                    <h2>Грузовые</h2>
+                    <div class="cargo cars">
+                        <div class="cargo-model car">
+                            <a href="#">
+                                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="cargo">
+                                <p>К-8 Грузовой 4х2,5</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="cargo-model car">
+                            <a href="#">
+                                <img src="../../img/грузовые вездеходы/К-8 Грузовой 5х2,5/RusGr1-03.webp" alt="cargo">
+                                <p>К-8 Грузовой 5х2,5</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="cargo-passengers models-item">
+                    <h2>Грузопассажирские</h2>
+                    <div class="cargo-passenger cars">
+                        <div class="cargo-passenger-model car">
+                            <a href="#">
+                                <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП 8.1 2,5х2,5/untitled.477.webp" alt="cargo">
+                                <p>К-8 ГП 8.1 2,5х2,5</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="cargo-passenger-model car">
+                            <a href="#">
+                                <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП 8.2/Rus-gp3-no-bg-preview-_carve.photos_.webp" alt="cargo">
+                                <p>К-8 ГП 8.2</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="cargo-passenger-model car">
+                            <a href="#">
+                                <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП2.1 4х2,5/Rusak-grt3-no-bg-preview-_carve.photos_.webp" alt="cargo">
+                                <p>К-8 ГП2.1 4х2,5</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="cargo-passenger-model car">
+                            <a href="#">
+                                <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП2.2 4х2,5/Rus-gra3-no-bg-preview-_carve.photos_.webp" alt="cargo">
+                                <p>К-8 ГП2.2 4х2,5</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="passengers models-item">
+                    <h2>Пассажирские</h2>
+                    <div class="passenger cars">
+                        <div class="passenger-model car">
+                            <a href="#">
+                                <img src="../../img/пассажирские вездеходы/K-8 Travel 20.1/Rus11-no-bg-preview (carve.photos).png" alt="cargo">
+                                <p>K-8 Travel 20.1</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="passenger-model car">
+                            <a href="#">
+                                <img src="../../img/пассажирские вездеходы/K-8 Travel 24.2/RusPv4A01-no-bg-preview (carve.photos).png" alt="cargo">
+                                <p>K-8 Travel 24.2</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="passenger-model car">
+                            <a href="#">
+                                <img src="../../img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png" alt="cargo">
+                                <p>K-8 Автобус 20.2</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                        <div class="passenger-model car">
+                            <a href="#">
+                                <img src="../../img/пассажирские вездеходы/К-8 Автобус 24.1/untitled_236-no-bg-preview-_carve.photos_.webp" alt="cargo">
+                                <p>К-8 Автобус 24.1</p>
+                                <p class="price">от 1 000 000 ₽</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="config">
+                <div class="close">
+                    <a href="#" id="close-config"><div class="arrow-left"></div><p>Шины</p></a>
+                </div>
+            </div>
             <div class="nav-menu-pc">
-                <ul>
-                    <li><a href="#" id="models-pc">Модели</a></li>
-                    <li><a href="#" id="config-pc">Конфигуратор</a></li>
-                    <li><a href="#" id="shopper-pc">Покупателям</a></li>
-                    <li><a href="#" id="owner-pc">Владельцам</a></li>
-                    <li><a href="#" id="rusak-pc">Контакты</a></li>
-                </ul>
+                <div class="nav-menu-pc-list">
+                    <div class="nav-menu-pc-list-1">
+                        <ul>
+                            <li><a href="#" id="models-pc" class="nav-menu-pc-a">Вездеходы<div class="trapezoid"><img src="../../img/Group 62.png" alt=""></div></a></li>
+                            <li><a href="#" id="config-pc" class="nav-menu-pc-a">Шины<div class="trapezoid"> <img src="../../img/ico/tire_7434015.svg" alt=""></div></a></li>
+                            <li><a href="#" id="review-pc" class="nav-menu-pc-a">Обзоры<div class="trapezoid"> <img src="../../img/ico/camcorder_7931161.svg" alt=""></div></a></li>
+                            <li><a href="#" id="news-pc" class="nav-menu-pc-a">Новости<div class="trapezoid"> <img src="../../img/ico/file-invoice_7928355.svg" alt=""></div></a></li>
+                            <li><a href="#" id="video-pc" class="nav-menu-pc-a">Видео<div class="trapezoid"> <img src="../../img/ico/screen-play_17818983.svg" alt=""></div></a></li>
+                            <li><a href="#" id="rusak-pc" class="nav-menu-pc-a">О НАС<div class="trapezoid"> <img src="../../img/ico/terms-info_17818048.svg" alt=""></div></a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-menu-pc-list-2">
+                        <ul>
+                            <li><button id="price">
+                                <span class="text">Получить прайс</span>
+                            </button></li>
+                            <li><button id="call" class="callback-button">
+                                <img src="../../img/ico/phone-call_5068731.svg" alt="" class="icon">
+                                <span class="text">Заказать звонок</span>
+                            </button></li>
+                        </ul>
+                        <ul class="number">
+                            <li><a href="tel:89307161652">8 (930) 716 16-52</a></li>
+                            <li><a href="tel:88004446052">8 (800) 444 60-52</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="models-pc">
                     <div class="models-pc-2">
                         <div class="cargos models-item">
                             <h2>Грузовые</h2>
                             <div class="cargo cars">
                                 <div class="cargo-model car">
-                                    <a href="/html/грузовые вездиходы/k-8_4x2,5.html">
-                                        <img src="/img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.png" alt="cargo">
+                                    <a href="html/грузовые вездиходы/k-8_4x2,5.html">
+                                        <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="cargo">
                                         <p>К-8 Грузовой 4х2,5</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="cargo-model car">
-                                    <a href="/html/грузовые вездиходы/k-8_5x2,5.html">
-                                        <img src="/img/грузовые вездеходы/К-8 Грузовой 5х2,5/RusGr1 03.png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/грузовые вездеходы/К-8 Грузовой 5х2,5/RusGr1-03.webp" alt="cargo">
                                         <p>К-8 Грузовой 5х2,5</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
@@ -177,29 +210,29 @@
                             <h2>Грузопассажирские</h2>
                             <div class="cargo-passenger cars">
                                 <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_8.1_2,5x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП 8.1 2,5х2,5/untitled.477.png" alt="cargo">
+                                    <a href="html/грузо-пассажирские вездеходы/k-8_gp_8.1_2,5x2,5.html">
+                                        <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП 8.1 2,5х2,5/untitled.477.webp" alt="cargo">
                                         <p>К-8 ГП 8.1 2,5х2,5</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_8.2.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП 8.2/Rus gp3-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП 8.2/Rus-gp3-no-bg-preview-_carve.photos_.webp" alt="cargo">
                                         <p>К-8 ГП 8.2</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_2.1_4x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП2.1 4х2,5/Rusak grt3-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП2.1 4х2,5/Rusak-grt3-no-bg-preview-_carve.photos_.webp" alt="cargo">
                                         <p>К-8 ГП2.1 4х2,5</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="cargo-passenger-model car">
-                                    <a href="/html/грузо-пассажирские вездеходы/k-8_gp_2.2_4x2,5.html">
-                                        <img src="/img/грузо-пассажирские вездеходы/К-8 ГП2.2 4х2,5/Rus gra3-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/грузо-пассажирские вездеходы/К-8 ГП2.2 4х2,5/Rus-gra3-no-bg-preview-_carve.photos_.webp" alt="cargo">
                                         <p>К-8 ГП2.2 4х2,5</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
@@ -210,29 +243,29 @@
                             <h2>Пассажирские</h2>
                             <div class="passenger cars">
                                 <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_20.1.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Travel 20.1/Rus11-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/пассажирские вездеходы/K-8 Travel 20.1/Rus11-no-bg-preview (carve.photos).png" alt="cargo">
                                         <p>K-8 Travel 20.1</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_24.2.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Travel 24.2/RusPv4A01-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/пассажирские вездеходы/K-8 Travel 24.2/RusPv4A01-no-bg-preview (carve.photos).png" alt="cargo">
                                         <p>K-8 Travel 24.2</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_20.2.html">
-                                        <img src="/img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/пассажирские вездеходы/K-8 Автобус 20.2/Rusak 03-no-bg-preview (carve.photos).png" alt="cargo">
                                         <p>K-8 Автобус 20.2</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
                                 </div>
                                 <div class="passenger-model car">
-                                    <a href="/html/пассажирские вездеходы/k-8_24.1.html">
-                                        <img src="/img/пассажирские вездеходы/К-8 Автобус 24.1/untitled_236-no-bg-preview (carve.photos).png" alt="cargo">
+                                    <a href="#">
+                                        <img src="../../img/пассажирские вездеходы/К-8 Автобус 24.1/untitled_236-no-bg-preview-_carve.photos_.webp" alt="cargo">
                                         <p>К-8 Автобус 24.1</p>
                                         <p class="price">от 1 000 000 ₽</p>
                                     </a>
@@ -242,54 +275,612 @@
                     </div>
                 </div>
                 <div class="config-pc">
+                    <div class="configs-pc">
+                        <div class="config-pc-1 item">
+                            <a href="#">
+                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="">
+                                <div>
+                                    <p>1650x650 R25 RUSAK</p>
+                                    <p>180 000 ₽</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="config-pc-2 item">
+                            <a href="#">
+                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="">
+                                <div>
+                                    <p>1780x710 R32 MAMONT</p>
+                                    <p>240 000 ₽</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-pc">
 
                 </div>
-                <div class="shopper-pc">
-                    
+                <div class="news-pc">
+                    <div class="news-pc-1">
+                        <div class="news-pc-img">
+                            <img src="../../img/Картинка для раздела Новости в шапке.png" alt="">
+                        </div>
+                        <div class="news-pc-info">
+                            <p>ООО «ВЕЗДЕХОДЫ ДЛЯ СЕВЕРА» входит в группу компаний КОМ, занимающаяся с 1990 года проектированием и изготовлением узлов трансмиссии для автомобилей и тракторов</p>
+
+                            <p>В отличие от кустарной сборки машин из переделенных серийных узлов, мы предлагаем оптимальную трансмиссию собственного производства, которая обеспечивает &#9733; высокую надежность &#9733; минимальную массу &#9733; широкий функционал &#9733; отличные тягово-скоростные свойства</p>
+                                
+                            <p>Четырехслойные шины собственной разработки (всегда в наличии). Отличаются от аналогов &#9733; повышенным ресурсом &#9733; улучшенной проходимостью &#9733; увеличенной прочностью боковины</p>
+                                
+                            <p>Независимая подвеска всех колес на А-образных рычагах дает безупречную плавность хода и помогает при прохождении косогоров, за счет естественного выравнивания кузова</p>
+                                
+                            <p>С нами работают &#9733; РусГидро &#9733; Московский физико-технический институт &#9733; Правительство ЯНАО &#9733; СтройПроектСервис (Иркутск) &#9733; ТНГ-Групп (Бугульма)</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="owner-pc">
-                    
+                <div class="video-pc">
+
                 </div>
                 <div class="rusak-pc">
-                    <p>Контактные данные:</p>
-                    <p>г. Богородск, Дуденевское шоссе, 11</p>
-                    <p>+7 930 716 1652</p>
-                    <a href="#">sale@atvrusak.ru</a>
+                    <div class="contacts">
+                        <div class="contacts-info">
+                            <p>Контактные данные:</p>
+                            <div class="icon-rusak"><img src="../../img/ico/house-chimney.png" alt=""><p>г. Богородск, Дуденевское шоссе, 11</p></div>
+                            <div class="icon-rusak"><img src="../../img/ico/phone-call (1).png" alt=""><a href="tel:88004446052">8 (800) 444-60-52 (звонок бесплатный)</a></div>
+                            <div class="icon-rusak"><img src="../../img/ico/phone-call (1).png" alt=""><a href="tel:+79307161652">+7 930 716 1652</a></div>
+                            <div class="icon-rusak"><img src="../../img/ico/envelope.png" alt=""><a href="mailto:sale@atvrusak.ru">sale@atvrusak.ru</a></div>
+                        </div>
+                    </div>
+                    <div class="maps">
+                        <div class="map1 map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d35968.54009882517!2d52.320592!3d55.705785!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415ff58f51cad85d%3A0xf7510d8acd0b1403!2z0YPQuy4g0KHQv9Cw0YDRgtCw0LrQvtCy0YHQutCw0Y8sIDgsINCd0LDQsdC10YDQtdC20L3Ri9C1INCn0LXQu9C90YssINCg0LXRgdC_LiDQotCw0YLQsNGA0YHRgtCw0L0sINCg0L7RgdGB0LjRjywgNDIzODAx!5e0!3m2!1sru!2sus!4v1739869440625!5m2!1sru!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="map2 map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8895.093614400454!2d43.523742!3d56.126437!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414e3402424e3c09%3A0x5e8702c5c4cff0ca!2z0JTRg9C00LXQvdC10LLRgdC60L7QtSDRiC4sIDExLCDQkdC-0LPQvtGA0L7QtNGB0LosINCd0LjQttC10LPQvtGA0L7QtNGB0LrQsNGPINC-0LHQuy4sIDYwNzYwMA!5e0!3m2!1sru!2sru!4v1739878375781!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="close-header"></div>
+    
+    <!-- Модальное окно для "Получить прайс" -->
+    <div id="price-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-form" data-modal="price-modal">&times;</span>
+            <h2>Получить прайс</h2>
+            <form>
+                <input type="text" placeholder="ФИО" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <input type="email" placeholder="Электронная почта" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <!-- Модальное окно для "Заказать звонок" -->
+    <div id="call-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-form" data-modal="call-modal">&times;</span>
+            <h2>Заказать звонок</h2>
+            <form>
+                <input type="text" placeholder="ФИО" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <input type="email" placeholder="Электронная почта" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
     </header>
-    <main>
-        <section>
-            <div class="name">
-                <h1>Грузовой вездеход</h1>
-                <h1>К-8 Грузовой 4х2,5</h1>
+    <div class="main-content">
+        <div class="vehicle-config">
+            <div class="vehicle-image-placeholder">
+                <h2 class="model-title"><i class="fas fa-car"></i> К-8 Грузовой 4х2,5</h2>
+                <img src="../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp" alt="К-8 Грузовой 4х2,5" style="width: 100%;">
             </div>
-            <div class="container">
-                <div class="image">
-                    <img src="/img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.png" alt="">
+
+            <!-- Engine Section -->
+            <div class="config-section">
+                <div class="config-title active">
+                    <span><i class="fas fa-engine"></i> Двигатель</span>
                 </div>
-                <div class="small-info">
-                    <h2>К-8 Грузовой 4х2,5</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut numquam itaque eligendi quo delectus quis molestiae incidunt vel, esse aperiam praesentium dignissimos fugiat, facilis et illum nostrum eum nisi omnis.
-                    Adipisci voluptate voluptas asperiores rem dolorem, esse aperiam itaque labore pariatur molestias dolores officia vero ipsam, eveniet nihil iusto necessitatibus dolorum quis perferendis! Consectetur, harum exercitationem. Reprehenderit possimus nesciunt alias?
-                    Officiis, consequatur nemo eveniet eum amet cupiditate eaque harum id placeat nostrum. Eum eos quis cum accusamus provident perferendis sapiente quos excepturi architecto, sequi obcaecati sit expedita dolorum repudiandae molestiae.<p>
+                <div class="config-content active">
+                    <div class="engine-options">
+                        <div class="engine-option selected" data-id="cummins" data-price="350000">
+                            <div class="engine-image-placeholder">
+                                <img src="../../img/двигатели/2,5л.jpg" alt="Двигатель Cummins">
+                            </div>
+                            <div class="option-details">
+                                <p>Дизельный Cummins 2,8 л; 110 кВт</p>
+                                <p class="option-price">350 000 ₽</p>
+                            </div>
+                        </div>
+                        <div class="engine-option" data-id="wp3nq160a0" data-price="420000">
+                            <div class="engine-image-placeholder">
+                                <img src="../../img/двигатели/photo_2025-02-21_22-14-43.jpg" alt="Двигатель WP3NQ160A0">
+                            </div>
+                            <div class="option-details">
+                                <p>Дизельный двигатель WP3NQ160A0</p>
+                                <p class="option-price">420 000 ₽</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="full-info">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum nesciunt adipisci quod, numquam impedit ad, obcaecati molestias, cumque at quibusdam est accusantium ab architecto similique vitae excepturi. Illo, ullam!
-                Perferendis suscipit vero tenetur voluptas architecto nostrum incidunt cum modi alias, repellendus earum reiciendis placeat temporibus, tempore molestiae enim ea aliquid beatae libero optio, odit aut? Eius, qui excepturi. Odio?
-                In unde dolores iure eos ipsam dignissimos fuga, debitis hic accusamus minima quisquam voluptates reprehenderit. Enim officia quia corporis rerum, repellat, cumque hic provident nisi necessitatibus expedita quaerat esse exercitationem.
-                Necessitatibus in illo exercitationem quas asperiores. Libero nemo ex cum laboriosam rerum quo voluptatem dignissimos esse, dolore necessitatibus inventore reiciendis error tempora. In eaque temporibus fuga, cumque rem vel hic?
-                Labore eligendi quaerat aperiam atque ea! Facilis reiciendis sint eum saepe alias nisi dolore tempore, quisquam porro, voluptate totam minus nesciunt repellat expedita voluptatibus, eligendi libero minima architecto aperiam beatae.
-                Dolorem pariatur commodi impedit dignissimos, hic molestias similique assumenda non rem saepe nisi culpa laboriosam laudantium ad dolor reiciendis nihil, sint neque officia aliquam harum. At accusamus distinctio sunt ratione.
-                Quam ex perspiciatis eveniet molestias in quisquam similique rem, dicta officiis fugiat nihil atque minima numquam dolor dolores dignissimos autem reprehenderit? Minus voluptatibus quod, illo quisquam doloribus quibusdam esse veniam?
-                Nihil nemo nesciunt eaque blanditiis obcaecati placeat similique expedita dolor earum veniam a beatae officiis nostrum ipsa amet nam, libero unde illo ad optio laudantium distinctio impedit provident. A, nemo.
-                Ratione eveniet, rem officia ullam totam accusantium id corporis animi atque a iste, cupiditate repellat. Reprehenderit pariatur saepe iste voluptatum perspiciatis cumque expedita fuga, ipsum facere consequatur mollitia, earum quam!
-                Explicabo eaque, minus porro, quia hic nam quis nihil illum iste cupiditate repudiandae vitae numquam quam dolore? Tempora temporibus ullam beatae accusamus mollitia repudiandae dolore, dolorum assumenda, porro labore optio!</p>
+
+            <!-- Tires Section -->
+            <div class="config-section">
+                <div class="config-title">
+                    <span><i class="fas fa-tire"></i> Шины</span>
+                </div>
+                <div class="config-content">
+                    <div class="tires-options">
+                        <div class="tires-option selected" data-id="rusak" data-price="180000">
+                            <div class="tires-image-placeholder">
+                                <img src="../../img/шины/Шина R25 RUSAK.jpg" alt="Шина RUSAK">
+                            </div>
+                            <div class="option-details">
+                                <p>1650x650 R25 RUSAK</p>
+                                <p class="option-price">180 000 ₽</p>
+                            </div>
+                        </div>
+                        <div class="tires-option" data-id="mamont" data-price="240000">
+                            <div class="tires-image-placeholder">
+                                <img src="../../img/шины/Шина R32 MAMONT.webp" alt="Шина MAMONT">
+                            </div>
+                            <div class="option-details">
+                                <p>1780x710 R32 MAMONT</p>
+                                <p class="option-price">240 000 ₽</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+
+            <!-- Cabin Section -->
+            <div class="config-section">
+                <div class="config-title">
+                    <span> Салон</span>
+                </div>
+                <div class="config-content">
+                    <!-- Passenger Options - Keep these as they are -->
+                    <div class="passengers-section">
+                        <h4 class="subsection-title">Пассажирские места</h4>
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="18" data-price="120000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">18 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">120 000 ₽</div>
+                        </div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="20" data-price="150000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">20 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">150 000 ₽</div>
+                        </div>
+
+                        <div class="option-item selected" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="24" data-price="180000" checked>
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">24 пассажирских места</div>
+                            </div>
+                            <div class="option-price">180 000 ₽</div>
+                        </div>
+
+                        <div class="option-item" data-type="radio" data-group="passengers">
+                            <div class="option-content">
+                                <label class="custom-radio">
+                                    <input type="radio" name="passengers" value="28" data-price="210000">
+                                    <span class="radiomark"></span>
+                                </label>
+                                <div class="option-label">28 пассажирских мест</div>
+                            </div>
+                            <div class="option-price">210 000 ₽</div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Cabin Options - Convert to simple checkbox items -->
+                    <h4 class="subsection-title">Расширенный комфорт и оснащение</h4>
+                    <div class="option-item" data-group="cabin">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="windshield" data-price="25000" data-group="cabin">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Обогрев лобового стекла</div>
+                        </div>
+                        <div class="option-price">25 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="cabin">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="camera" data-price="35000" data-group="cabin">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Задняя камера с монитором 2DIN</div>
+                        </div>
+                        <div class="option-price">35 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="cabin">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="heaters" data-price="65000" data-group="cabin">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Автономные отопители салона Планар 4кВт 1 шт, Планар 2кВт 1 шт</div>
+                        </div>
+                        <div class="option-price">65 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="cabin">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="radio" data-price="45000" data-group="cabin">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Радиостанция Hytera HM785 или аналог</div>
+                        </div>
+                        <div class="option-price">45 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chassis Section -->
+            <div class="config-section">
+                <div class="config-title">
+                    <span> Шасси</span>
+                </div>
+                <div class="config-content">
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="suspension" data-price="85000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Централизованная система подкачки колес</div>
+                        </div>
+                        <div class="option-price">85 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="preheater" data-price="40000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Предпусковой подогреватель двигателя Бинар, 5кВт</div>
+                        </div>
+                        <div class="option-price">40 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="winch" data-price="75000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Лебедка передняя Runva 20000 (усилие 9,6 т) с кронштейном</div>
+                        </div>
+                        <div class="option-price">75 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="bullbar" data-price="45000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Кенгурин передний</div>
+                        </div>
+                        <div class="option-price">45 000 ₽</div>
+                    </div>
+                    
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="roofrack" data-price="60000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Экспедиционный багажник на крыше с поручнями 2,0×1,7 м</div>
+                        </div>
+                        <div class="option-price">60 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="frontlight" data-price="30000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Фара светодиодная РИФ 20'' 120 W LED, крепление в бампере, 2 шт.</div>
+                        </div>
+                        <div class="option-price">30 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="sidelight" data-price="25000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Фара светодиодная РИФ D116 мм 18W c кнопкой включения на панели, 3 шт</div>
+                        </div>
+                        <div class="option-price">25 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="chassis">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="wheelcaps" data-price="20000" data-group="chassis">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Колпаки на колеса</div>
+                        </div>
+                        <div class="option-price">20 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Section -->
+            <div class="config-section">
+                <div class="config-title">
+                    <span> Сервис</span>
+                </div>
+                <div class="config-content">
+                    <div class="option-item" data-group="service">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="jack" data-price="15000" data-group="service">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Домкрат Hi-Lift 605 X-Treme (или аналогичный)</div>
+                        </div>
+                        <div class="option-price">15 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="service">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="tools" data-price="25000" data-group="service">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Набор инструментов 150 предметов 1/2" и 3/8" 06-07-21 (крепление в салоне)</div>
+                        </div>
+                        <div class="option-price">25 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="service">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="inverter" data-price="30000" data-group="service">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Преобразователь напряжения 12-220 В, 4000 W</div>
+                        </div>
+                        <div class="option-price">30 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="service">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="inflationhose" data-price="5000" data-group="service">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Шланг для подкачки колес</div>
+                        </div>
+                        <div class="option-price">5 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-group="service">
+                        <div class="option-content">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="sparetire" data-price="45000" data-group="service">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div class="option-label">Полноразмерное запасное колесо 1650х650-25", 4НС</div>
+                        </div>
+                        <div class="option-price">45 000 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kits Section -->
+            <div class="config-section">
+                <div class="config-title">
+                    <span>ЗИП</span>
+                </div>
+                <div class="config-content">
+                    <div class="kit-item" data-kit-id="standard" data-price="120000">
+                        <div class="kit-header">
+                            <div class="option-content">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="zip_standard" data-price="120000">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="option-label">Комплект ЗИП стандартный</div>
+                            </div>
+                            <div class="kit-controls">
+                                <div class="option-price">120 000 ₽</div>
+                                <button class="expand-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
+                                        <path d="m6 9 6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="kit-components">
+                            <ul>
+                                <li>Автомобильная аптечка первой помощи</li>
+                                <li>Жилет спасательный до 100 кг</li>
+                                <li>Автомобильная лопата</li>
+                                <li>Строительный лом</li>
+                                <li>Кувалда 3000</li>
+                                <li>Паяльная лампа</li>
+                                <li>Порошковый огнетушитель с манометром ОП-4</li>
+                                <li>Ключ баллонный 30х32 мм</li>
+                                <li>Топор</li>
+                                <li>Домкрат 12 т</li>
+                                <li>Знак аварийной остановки</li>
+                                <li>Насос для откачки масла</li>
+                                <li>Маяк проблесковый</li>
+                                <li>Трос для ограничения хода подвески</li>
+                                <li>Палец рулевой тяги (Ø29)</li>
+                                <li>Спец. ключ шарнира 64 мм</li>
+                                <li>Спецключи рожковые на 36 и 38 мм</li>
+                                <li>Ремень буксировочный 5 м</li>
+                                <li>Динамический строп (рывковый) 40 т, 10 м</li>
+                                <li>Манометр BERKUT TG-71</li>
+                                <li>Аптечка для бескамерных шин</li>
+                                <li>Светоотражающие жилеты</li>
+                                <li>Вентилятор охлаждения радиатора ДВС</li>
+                                <li>Рычаг поворотного кулака комплект правый-левый</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="kit-item" data-kit-id="additional" data-price="180000">
+                        <div class="kit-header">
+                            <div class="option-content">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="zip_additional" data-price="180000">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="option-label">Комплект ЗИП дополнительный</div>
+                            </div>
+                            <div class="kit-controls">
+                                <div class="option-price">180 000 ₽</div>
+                                <button class="expand-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down">
+                                        <path d="m6 9 6 6 6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="kit-components">
+                            <ul>
+                                <li>Фильтр воздушный GB9434</li>
+                                <li>Фильтр масляный LF17356</li>
+                                <li>Фильтр топливный тонкой очистки FS19925</li>
+                                <li>Ремкомплект манжет на колесный редуктор (комплект)</li>
+                                <li>Втулка рулевой тяги (аркаим)</li>
+                                <li>ШРУС внутренний М30121004 (трипод) + смазка</li>
+                                <li>Амортизатор 3994-2915006-90</li>
+                                <li>Шланг подкачки колеса Русак 3994-3124186</li>
+                                <li>Рулевой наконечник левый R350-3414060-30</li>
+                                <li>Рулевой наконечник правый R350-3414060-20</li>
+                                <li>Пыльник рулевой</li>
+                                <li>Пыльник шруса внутренний кт. (+хомуты)</li>
+                                <li>Пыльник шруса наружный кт. (+хомуты)</li>
+                                <li>Электрика (реле, предохранители) (комплект)</li>
+                                <li>Шаровая опора верхняя</li>
+                                <li>Подшипник рулевой опоры 753009 NK GH20270</li>
+                                <li>Щетки стеклоочистителей</li>
+                                <li>Блок синхронизации стеклоочистителей</li>
+                                <li>Пробка редуктора 1/8", 00000-0870884-009</li>
+                                <li>Пробка редуктора 1/4", 296562-П8</li>
+                                <li>Ремень генератора, 8PK2440</li>
+                                <li>Масло моторное (л.), ZIC X7000 5W30, 4 л.</li>
+                                <li>Масло трансмиссионное, ZIC G-5 80W90 GL5, 4 л.</li>
+                                <li>Масло трансмиссионное, ZIC G-EP 80W90 GL4, 4л.</li>
+                                <li>Антифриз красный G12, 10 л.</li>
+                                <li>Тормозная жидкость, ROSDOT4, 1л.</li>
+                                <li>Ручка двери внутренняя правая / левая, A21R23.6105082 /83.</li>
+                                <li>Ручка двери наружная правая / левая, А21R23.6105150/51</li>
+                                <li>Фиксатор замка двери правый /левый («шоколадка»), 2108-6105014/15</li>
+                                <li>Колодки стояночного тормоза, GDB1596</li>
+                                <li>Поворотный кулак, 3994-2305062</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="specs-sidebar">
+                <div class="specs-grey">
+                    <h3 class="specs-header"><i class="fas fa-clipboard-list"></i> ХАРАКТЕРИСТИКИ</h3>
+                    <div class="spec-item">
+                        <span>Габариты Д×Ш×В, мм</span>
+                        <span>7850×2750×3150</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Колесная формула</span>
+                        <span>8×8, постоянный полный привод, две передние оси управляемые</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Полная масса, кг</span>
+                        <span>9600</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Снаряженная масса, кг</span>
+                        <span>6600 (базовая комплектация)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Максимальная грузоподъемность, кг</span>
+                        <span>3000 (базовая комплектация)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span>Максимальная скорость, км/ч</span>
+                        <div class="nested-specs">
+                            <div class="nested-spec-item">
+                                <span>- на твердом грунте</span>
+                                <span>60</span>
+                            </div>
+                            <div class="nested-spec-item">
+                                <span>- на плаву без водомета</span>
+                                <span>2</span>
+                            </div>
+                            <div class="nested-spec-item">
+                                <span>- на плаву с водометом</span>
+                                <span>6</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <span>Расход топлива, л/100 км</span>
+                        <div class="nested-specs">
+                            <div class="nested-spec-item">
+                                <span>- шоссе</span>
+                                <span>25</span>
+                            </div>
+                            <div class="nested-spec-item">
+                                <span>- грунтовая дорога</span>
+                                <span>35</span>
+                            </div>
+                            <div class="nested-spec-item">
+                                <span>- песок</span>
+                                <span>50-70</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-panel">
+                <h3><i class="fas fa-tag"></i> Итоговая цена:</h3>
+                <p class="total-price">1 000 000 ₽</p>
+                <p class="price-note">(Включает базовую комплектацию и выбранные опции)</p>
+                <button class="get-quote-btn">
+                    <i class="fas fa-file-invoice"></i> Получить КП
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/test.js"></script>
     <script src="../../js/header.js"></script>
 </body>
 </html>
