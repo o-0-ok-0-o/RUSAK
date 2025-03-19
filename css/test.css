@@ -201,7 +201,7 @@ header {
 }
 
 .config-content.overflow{
-  overflow: visible;
+  overflow: hidden;
 }
 
 .cabin-section.overflow, .chassis-section.overflow{
@@ -274,34 +274,38 @@ header {
   transform: scale(1.01);
 }
 
-.option-help {
+.option-container{
+  position: relative;
+}
+
+.option-help{
   margin-left: 10px;
   padding: 0px 7px;
   border-radius: 50%;
   background-color: rgb(210, 210, 210, .7);
-  position: relative;
   color: #374151;
 }
 
-.option-hint {
+.option-hint{
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255);
   width: 250px;
-  bottom: 30px;
-  left: -110px;
+  top: 50%;
+  left: 40px; /* Смещение вправо от кнопки */
+  transform: translateY(-50%);
   padding: 5px;
   border: 2px solid #374151;
   border-radius: 10px;
   color: #374151;
   box-shadow: 1px 1px 10px #a5a5a5;
   opacity: 0;
-  z-index: -1;
+  z-index: -100;
   transition: .3s;
 }
 
-.option-help:hover .option-hint{
+.option-hint.open{
   opacity: 1;
-  z-index: 1000000;
+  z-index: 10000;
 }
 
 .option-item.selected {
