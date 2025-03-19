@@ -11,6 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const content = title.nextElementSibling;
       title.classList.toggle("active");
       content.classList.toggle("active");
+      if (!content.classList.contains('overflow')) {
+        setTimeout(()=>{
+          content.classList.add("overflow")
+        }, 300)
+      }else{
+        content.classList.remove("overflow")
+      }
+      
     });
   });
 
@@ -106,21 +114,36 @@ document.addEventListener("DOMContentLoaded", () => {
       // Обновить изображение вездехода в зависимости от выбранной колесной базы
       const wheelbaseType = option.value;
       const vehicleImg = document.getElementById("vehicle-img");
+      const specifications = document.querySelectorAll(".specifications");
+      const info8x8 = [
+        "7850×2750×3150",
+        "8×8, постоянный полный привод, две передние оси управляемые",
+        '9600',
+        '6600 (базовая комплектация)',
+      ];
+      const info6x6 = [
+        "6000x2750x3300",
+        "6x6, постоянный полный привод, две передние оси управляемые",
+        '7200',
+        '5600 (базовая комплектация)',
+      ];
 
       if (wheelbaseType === "8x8") {
         vehicleImg.src =
           "../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp";
-        document.getElementById("wheelbase-spec").textContent =
-          "8×8, постоянный полный привод, две передние оси управляемые";
+          specifications.forEach((spec, index) =>{
+            spec.textContent = info8x8[index];
+          });
 
-        // Показать все пассажирские места, кроме 8 и 12
+        // Показать все пассажирские места, кроме 10 и 12
         showAllPassengerOptions();
       } else if (wheelbaseType === "6x6") {
         vehicleImg.src = "../../img/Фото вездехода 6х6.jpg";
-        document.getElementById("wheelbase-spec").textContent =
-          "6×6, постоянный полный привод, две передние оси управляемые";
+        specifications.forEach((spec, index) =>{
+          spec.textContent = info6x6[index];
+        });
 
-        // Ограничить пассажирские места только 8 и 12
+        // Ограничить пассажирские места только 10 и 12
         limitPassengerOptions();
       }
 
@@ -142,14 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const value = Number.parseInt(option.value);
 
       // Скрыть опции 8 и 12 мест для 8x8
-      if (value === 8 || value === 12) {
+      if (value === 10 || value === 12) {
         item.style.display = "none";
       } else {
         item.style.display = "flex";
       }
 
       // Если скрытая опция была выбрана, выбрать опцию 18 мест
-      if ((value === 8 || value === 12) && option.checked) {
+      if ((value === 10 || value === 12) && option.checked) {
         const eighteenPassengerOption = document.querySelector(
           'input[name="passengers"][value="18"]'
         );
@@ -168,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const value = Number.parseInt(option.value);
 
       // Только показать опции 8 и 12 мест для 6x6
-      if (value === 8 || value === 12) {
+      if (value === 10 || value === 12) {
         item.style.display = "flex";
       } else {
         item.style.display = "none";
@@ -216,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Calculate total price function
+  // Калькулятор общей цены
   function calculateTotalPrice() {
     let totalPrice = basePrice;
 
@@ -268,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("total-price").textContent = formattedPrice + " ₽";
   }
 
-  // Initialize price calculation
+  // Инициализировать расчет цены
   calculateTotalPrice();
 
   // Scroll animation for keeping model and specs visible
@@ -311,9 +334,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (firstTitle && firstContent) {
       firstTitle.classList.add("active");
       firstContent.classList.add("active");
+      firstContent.classList.add('overflow')
     }
   }
 
   // Скрыть опции 8 и 12 мест при загрузке страницы, так как по умолчанию выбран 8x8
   showAllPassengerOptions();
 });
+
+// const optionItems = document.querySelectorAll('.option-item');
+
+// optionItems.forEach(item => {
+//     const tooltip = item.querySelector('.tooltip');
+
+//     // Показать подсказку при наведении
+//     item.addEventListener('mouseenter', () => {
+//         tooltip.style.display = 'block';
+//         console.log('hi')
+//     });
+
+//     // Скрыть подсказку при уходе курсора
+//     item.addEventListener('mouseleave', () => {
+//         tooltip.style.display = 'none';
+//         console.log('ih')
+//     });
+// });
