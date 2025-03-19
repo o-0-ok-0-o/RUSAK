@@ -16,11 +16,11 @@ class CarBase(BaseModel):
     engine_id: int
     salone_member_id: int
     tire_id: int
-    photo_url: Optional[str]
 
 
 class CarRead(CarBase):
     id: int
+    photo_url: str
 
     engine: Optional[EngineCar] = None
     salone_member: Optional[SaloneMemberCar] = None
