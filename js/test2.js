@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const item = option.closest(".option-item");
       const value = Number.parseInt(option.value);
 
-      // Только показать опции 8 и 12 мест для 6x6
+      // Только показать опции 10 и 12 мест для 6x6
       if (value === 10 || value === 12) {
         item.style.display = "flex";
       } else {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Если скрытая опция была выбрана, выбрать опцию 8 мест
         if (option.checked) {
           const eightPassengerOption = document.querySelector(
-            'input[name="passengers"][value="8"]'
+            'input[name="passengers"][value="10"]'
           );
           if (eightPassengerOption) {
             eightPassengerOption.checked = true;
