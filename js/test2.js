@@ -340,6 +340,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Скрыть опции 8 и 12 мест при загрузке страницы, так как по умолчанию выбран 8x8
   showAllPassengerOptions();
+
+  const optionHelp = document.querySelectorAll('.option-help');
+  const optionHint = document.querySelectorAll('.option-hint');
+
+  optionHelp.forEach((help, index) => {
+    const hint = optionHint[index];
+
+    
+    help.addEventListener('mouseenter', ()=>{
+      hint.classList.add('open')
+    })
+
+    help.addEventListener('mouseleave', ()=>{
+      hint.classList.remove('open')
+    })
+  })
 });
 
 // const optionItems = document.querySelectorAll('.option-item');
