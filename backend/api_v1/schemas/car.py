@@ -7,6 +7,7 @@ from api_v1.schemas.salone_option import SaloneOptionCar
 from api_v1.schemas.service import ServiceCar
 from api_v1.schemas.shassi import ShassiCar
 from api_v1.schemas.tire import TireCar
+from api_v1.schemas.wheelbase import WheelbaseCar
 from api_v1.schemas.zip import ZipCar
 
 
@@ -16,15 +17,19 @@ class CarBase(BaseModel):
     engine_id: int
     salone_member_id: int
     tire_id: int
+    wheelbase: int
 
 
-class CarRead(CarBase):
+class CarRead(BaseModel):
     id: int
+    car_name: str
+    base_price: int
     photo_url: str
 
-    engine: Optional[EngineCar] = None
-    salone_member: Optional[SaloneMemberCar] = None
-    tire: Optional[TireCar] = None
+    engine: EngineCar
+    salone_member: SaloneMemberCar
+    tire: TireCar
+    wheelbase: WheelbaseCar
 
     salone_option: list[SaloneOptionCar] = []
     shassi: list[ShassiCar] = []
