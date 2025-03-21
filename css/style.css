@@ -191,7 +191,10 @@ html {
 }
 .models,
 .rusak,
-.config {
+.config,
+.video,
+.news,
+.review {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -208,7 +211,10 @@ html {
 }
 .models.open,
 .rusak.open,
-.config.open {
+.config.open,
+.video.open,
+.news.open,
+.review.open {
   left: 0;
 }
 .close a {
@@ -273,9 +279,7 @@ html {
   display: grid;
   gap: 10px;
 }
-.icon a:hover {
-  color: orange;
-}
+
 .contacts {
   padding: 24px 0;
   display: flex;
@@ -351,7 +355,131 @@ html {
   display: none;
 }
 
+.videos {
+  padding: 24px;
+}
+
+.videos video {
+  width: 100%;
+}
+
+.news-1 {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+}
+
+.news-img {
+  padding: 9px;
+}
+
+.news-info {
+  padding: 0 24px;
+}
+
+.news-img img {
+  height: 90px;
+}
+
+.nav-menu-pc-list-2 ul li button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 15px;
+  background: linear-gradient(to bottom, #ffa200, #ff6b00);
+  border: none;
+  color: white;
+  font-size: 11px;
+  cursor: pointer;
+  transform: skew(-20deg);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.nav-menu-pc-list-2 ul {
+  display: flex;
+  margin-left: 14px;
+  justify-content: space-between;
+  margin: 0 24px;
+}
+
+.nav-menu-pc-list-2 ul li {
+  font-size: 14px;
+}
+
+.nav-menu-pc-list-2 ul li button img,
+.nav-menu-pc-list-2 ul li button .text {
+  transform: skew(20deg);
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-menu-pc-list-2 ul li button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.nav-menu-pc-list-2 ul li button:active {
+  transform: skew(-20deg) translateY(0);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-menu-pc-list-2 ul li button {
+  width: 150px;
+  height: 30px;
+  margin: 2px;
+  font-weight: 500;
+}
+
+.nav-menu-pc-list .nav-menu-pc-list-2 .number {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 9px;
+  height: 9px;
+  filter: invert(0%) brightness(100%);
+}
+
 @media (min-width: 576px) {
+  .news-info {
+    padding: 0 48px;
+  }
+
+  .nav-menu-pc-list-2 ul {
+    margin: 0 48px;
+  }
+
+  .news-img {
+    padding: 33px;
+  }
+
+  .videos {
+    padding: 24px 48px;
+  }
+
   .cars {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -381,6 +509,54 @@ html {
   }
 }
 @media (min-width: 1185px) {
+  .nav-menu-pc-list-2 ul li button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 15px;
+    background: linear-gradient(to bottom, #ffa200, #ff6b00);
+    border: none;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+    transform: skew(-20deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    height: 28px;
+    box-sizing: border-box;
+  }
+
+  .nav-menu-pc-list-2 {
+    height: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-menu-pc-list-2 ul li button:hover {
+    background: linear-gradient(to bottom, #ff9100, #ff5500);
+    transform: skew(-20deg) translateY(-1px);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+  
+  .nav-menu-pc-list-2 ul li button:hover span {
+    color: white;
+  }
+
+  .nav-menu-pc-list-2 ul li button:hover .icon {
+    filter: invert(100%) brightness(100%);
+  }
+
+  .nav-menu-pc-list-2 ul{
+    display: block;
+    margin: 0 10px 0 0;
+  }
+
   .models,
   .config {
     display: none;
@@ -462,21 +638,7 @@ html {
     justify-content: space-between;
     width: 100%;
   }
-  .nav-menu-pc-list-2 {
-    height: 70px;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
-    right: 48px;
-    display: flex;
-    align-items: center;
-  }
-  .nav-menu-pc-list-2 ul {
-    margin-left: 14px;
-  }
-  .nav-menu-pc-list-2 ul li {
-    font-size: 14px;
-  }
+
   .models-pc,
   .rusak-pc,
   .config-pc,
@@ -531,93 +693,11 @@ html {
     display: block;
   }
 
-  .nav-menu-pc-list-2 ul li button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 15px;
-    background: linear-gradient(to bottom, #ffa200, #ff6b00);
-    border: none;
-    color: white;
-    font-size: 11px;
-    cursor: pointer;
-    transform: skew(-20deg);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    height: 28px;
-    box-sizing: border-box;
-  }
-
-  .nav-menu-pc-list-2 ul li button .icon,
-  .nav-menu-pc-list-2 ul li button .text {
-    transform: skew(20deg);
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .nav-menu-pc-list-2 ul li button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
-
-  .nav-menu-pc-list-2 ul li button:hover {
-    background: linear-gradient(to bottom, #ff9100, #ff5500);
-    transform: skew(-20deg) translateY(-1px);
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-    color: white;
-  }
-
-  .nav-menu-pc-list-2 ul li button:hover span {
-    color: white;
-  }
-
-  .nav-menu-pc-list-2 ul li button:active {
-    transform: skew(-20deg) translateY(0);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  }
-
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .icon svg {
-    width: 9px;
-    height: 9px;
-    filter: invert(0%) brightness(100%);
-  }
-
-  .nav-menu-pc-list-2 ul li button:hover .icon {
-    filter: invert(100%) brightness(100%);
-  }
-  .nav-menu-pc-list-2 ul li button {
-    width: 150px;
-    height: 30px;
-    margin: 2px;
-    font-weight: 500;
-  }
   #price {
     display: flex;
     justify-content: center;
   }
 
-  .nav-menu-pc-list .nav-menu-pc-list-2 .number {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
   .number li a:hover {
     color: orange;
   }
@@ -651,14 +731,16 @@ html {
     justify-content: center;
   }
 
-  .review-pc, .video-pc{
+  .review-pc,
+  .video-pc {
     height: 800px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 24px 48px;
     gap: 24px;
   }
-  .review-pc video, .video-pc video{
+  .review-pc video,
+  .video-pc video {
     width: 100%;
   }
 }

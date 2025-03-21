@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rusak</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
     <header>
@@ -25,16 +25,73 @@
                     <ul>
                         <li><a href="#" id="models">Вездеходы <div class="arrow"></div></a></li>
                         <li><a href="#" id="config">Шины <div class="arrow"></div></a></li>
-                        <li><a href="#" >Обзоры</a></li> 
-                        <li><a href="#" >Новости</a></li>
-                        <li><a href="#" >Видео</a></li>                       
+                        <li><a href="#" id="review">Обзоры <div class="arrow"></div></a></li> 
+                        <li><a href="#" id="news">Новости <div class="arrow"></div></a></li>
+                        <li><a href="#" id="video">Видео <div class="arrow"></div></a></li>                       
                     </ul>
                     <a href="#" id="rusak">О НАС <div class="arrow"></div></a>
-                    <div class="btn">
-                        <a href="#" style="background-color: green;">получить прайс</a>
-                        <a href="#" style="background-color: orangered;">заказать звонок</a>
+                    <div class="nav-menu-pc-list-2">
+                        <ul>
+                            <li><button id="price">
+                                <span class="text">Получить прайс</span>
+                            </button></li>
+                            <li><button id="call" class="callback-button">
+                                <img src="img/ico/phone-call_5068731.svg" alt="" class="icon">
+                                <span class="text">Заказать звонок</span>
+                            </button></li>
+                        </ul>
                     </div>
                     
+                    <div class="review">
+                        <div class="close">
+                            <a href="#" id="close-review"><div class="arrow-left"></div><p>Обзоры</p></a>
+                        </div>
+                        <div class="videos">
+                            <video src="video/Космический вездеход 8x8 из России больше дома. Самый-самый Русак.mp4" controls class="video-player"></video>
+                            <h2>Космический вездеход 8x8 из России больше дома. Самый-самый Русак</h2>
+                        </div>
+                        <div class="videos">
+                            <video src="video/Русак К-8.2. Первый вездеход второго поколения.mp4" controls class="video-player"></video>
+                            <h2>Русак К-8.2. Первый вездеход второго поколения</h2>
+                        </div>
+                    </div>
+
+                    <div class="news">
+                        <div class="close">
+                            <a href="#" id="close-news"><div class="arrow-left"></div><p>Новости</p></a>
+                        </div>
+                        <div class="news-1">
+                            <div class="news-img">
+                                <img src="img/Картинка для раздела Новости в шапке.png" alt="">
+                            </div>
+                            <div class="news-info">
+                                <p>ООО «ВЕЗДЕХОДЫ ДЛЯ СЕВЕРА» входит в группу компаний КОМ, занимающаяся с 1990 года проектированием и изготовлением узлов трансмиссии для автомобилей и тракторов</p>
+                            </div>
+                        </div>
+                        <div class="news-info">
+                            <p>В отличие от кустарной сборки машин из переделенных серийных узлов, мы предлагаем оптимальную трансмиссию собственного производства, которая обеспечивает &#9733; высокую надежность &#9733; минимальную массу &#9733; широкий функционал &#9733; отличные тягово-скоростные свойства</p>
+                                    
+                                <p>Четырехслойные шины собственной разработки (всегда в наличии). Отличаются от аналогов &#9733; повышенным ресурсом &#9733; улучшенной проходимостью &#9733; увеличенной прочностью боковины</p>
+                                    
+                                <p>Независимая подвеска всех колес на А-образных рычагах дает безупречную плавность хода и помогает при прохождении косогоров, за счет естественного выравнивания кузова</p>
+                                    
+                                <p>С нами работают &#9733; РусГидро &#9733; Московский физико-технический институт &#9733; Правительство ЯНАО &#9733; СтройПроектСервис (Иркутск) &#9733; ТНГ-Групп (Бугульма)</p>
+                        </div>
+                    </div>
+
+                    <div class="video">
+                        <div class="close">
+                            <a href="#" id="close-video"><div class="arrow-left"></div><p>Видео</p></a>
+                        </div>
+                        <div class="videos">
+                            <video src="video/Космический вездеход 8x8 из России больше дома. Самый-самый Русак.mp4" controls class="video-player"></video>
+                            <h2>Космический вездеход 8x8 из России больше дома. Самый-самый Русак</h2>
+                        </div>
+                        <div class="videos">
+                            <video src="video/Русак К-8.2. Первый вездеход второго поколения.mp4" controls class="video-player"></video>
+                            <h2>Русак К-8.2. Первый вездеход второго поколения</h2>
+                        </div>
+                    </div>
 
                     <div class="rusak">
                         <div class="close">
@@ -169,10 +226,10 @@
                     </div>
                     <div class="nav-menu-pc-list-2">
                         <ul>
-                            <li><button id="price">
+                            <li><button id="price-pc">
                                 <span class="text">Получить прайс</span>
                             </button></li>
-                            <li><button id="call" class="callback-button">
+                            <li><button id="call-pc" class="callback-button">
                                 <img src="img/ico/phone-call_5068731.svg" alt="" class="icon">
                                 <span class="text">Заказать звонок</span>
                             </button></li>
@@ -295,11 +352,11 @@
                     </div>
                 </div>
                 <div class="review-pc">
-                    <div class="videos">
+                    <div class="videos-pc">
                         <video src="video/Космический вездеход 8x8 из России больше дома. Самый-самый Русак.mp4" controls class="video-player"></video>
                         <h2>Космический вездеход 8x8 из России больше дома. Самый-самый Русак</h2>
                     </div>
-                    <div class="videos">
+                    <div class="videos-pc">
                         <video src="video/Русак К-8.2. Первый вездеход второго поколения.mp4" controls class="video-player"></video>
                         <h2>Русак К-8.2. Первый вездеход второго поколения</h2>
                     </div>
@@ -323,7 +380,7 @@
                     </div>
                 </div>
                 <div class="video-pc">
-                    <div class="videos">
+                    <div class="videos-pc">
                         <video src="video/Космический вездеход 8x8 из России больше дома. Самый-самый Русак.mp4" controls class="video-player"></video>
                         <h2>Космический вездеход 8x8 из России больше дома. Самый-самый Русак</h2>
                     </div>
@@ -404,7 +461,7 @@
         <div class="sliders-text">
             <div class="btn-main-phone">
                 <button class="obzor-main-phone">Вездеходы в наличии</button>
-                <button class="models-main-phone">Выбрать вездеход</button>
+                <a class="models-main-phone" href="html/грузовые вездиходы/k-8_5x2,5.html">Собрать свой вездеход</a>
                 <button class="config-main-phone">Выбрать шины</button>
             </div>
             <div class="btn-main-pc">

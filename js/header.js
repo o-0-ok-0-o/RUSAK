@@ -26,6 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
         menu: document.querySelector(".rusak"),
         closeBtn: document.getElementById("close-rusak"),
       },
+      review:{
+        btn: document.getElementById("review"),
+        menu: document.querySelector(".review"),
+        closeBtn: document.getElementById("close-review"),
+      },
+      news:{
+        btn: document.getElementById("news"),
+        menu: document.querySelector(".news"),
+        closeBtn: document.getElementById("close-news"),
+      },
+      video:{
+        btn: document.getElementById("video"),
+        menu: document.querySelector(".video"),
+        closeBtn: document.getElementById("close-video"),
+      }
     },
 
     // PC menu elements
@@ -61,6 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
     modals: {
       price: document.getElementById("price-modal"),
       call: document.getElementById("call-modal"),
+    },
+    modalTriggersPc: {
+      price: document.getElementById("price-pc"),
+      call: document.getElementById("call-pc"),
     },
     modalTriggers: {
       price: document.getElementById("price"),
@@ -194,6 +213,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Modal event listeners
   // Open modals
   Object.entries(elements.modalTriggers).forEach(([key, trigger]) => {
+    if (trigger) {
+      trigger.addEventListener("click", () => showModal(elements.modals[key]));
+    }
+  });
+
+  Object.entries(elements.modalTriggersPc).forEach(([key, trigger]) => {
     if (trigger) {
       trigger.addEventListener("click", () => showModal(elements.modals[key]));
     }

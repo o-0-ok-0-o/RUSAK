@@ -71,23 +71,27 @@
   display: none;
 }
 .btn-main-phone{
-  width: 250px;
   display: flex;
   flex-direction: column;
 }
-.btn-main-phone button{
-  width: 200px;
-  font-size: 16px;
-  height: 40px;
+.btn-main-phone button, .btn-main-phone a{
+  width: 300px;
+  font-size: 18px;
+  height: 60px;
   margin-bottom: 10px;
-  background: #D9D9D92a; 
-  backdrop-filter: blur(5px); 
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border: none;
+  border-radius: 10px 0px 0 10px;
+  border: 3px solid black;
   color: white;
   transition: 0.3s;
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 @media (min-width: 576px) {
   .sliders-text{
     width: 500px;
