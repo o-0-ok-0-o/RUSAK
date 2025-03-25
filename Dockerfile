@@ -1,12 +1,10 @@
 FROM python:3.12-alpine
 
-CMD ["pip", "install", "poetry"]
-
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock README.MD ./
 
-RUN poetry config virtualenvs.create false \
+RUN pip install poetry \
     && poetry install
 
 COPY . .

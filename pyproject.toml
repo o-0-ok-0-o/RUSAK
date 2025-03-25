@@ -5,7 +5,7 @@ description = ""
 authors = [
     {name = "Pavlov Danil",email = "danpavkzn@mail.ru"}
 ]
-readme = "README.md"
+readme = "/README.md"
 requires-python = ">=3.12"
 dependencies = [
     "aiosqlite (==0.21.0)",
