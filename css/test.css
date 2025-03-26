@@ -52,7 +52,7 @@ header {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.configurator{
+.configurator {
   background-color: #fff;
   padding: 10px;
   border-radius: 12px;
@@ -81,7 +81,19 @@ header {
   height: calc(100vh - 70px);
 }
 
+@keyframes slideInFromTopRight {
+  from {
+      opacity: 0;
+      transform: translate(100%, -100%);
+  }
+  to {
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+}
+
 .vehicle-image-placeholder {
+  transform: translate(100%, -100%);
   position: relative;
   width: 100%;
   background: linear-gradient(135deg, #f0f2f5 0%, #e9ecef 100%);
@@ -93,9 +105,14 @@ header {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   color: #6c757d;
   font-size: 18px;
-  transition: all 0.5s ease;
   overflow: hidden;
   z-index: 10;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.4s ease-in-out, 
+              width 0.5s ease, 
+              height 0.8s ease;
+   /* Точка трансформации - правая сторона */
+  opacity: 1;
 }
 
 .vehicle-img {
@@ -274,6 +291,7 @@ header {
   cursor: pointer;
   margin-bottom: 10px;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .option-item:hover {
@@ -333,6 +351,9 @@ header {
   margin-right: 15px;
   color: #374151;
   display: flex;
+  overflow-wrap: break-word; /* Разрешаем разрыв длинных слов */
+    word-wrap: break-word; /* Для совместимости */
+    hyphens: auto;
 }
 
 .option-price {
@@ -641,8 +662,15 @@ header {
     right: 48px;
     width: calc(33.33% - 32px);
     height: 30vh;
-    margin: 0;
-    z-index: 10;
+    transform: translate(0, 0);
+    opacity: 0.9;
+    animation: slideInFromTopRight 0.5s ease-out forwards;
+  }
+
+  .vehicle-image-placeholder:not(.scrolled) {
+    animation: slideInFromTopRight 0.5s ease-out forwards;
+    transform: scaleX(1) scaleY(1); /* Плавное увеличение */
+    opacity: 1;
   }
 
   .scrolled .specs-sidebar {
@@ -693,9 +721,19 @@ header {
   }
 }
 
-@media (max-width: 576px){
+@media (max-width: 576px) {
+  .option-item{
+    padding: 5px;
+  }
   .main-content {
     flex-direction: column;
     padding: 24px;
+  }
+
+  .model-title, .specs-header {
+    font-size: 18px;
+  }
+  html{
+    font-size: 12px;
   }
 }
