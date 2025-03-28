@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Инициализировать расчет цены
   calculateTotalPrice();
 
-  // Scroll animation for keeping model and specs visible
+  // Анимация прокрутки для сохранения видимости модели и характеристик.
   window.addEventListener("scroll", handleScroll);
 
   function handleScroll() {
@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Определим порог прокрутки, чтобы изменить макет
     const scrollThreshold = 50;
 
-    console.log("Scroll Y:", scrollY); // Логирование для отладки
+    // console.log("Scroll Y:", scrollY); // Логирование для отладки
 
     if (scrollY > scrollThreshold) {
       // Добавляем класс .scrolled к body для анимации
@@ -316,14 +316,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Дополнительная отладка для проверки размеров элементов
-    console.log(
-      "Vehicle Image position:",
-      vehicleImage ? vehicleImage.getBoundingClientRect() : "Not found"
-    );
-    console.log(
-      "Specs Sidebar position:",
-      specsSidebar ? specsSidebar.getBoundingClientRect() : "Not found"
-    );
+    // console.log(
+    //   "Vehicle Image position:",
+    //   vehicleImage ? vehicleImage.getBoundingClientRect() : "Not found"
+    // );
+    // console.log(
+    //   "Specs Sidebar position:",
+    //   specsSidebar ? specsSidebar.getBoundingClientRect() : "Not found"
+    // );
   }
 
   // Инициализировать первую секцию как открытую

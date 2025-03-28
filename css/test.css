@@ -208,7 +208,7 @@ header {
 }
 
 .config-content.active {
-  max-height: 2000px;
+  max-height: 20000px;
   transition: max-height 0.5s ease-in;
 }
 
@@ -290,6 +290,9 @@ header {
 
 .option-container {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .option-help {
@@ -340,8 +343,8 @@ header {
   color: #374151;
   display: flex;
   overflow-wrap: break-word; /* Разрешаем разрыв длинных слов */
-    word-wrap: break-word; /* Для совместимости */
-    hyphens: auto;
+  word-wrap: break-word; /* Для совместимости */
+  hyphens: auto;
 }
 
 .option-price {
@@ -574,7 +577,6 @@ header {
 }
 
 .kit-components {
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   background-color: #f9f9f9;
@@ -585,7 +587,7 @@ header {
 }
 
 .kit-components.active {
-  max-height: 500px;
+  max-height: 1500px;
   transition: max-height 0.5s ease-in;
 }
 
@@ -715,7 +717,13 @@ header {
   .model-title, .specs-header {
     font-size: 18px;
   }
+  .specs-grey{
+    height: auto;
+  }
   html{
     font-size: 12px;
+  }
+  .right-content{
+    height: auto;
   }
 }
