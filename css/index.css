@@ -53,8 +53,9 @@
   position: absolute;
   z-index: 100;
   bottom: 48px;
-  left: 24px;
   right: 24px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .text-slider p{
@@ -95,7 +96,7 @@
 @media (min-width: 576px) {
   .sliders-text{
     width: 500px;
-    left: 48px;
+    right: 48px;
   }
   .text-slider p{
     font-size: 16px;
@@ -115,19 +116,19 @@
     height: 60px;
     margin-bottom: 10px;
     background-color: transparent;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     border: none;
-    border-radius: 10px 0px 0 10px;
-    border: 3px solid black;
+    border-radius: 0px 10px 10px 0px;
+    /* border: 3px solid black; */
     color: white;
     transition: 0.3s;
-    clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .btn-main-pc button:hover, .btn-main-pc a:hover{
-    background: rgb(217, 119, 6); 
+    background: #ff5500; 
     transform: scale(1.05);
   }
   .btn-main-phone{
