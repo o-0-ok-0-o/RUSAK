@@ -3,7 +3,7 @@ FROM python:3.12-alpine
 WORKDIR /app
 
 # После WORKDIR /app добавьте:
-ENV PYTHONPATH=/app
+ENV PYTHONPATH="/app:/app/backend"
 
 # Устанавливаем системные зависимости
 RUN apk add --no-cache curl
