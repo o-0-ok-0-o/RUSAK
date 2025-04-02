@@ -59,12 +59,12 @@ html {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid rgba(16, 19, 22, 0.2);
-  background-color: #ffffff50;
+  background-color: #111e2450;
   transition: 0.5s;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .nav-menu.open {
-  background-color: #ffffff;
+  background-color: #c3cace;
 }
 .nav-menu .nav-menu-phone {
   display: flex;
@@ -254,7 +254,7 @@ html {
   color: rgba(16, 19, 22, 0.8);
 }
 .cargo-passengers {
-  background-color: rgba(172, 172, 172, 0.705);
+  background-color: #c3cace;
   padding-bottom: 10px;
 }
 .icon-rusak {
@@ -627,6 +627,8 @@ html {
     transition: all 0.7s;
     overflow: auto;
     opacity: 0;
+    background-color: #e9edf0;
+    border-bottom: 1px solid #111e24 ;
   }
   .models-pc.open,
   .rusak-pc.open,
