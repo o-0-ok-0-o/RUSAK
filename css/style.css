@@ -455,6 +455,8 @@ html {
 
   .cars {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
   }
   .nav-menu {
     padding: 0 48px 0 33px;

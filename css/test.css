@@ -79,7 +79,7 @@ header {
 .right-content {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 70px);
+  height: 100vh;
 }
 
 .vehicle-image-placeholder {
@@ -90,6 +90,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 12px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
   color: #6c757d;
@@ -138,18 +139,33 @@ header {
 }
 
 .price-panel {
-  background: linear-gradient(135deg, #ff9248 0%, #ff7b1c 100%);
+  width: 100%;
   color: white;
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .price-panel h3,
 .price-panel p {
   color: white;
+}
+
+.price-price{
+  background-color: #ff5500;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.price-btn{
+  display: flex;
+  align-items: center;
 }
 
 .config-section {
@@ -463,11 +479,11 @@ header {
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
-  margin-top: 20px;
   font-size: 16px;
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
 .get-quote-btn:hover {
@@ -649,24 +665,25 @@ header {
     top: 20px;
     right: 48px;
     width: calc(33.33% - 32px);
-    height: 30vh;
+    height: 40vh;
     transform: translate(0, 0);
     opacity: 0.9;
-    animation: slideInFromTopRight 0.5s ease-out forwards;
+    transition: slideInFromTopRight 0.5s ease-out forwards;
   }
 
   .scrolled .specs-sidebar {
-    margin-top: 32vh;
-    height: calc(50vh - 20px);
+    margin-top: 42vh;
+    height: auto;
     overflow-y: auto;
-  }
-
-  .scrolled .price-panel {
-    margin-top: 10px;
-  }
+  } 
 
   .scrolled .model-title {
     display: none;
+  }
+  
+  .scrolled .price-panel h3,
+  .scrolled .price-panel p {
+    font-size: 14px;
   }
 }
 

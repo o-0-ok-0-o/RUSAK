@@ -299,8 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleScroll() {
     const scrollY = window.scrollY;
-    const vehicleImage = document.getElementById("vehicle-image");
-    const specsSidebar = document.getElementById("specs-sidebar");
+    
+    console.log(scrollY)
 
     // Определим порог прокрутки, чтобы изменить макет
     const scrollThreshold = 50;
