@@ -1,0 +1,142 @@
+/* Контейнер слайдера */
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+/* Контейнер для всех слайдов */
+.slides-container {
+  display: flex;
+  width: 500%; /* Учитываем 5 слайдов (3 оригинальных + 2 копии) */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+/* Каждый слайд */
+.slide {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+/* Индикаторы */
+.indicators {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 0 24px;
+}
+.indicator {
+  width: 48px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.indicator.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #fff;
+  animation: fillIndicator 5s linear forwards;
+}
+@keyframes fillIndicator {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.sliders-text{
+  position: absolute;
+  z-index: 100;
+  bottom: 48px;
+  right: 24px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.text-slider p{
+  font-size: 14px;
+  color: #fff;
+  padding: 10px 24px;
+  background: rgb(0, 0, 0, .2); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);;
+}
+.btn-main-pc{
+  display: none;
+}
+.btn-main-phone{
+  display: flex;
+  flex-direction: column;
+}
+.btn-main-phone button, .btn-main-phone a{
+  width: 300px;
+  font-size: 18px;
+  height: 60px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  border: none;
+  border-radius: 10px 0px 0 10px;
+  border: 3px solid black;
+  color: white;
+  transition: 0.3s;
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+  .sliders-text{
+    width: 500px;
+    right: 48px;
+  }
+  .text-slider p{
+    font-size: 16px;
+  }
+}
+@media (min-width: 950px) {
+  .text-slider p{
+    font-size: 18px;
+  }
+  .sliders-text .btn-main-pc{
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-main-pc button, .btn-main-pc a{
+    width: 300px;
+    font-size: 18px;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    /* border: 3px solid black; */
+    color: white;
+    transition: 0.3s;
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-main-pc button:hover, .btn-main-pc a:hover{
+    background: #ff5500; 
+    transform: scale(1.05);
+  }
+  .btn-main-phone{
+    display: none;
+  }
+  .header-main{
+    margin-top: 20%;
+  }
+}
+
+
