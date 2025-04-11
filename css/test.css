@@ -8,7 +8,7 @@ body {
   font-family: Arial, sans-serif;
   position: relative;
   z-index: -2;
-  background-color: #ebeff2;
+  background-color: #c3cace;
 }
 
 .fon {
@@ -23,6 +23,10 @@ body {
 header {
   position: absolute;
   top: -50px;
+}
+
+.nav-menu{
+  background-color: #111e24;
 }
 
 .main-content {
@@ -112,7 +116,7 @@ header {
 }
 
 .specs-sidebar {
-  background: #ff5500 ;
+  background: #f27130;
   color: white;
   border-radius: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
