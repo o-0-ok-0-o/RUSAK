@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+.specs-sidebar{
+  font-family: 'Saar', sans-serif;
+}
+
+.nav-menu-pc-a{
+  color: white;
+}
+
+.nav-menu-pc-list-2 a{
+  color: white;
+}
+
+.vehicle-image-placeholder, .get-quote-btn, .config-section{
+  font-family: 'Wadik', sans-serif;
+}
+
 body {
   font-family: Arial, sans-serif;
   position: relative;
@@ -83,7 +99,7 @@ header {
 .right-content {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 93vh;
 }
 
 .vehicle-image-placeholder {
@@ -119,8 +135,8 @@ header {
   background: #f27130;
   color: white;
   border-radius: 24px;
+  margin-bottom: 40px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
   border: 2px solid black;
   transition: all 0.5s ease;
   height: auto;
@@ -595,6 +611,7 @@ header {
 }
 
 .kit-components {
+  max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   background-color: #f9f9f9;
@@ -656,6 +673,10 @@ header {
 
 @media (min-width: 1000px) {
   /* Scrolled state styles */
+  .scrolled .right-content{
+    height: 100vh;
+  }
+
   .scrolled .vehicle-config {
     width: 66.66%;
   }

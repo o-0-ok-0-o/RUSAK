@@ -1,3 +1,7 @@
+* {
+  font-family: "Ermilov", sans-serif;
+}
+
 /* Контейнер слайдера */
 .slider {
   position: relative;
@@ -46,36 +50,42 @@
   animation: fillIndicator 5s linear forwards;
 }
 @keyframes fillIndicator {
-  from { width: 0%; }
-  to { width: 100%; }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
-.sliders-text{
+.sliders-text {
   position: absolute;
   z-index: 100;
   bottom: 48px;
   right: 24px;
   display: flex;
   flex-direction: row-reverse;
+  font-family: "Ermilov";
 }
 
-.text-slider p{
+.text-slider p {
   font-size: 14px;
   color: #fff;
   padding: 10px 24px;
-  background: rgb(0, 0, 0, .2); 
-  backdrop-filter: blur(5px); 
+  background: rgb(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
-.btn-main-pc{
+.btn-main-pc {
   display: none;
 }
-.btn-main-phone{
+.btn-main-phone {
   display: flex;
   flex-direction: column;
 }
-.btn-main-phone button, .btn-main-phone a{
+.btn-main-phone button,
+.btn-main-phone a {
   width: 300px;
   font-size: 18px;
   height: 60px;
@@ -94,23 +104,24 @@
 }
 
 @media (min-width: 576px) {
-  .sliders-text{
-    width: 500px;
+  .sliders-text {
     right: 48px;
   }
-  .text-slider p{
+  .text-slider p {
     font-size: 16px;
   }
 }
 @media (min-width: 950px) {
-  .text-slider p{
+  .text-slider p {
+    font-family: "Ermilov", sans-serif;
     font-size: 18px;
   }
-  .sliders-text .btn-main-pc{
+  .sliders-text .btn-main-pc {
     display: flex;
     flex-direction: column;
   }
-  .btn-main-pc button, .btn-main-pc a{
+  .btn-main-pc button,
+  .btn-main-pc a {
     width: 300px;
     font-size: 18px;
     height: 60px;
@@ -127,31 +138,55 @@
     justify-content: center;
     align-items: center;
   }
-  .btn-main-pc button:hover, .btn-main-pc a:hover{
-    background: #ff5500; 
+  .btn-main-pc button:hover,
+  .btn-main-pc a:hover {
+    background: #ff5500;
     transform: scale(1.05);
   }
-  .btn-main-phone{
+  .btn-main-phone {
     display: none;
   }
-  .header-main{
+  .header-main {
     margin-top: 20%;
   }
-}
 
 
-
-.shadow-box {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  box-shadow: 
-    inset 0 -40px 40px -10px rgba(0, 0, 0, 0.9),  /* нижняя тень */
-    inset 40px 0 40px -10px rgba(0, 0, 0, 0.9),   /* правая тень */
-    inset -40px 0 40px -10px rgba(0, 0, 0, 0.9);  /* левая тень */
+  .shadow-box {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    box-shadow: inset 0 -40px 40px -10px rgba(0, 0, 0, 0.9),
+      /* нижняя тень */ inset 40px 0 40px -10px rgba(0, 0, 0, 0.9),
+      /* правая тень */ inset -40px 0 40px -10px rgba(0, 0, 0, 0.9); /* левая тень */
     z-index: 100;
+  }
+
+  .shadow-box::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 700px;
+    height: 700px;
     pointer-events: none;
+
+    background: radial-gradient(
+      circle at bottom right,
+      rgba(0, 0, 0),
+      transparent 70%
+    );
+  }
+
+  .shadow-box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at var(--x, 100%) var(--y, 100%),
+      rgba(0, 0, 0, var(--opacity, 0)),
+      transparent 60px
+    );
+    z-index: 200000;
+  }
 }
-
-
-

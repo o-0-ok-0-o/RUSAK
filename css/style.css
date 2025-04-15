@@ -1,3 +1,23 @@
+@font-face{
+  font-family: 'PALUI';
+  src: url('../font/PaluiSPDemo-Bold.otf');
+}
+
+@font-face{
+  font-family: 'Ermilov';
+  src: url('../font/Ermilov-bold.otf');
+}
+
+@font-face{
+  font-family: 'Saar';
+  src: url('../font/SaarSPDemo.otf');
+}
+
+@font-face{
+  font-family: 'Wadik';
+  src: url('../font/Wadik.otf');
+}
+
 * {
   margin: 0;
   padding: 0;

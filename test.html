@@ -7,50 +7,83 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <style>
-    * {
+    html,
+    body {
       margin: 0;
+      padding: 0;
+      height: 100%;
     }
-    .gradient-box {
-      position: relative;
+
+    .element {
       width: 100vw;
       height: 100vh;
+      background-color: #fff;
+      position: relative;
       overflow: hidden;
     }
 
-    /* Общая теневая рамка без верхней стороны */
-    .gradient-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none; /* чтобы не блокировать мышь */
-      box-shadow: inset 0 -40px 40px -10px rgb(0, 0, 0),
-        /* нижняя тень */ inset 40px 0 40px -10px rgb(0, 0, 0),
-        /* правая тень */ inset -40px 0 40px -10px rgb(0, 0, 0); /* левая тень */
-      z-index: 100;
-      pointer-events: none;
-    }
-
-    /* Треугольник в правом нижнем углу */
-    .corner-triangle {
+    /* Постоянное затемнение в правом нижнем углу */
+    .element::before {
+      content: "";
       position: absolute;
       right: 0;
       bottom: 0;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(
-        circle at center center,
-        rgba(0, 0, 0, 0.633) 0%,
-        rgba(0, 0, 0, 0.511) 100%
-      );
-      clip-path: polygon(100% 0, 0 100%, 100% 100%);
-      box-shadow: 10px 10px 10px black;
+      width: 700px;
+      height: 700px;
       pointer-events: none;
+
+      background: radial-gradient(
+        circle at bottom right,
+        rgba(0, 0, 0, .8),
+        transparent 70%
+      );
+    }
+
+    /* Динамическое затемнение от мыши */
+    .element::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at var(--x, 100%) var(--y, 100%),
+        rgba(0, 0, 0, var(--opacity, 0)),
+        transparent 60px
+      );
+      z-index: 2;
     }
   </style>
   <body>
-    <div class="gradient-box">
-      <div class="gradient-overlay"></div>
-      <div class="corner-triangle"></div>
-      <!-- Здесь можешь добавить содержимое -->
-    </div>
+    <div class="element"></div>
+    <script>
+      const element = document.querySelector(".element");
+
+      element.addEventListener("mousemove", (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX;
+        const y = e.clientY;
+
+        const dx = rect.right - x;
+        const dy = rect.bottom - y;
+
+        // Проверяем, что курсор в зоне 700x700px от правого нижнего угла
+        if (dx >= 0 && dx <= 450 && dy >= 0 && dy <= 450) {
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = Math.sqrt(700 * 700 + 700 * 700);
+          const opacity = 0.4 * (1 - distance / maxDist); // темнение при приближении
+
+          element.style.setProperty("--x", `${x}px`);
+          element.style.setProperty("--y", `${y}px`);
+          element.style.setProperty("--opacity", opacity.toFixed(3));
+
+        } else {
+          element.style.setProperty("--opacity", "0");
+        }
+      });
+
+      element.addEventListener("mouseleave", () => {
+        element.style.setProperty("--opacity", "0");
+      });
+    </script>
   </body>
 </html>

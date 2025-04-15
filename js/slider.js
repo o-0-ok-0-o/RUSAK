@@ -163,3 +163,33 @@ document.addEventListener("mousemove", (e) => {
     opacityY
   )}) 10%, transparent)`;
 });
+
+
+
+const box = document.querySelector('.shadow-box');
+
+box.addEventListener('mousemove', (e) => {
+  const rect = box.getBoundingClientRect();
+  const x = e.clientX;
+  const y = e.clientY;
+
+  const dx = rect.right - x;
+  const dy = rect.bottom - y;
+
+  if (dx >= 0 && dx <= 400 && dy >= 0 && dy <= 400) {
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    const maxDist = Math.sqrt(700 * 700 + 700 * 700);
+    const opacity = 0.6 * (1 - distance / maxDist);
+
+    box.style.setProperty('--x', `${x}px`);
+    box.style.setProperty('--y', `${y}px`);
+    box.style.setProperty('--opacity', opacity.toFixed(2));
+  } else {
+    box.style.setProperty('--opacity', '0');
+  }
+});
+
+box.addEventListener('mouseleave', () => {
+  box.style.setProperty('--opacity', '0');
+});
+
