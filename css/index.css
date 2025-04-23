@@ -126,7 +126,7 @@
     font-size: 18px;
     height: 60px;
     margin-bottom: 10px;
-    background-color: transparent;
+    background-color: #ffffff26;
     backdrop-filter: blur(15px);
     border: none;
     border-radius: 0px 10px 10px 0px;
@@ -155,9 +155,9 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    box-shadow: inset 0 -40px 40px -10px rgba(0, 0, 0, 0.9),
-      /* нижняя тень */ inset 40px 0 40px -10px rgba(0, 0, 0, 0.9),
-      /* правая тень */ inset -40px 0 40px -10px rgba(0, 0, 0, 0.9); /* левая тень */
+    box-shadow: inset 0 -40px 40px -10px rgba(0, 0, 0, 0.5),
+      /* нижняя тень */ inset 40px 0 40px -10px rgba(0, 0, 0, 0.5),
+      /* правая тень */ inset -40px 0 40px -10px rgba(0, 0, 0, 0.5); /* левая тень */
     z-index: 100;
   }
 

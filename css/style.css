@@ -602,6 +602,7 @@ html {
   }
   .nav-menu .nav-menu-pc {
     display: flex;
+    margin-left: 10px;
   }
   .nav-menu-pc .nav-menu-pc-list-1 ul li a {
     font-weight: bold;
@@ -618,11 +619,13 @@ html {
     display: inline-block;
     position: relative;
     z-index: 1000;
+    color: #ffffff;
   }
   .nav-menu-pc .nav-menu-pc-list .nav-menu-pc-a {
     padding: 4px 8px;
     border-radius: 10px;
     transition: 0.3s;
+    color: white;
   }
   .nav-menu-pc .nav-menu-pc-list-1 ul li:hover {
     transform: scale(1.05);
@@ -756,6 +759,7 @@ html {
     box-sizing: content-box;
     height: 40px;
     width: auto;
+    background-color: rgba(255, 255, 255, 0.404);
   }
   .models-pc,
   .rusak-pc,
