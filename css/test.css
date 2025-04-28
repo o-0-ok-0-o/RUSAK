@@ -4,24 +4,26 @@
   box-sizing: border-box;
 }
 
-.specs-sidebar{
-  font-family: 'Saar', sans-serif;
+.specs-sidebar {
+  font-family: "Saar", sans-serif;
 }
 
-.nav-menu-logo img{
-  background-color: transparent;
+.nav-menu-logo img {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.nav-menu-pc-a{
+.nav-menu-pc-a {
   color: white;
 }
 
-.nav-menu-pc-list-2 a{
+.nav-menu-pc-list-2 a {
   color: white;
 }
 
-.vehicle-image-placeholder, .get-quote-btn, .config-section{
-  font-family: 'Wadik', sans-serif;
+.vehicle-image-placeholder,
+.get-quote-btn,
+.config-section {
+  font-family: "Wadik", sans-serif;
 }
 
 body {
@@ -45,7 +47,7 @@ header {
   top: -50px;
 }
 
-.nav-menu{
+.nav-menu {
   background-color: #111e24;
 }
 
@@ -75,6 +77,7 @@ header {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  background-color: #f27130;
 }
 
 .configurator {
@@ -121,11 +124,9 @@ header {
   font-size: 18px;
   overflow: hidden;
   z-index: 10;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-              opacity 0.4s ease-in-out, 
-              width 0.5s ease, 
-              height 0.8s ease;
-   /* Точка трансформации - правая сторона */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.4s ease-in-out, width 0.5s ease, height 0.8s ease;
+  /* Точка трансформации - правая сторона */
   opacity: 1;
 }
 
@@ -157,8 +158,6 @@ header {
 
 .specs-content {
   height: calc(100% - 50px);
-  overflow-y: auto;
-  overflow-x: hidden;
   padding: 10px;
 }
 
@@ -179,7 +178,7 @@ header {
   color: white;
 }
 
-.price-price{
+.price-price {
   background-color: #ff5500;
   padding: 10px;
   border-radius: 10px;
@@ -187,7 +186,7 @@ header {
   align-items: center;
 }
 
-.price-btn{
+.price-btn {
   display: flex;
   align-items: center;
 }
@@ -676,7 +675,7 @@ header {
 
 @media (min-width: 1000px) {
   /* Scrolled state styles */
-  .scrolled .right-content{
+  .scrolled .right-content {
     height: 100vh;
   }
 
@@ -702,16 +701,34 @@ header {
   .scrolled .specs-sidebar {
     margin-top: 42vh;
     height: auto;
-    overflow-y: auto;
-  } 
+    overflow: hidden;
+  }
 
   .scrolled .model-title {
     display: none;
   }
-  
+
   .scrolled .price-panel h3,
   .scrolled .price-panel p {
     font-size: 14px;
+  }
+
+  .specs-content {
+    transition: transform 0.7s ease;
+    will-change: transform;
+    height: 100%;
+  }
+
+  .specs-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .specs-header {
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+    font-size: 18px;
   }
 }
 
@@ -749,7 +766,7 @@ header {
 }
 
 @media (max-width: 576px) {
-  .option-item{
+  .option-item {
     padding: 5px;
   }
   .main-content {
@@ -757,16 +774,17 @@ header {
     padding: 24px;
   }
 
-  .model-title, .specs-header {
+  .model-title,
+  .specs-header {
     font-size: 18px;
   }
-  .specs-grey{
+  .specs-grey {
     height: auto;
   }
-  html{
+  html {
     font-size: 12px;
   }
-  .right-content{
+  .right-content {
     height: auto;
   }
 }

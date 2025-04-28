@@ -11,14 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const content = title.nextElementSibling;
       title.classList.toggle("active");
       content.classList.toggle("active");
-      if (!content.classList.contains('overflow')) {
-        setTimeout(()=>{
-          content.classList.add("overflow")
-        }, 300)
-      }else{
-        content.classList.remove("overflow")
+      if (!content.classList.contains("overflow")) {
+        setTimeout(() => {
+          content.classList.add("overflow");
+        }, 300);
+      } else {
+        content.classList.remove("overflow");
       }
-      
     });
   });
 
@@ -118,28 +117,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const info8x8 = [
         "7850×2750×3150",
         "8×8, постоянный полный привод, две передние оси управляемые",
-        '9600',
-        '6600 (базовая комплектация)',
+        "9600",
+        "6600 (базовая комплектация)",
       ];
       const info6x6 = [
         "6000x2750x3300",
         "6x6, постоянный полный привод, две передние оси управляемые",
-        '7200',
-        '5600 (базовая комплектация)',
+        "7200",
+        "5600 (базовая комплектация)",
       ];
 
       if (wheelbaseType === "8x8") {
         vehicleImg.src =
           "../../img/грузовые вездеходы/К-8 Грузовой 4х2,5/K8gr07.webp";
-          specifications.forEach((spec, index) =>{
-            spec.textContent = info8x8[index];
-          });
+        specifications.forEach((spec, index) => {
+          spec.textContent = info8x8[index];
+        });
 
         // Показать все пассажирские места, кроме 10 и 12
         showAllPassengerOptions();
       } else if (wheelbaseType === "6x6") {
         vehicleImg.src = "../../img/Фото вездехода 6х6.jpg";
-        specifications.forEach((spec, index) =>{
+        specifications.forEach((spec, index) => {
           spec.textContent = info6x6[index];
         });
 
@@ -299,8 +298,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleScroll() {
     const scrollY = window.scrollY;
-    
-    console.log(scrollY)
+
+    // console.log(scrollY);
 
     // Определим порог прокрутки, чтобы изменить макет
     const scrollThreshold = 50;
@@ -334,28 +333,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (firstTitle && firstContent) {
       firstTitle.classList.add("active");
       firstContent.classList.add("active");
-      firstContent.classList.add('overflow')
+      firstContent.classList.add("overflow");
     }
   }
 
   // Скрыть опции 8 и 12 мест при загрузке страницы, так как по умолчанию выбран 8x8
   showAllPassengerOptions();
 
-  const optionHelp = document.querySelectorAll('.option-help');
-  const optionHint = document.querySelectorAll('.option-hint');
+  const optionHelp = document.querySelectorAll(".option-help");
+  const optionHint = document.querySelectorAll(".option-hint");
 
   optionHelp.forEach((help, index) => {
     const hint = optionHint[index];
 
-    
-    help.addEventListener('mouseenter', ()=>{
-      hint.classList.add('open')
-    })
+    help.addEventListener("mouseenter", () => {
+      hint.classList.add("open");
+    });
 
-    help.addEventListener('mouseleave', ()=>{
-      hint.classList.remove('open')
-    })
-  })
+    help.addEventListener("mouseleave", () => {
+      hint.classList.remove("open");
+    });
+  });
 });
 
 // const optionItems = document.querySelectorAll('.option-item');
@@ -375,3 +373,50 @@ document.addEventListener("DOMContentLoaded", () => {
 //         console.log('ih')
 //     });
 // });
+
+const specsContent = document.querySelector(".specs-content");
+const specItems = document.querySelectorAll(".spec-item");
+let currentIndex = 0;
+let isAnimating = false;
+
+const itemHeight = specItems[0].offsetHeight + 20; // Учитываем отступ
+
+// Прокрутка колесиком для перехода по характеристикам
+window.addEventListener("wheel", (e) => {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  if (e.deltaY > 0) {
+    // Прокрутка вниз
+    currentIndex = Math.min(currentIndex + 1, specItems.length - 1);
+  } else {
+    // Прокрутка вверх
+    if (currentIndex > -220) {
+      currentIndex = Math.max(currentIndex - 1, 0);
+    }
+  }
+
+  moveSpecsContent();
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 200); // время совпадает с transition
+});
+
+// Отслеживаем общую прокрутку страницы
+window.addEventListener("scroll", () => {
+  if (window.scrollY === 0) {
+    // Если страница прокручена в самый верх
+    currentIndex = 0;
+    moveSpecsContent();
+  }
+});
+
+// Функция для сдвига блока характеристик
+function moveSpecsContent() {
+  const offset = -currentIndex * itemHeight;
+  console.log(offset);
+  if (offset > -275) {
+    specsContent.style.transform = `translateY(${offset}px)`;
+  }
+}
